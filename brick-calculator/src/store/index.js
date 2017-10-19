@@ -4,7 +4,11 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  mask: '#########'
+  mask: '#########',
+  opening: {
+    length: null,
+    width: null
+  }
 }
 
 const getters = {
