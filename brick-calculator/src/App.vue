@@ -7,6 +7,7 @@
         v-flex( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Выбрать тип кирпича и тип кладки
+      
       // Select Masonry Type
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -19,6 +20,7 @@
             item-value="value",
             v-model="order.masonry"
           )
+      
       // Select Seam Type
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -31,6 +33,7 @@
             item-value="value",
             v-model="order.seam"
           )
+      
       // Select Brick Type
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -50,6 +53,7 @@
         v-flex( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить размеры строения
+      
       // Add Building Length, m
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -58,6 +62,7 @@
       v-layout.mb-4( row )
         v-flex( xs12, md8, offset-md2 )
           v-text-field( type="text", :counter="9", hint="Не более девяти цифр", persistent-hint, name="length", id="length", label="Длина строения, м", v-model.trim="building.length", :mask="mask", prepend-icon="aspect_ratio" )
+      
       // Add Building Width, m
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -66,6 +71,7 @@
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-text-field( type="text", :counter="9", hint="Не более девяти цифр", persistent-hint, name="width", id="width", label="Ширина строения, м", v-model.trim="building.width", :mask="mask", prepend-icon="aspect_ratio" )
+      
       // Add Building Height, m
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -81,6 +87,7 @@
         v-flex( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
+      
       // Add Length, m
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -89,6 +96,7 @@
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-text-field( name="oplength", :counter="9", hint="Не более девяти цифр", persistent-hint, id="oplength", label="Длина проема, м", v-model.trim="opening.length", :mask="mask", prepend-icon="aspect_ratio" )
+      
       // Add Width, m
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -97,7 +105,9 @@
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-text-field( name="opwidth", :counter="9", hint="Не более девяти цифр", persistent-hint, id="opwidth", label="Ширина проема, длину проема, м", v-model.trim="opening.width", :mask="mask", prepend-icon="aspect_ratio" )
-
+      // TODO https://lodash.com/docs/4.17.4#cloneDeep
+      // клонировать предыдущий объект при помощи deepClone
+    
     // SECTION FOURTH
     v-container
       v-layout.mb-4( row, wrap )
