@@ -142,10 +142,11 @@
 
 <script>
   import _ from 'lodash'
+  import { mapGetters } from 'vuex'
+
   export default {
     data () {
       return {
-        mask: '#########',
         order: {
           masonry: '0.5',
           brick: 'одинарный',
@@ -183,6 +184,9 @@
       }
     },
     computed: {
+      ...mapGetters({
+        mask: 'getMask'
+      }),
       seamWidth () {
         return this.order.seam / 1000
       },
