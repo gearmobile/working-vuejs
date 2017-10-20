@@ -5,11 +5,7 @@ Vue.use(Vuex)
 
 const state = {
   mask: '#########',
-  counter: 1,
-  opening: {
-    length: null,
-    width: null
-  }
+  counter: 1
 }
 
 const mutations = {
