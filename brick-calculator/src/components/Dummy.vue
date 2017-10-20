@@ -6,7 +6,7 @@
       v-text-field( name="height", id="height", label="Длина проема, м", )
     v-flex.mx-2( xs12, sm4 )
       v-btn.primary( @click="onClick()" )
-        | удалить
+        | удалить {{ id }}
 </template>
 
 <script>
