@@ -7,7 +7,7 @@ const state = {
   mask: '#########',
   counter: 1,
   opening: [
-    { width: null, height: null }
+    { width: null, height: null, id: 1 }
   ]
 }
 
@@ -17,14 +17,18 @@ const mutations = {
       state.counter += 1
       state.opening.push({
         width: null,
-        heght: null
+        heght: null,
+        id: state.counter
       })
     }
   },
   'DECREASE_COUNTER' (state, payload) {
     if (state.counter > 1) {
-      state.counter -= 1
-      state.opening.splice((payload - 1), 1)
+      // state.counter -= 1
+      // console.log(state.opening.indexOf(item))
+      // console.log(item)
+      const el = state.opening.splice(state.opening[payload - 1], 1)
+      console.log(el)
     }
   }
 }
