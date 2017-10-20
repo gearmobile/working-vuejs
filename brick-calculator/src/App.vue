@@ -83,30 +83,22 @@
     
     // SECTION THIRD
     v-container
+
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
       
-      // Add Length, m
+      app-dummy( v-for="n in componentCounter", :key="n" )
+
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Добавить длину проема, м
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          v-text-field( name="oplength", :counter="9", hint="Не более девяти цифр", persistent-hint, id="oplength", label="Длина проема, м", v-model.trim="opening.length", :mask="mask", prepend-icon="aspect_ratio" )
+          v-btn.primary( @click="onAdd()" )
+            | add component
+          v-btn.primary( @click="onRemove()" )
+            | remove component
       
-      // Add Width, m
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Добавить ширину проема, м
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          v-text-field( name="opwidth", :counter="9", hint="Не более девяти цифр", persistent-hint, id="opwidth", label="Ширина проема, длину проема, м", v-model.trim="opening.width", :mask="mask", prepend-icon="aspect_ratio" )
-      // TODO https://lodash.com/docs/4.17.4#cloneDeep
-      // клонировать предыдущий объект при помощи deepClone
+
     
     // SECTION FOURTH
     v-container
@@ -142,7 +134,8 @@
 
 <script>
   import _ from 'lodash'
-  import { mapGetters } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
+  import Dummy from './components/Dummy.vue'
 
   export default {
     data () {
@@ -183,9 +176,25 @@
         }
       }
     },
+    components: {
+      appDummy: Dummy
+    },
+    methods: {
+      ...mapActions({
+        counterIncrease: 'increaseCounter',
+        counterDecrease: 'decreaseCounter'
+      }),
+      onAdd () {
+        this.counterIncrease()
+      },
+      onRemove () {
+        this.counterDecrease()
+      }
+    },
     computed: {
       ...mapGetters({
-        mask: 'getMask'
+        mask: 'getMask',
+        componentCounter: 'getCounter'
       }),
       seamWidth () {
         return this.order.seam / 1000
