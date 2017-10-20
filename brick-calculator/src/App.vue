@@ -85,18 +85,16 @@
     v-container
 
       v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
+        v-flex.mb-4( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
       
-      app-dummy( v-for="n in componentCounter", :key="n" )
+      app-dummy( v-for="n in componentCounter", :key="n", :id="n" )
 
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-btn.primary( @click="onAdd()" )
             | add component
-          v-btn.primary( @click="onRemove()" )
-            | remove component
       
 
     
@@ -181,14 +179,10 @@
     },
     methods: {
       ...mapActions({
-        counterIncrease: 'increaseCounter',
-        counterDecrease: 'decreaseCounter'
+        counterIncrease: 'increaseCounter'
       }),
       onAdd () {
         this.counterIncrease()
-      },
-      onRemove () {
-        this.counterDecrease()
       }
     },
     computed: {
