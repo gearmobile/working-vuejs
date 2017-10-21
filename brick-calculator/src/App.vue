@@ -88,6 +88,7 @@
         v-flex.mb-4( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
+      
       v-layout( row, wrap )
         v-flex.mb-4( xs12, md8, offset-md2 )
           app-dummy( v-for="(component, index) in components", :key="index", :id="index" )
@@ -95,9 +96,9 @@
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-btn.primary( @click="onAdd()" )
-            | add component
-      
-
+            | добавить проем
+          v-btn.primary( @click="onCalc()" )
+            | calc area
     
     // SECTION FOURTH
     v-container
@@ -185,6 +186,9 @@
       }),
       onAdd () {
         this.componentAdd()
+      },
+      onCalc () {
+        this.$store.dispatch('areaOpening')
       }
     },
     computed: {

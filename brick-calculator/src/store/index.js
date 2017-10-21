@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import isEmpty from '../utils/isEmpty'
 
 Vue.use(Vuex)
 
@@ -8,7 +9,8 @@ const state = {
   maskOpening: '##',
   opening: [
     { width: null, height: null }
-  ]
+  ],
+  areaOpening: 0
 }
 
 const mutations = {
@@ -67,6 +69,11 @@ const getters = {
     return (id) => {
       return state.opening[id].height
     }
+  },
+  getAreaOpening (state) {
+    return state.opening.reduce((total, currentIndex) => {
+      return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
+    }, 0)
   }
 }
 
