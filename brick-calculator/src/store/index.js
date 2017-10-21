@@ -5,31 +5,30 @@ Vue.use(Vuex)
 
 const state = {
   mask: '#########',
-  counter: 1,
   opening: [
-    { width: null, height: null, id: 1 }
+    { width: null, height: null }
   ]
 }
 
 const mutations = {
   'INCREASE_COUNTER' (state) {
-    if (state.counter < 10) {
-      state.counter += 1
+    if (state.opening.length < 10) {
       state.opening.push({
         width: null,
-        heght: null,
-        id: state.counter
+        height: null
       })
     }
   },
   'DECREASE_COUNTER' (state, payload) {
-    if (state.counter > 1) {
-      // state.counter -= 1
-      // console.log(state.opening.indexOf(item))
-      // console.log(item)
-      const el = state.opening.splice(state.opening[payload - 1], 1)
-      console.log(el)
+    if (state.opening.length > 1) {
+      state.opening.splice(payload, 1)
     }
+  },
+  'SET_OPENING_WIDTH' (state, payload) {
+    state.opening[payload.index].width = payload.value
+  },
+  'SET_OPENING_HEIGHT' (state, payload) {
+    state.opening[payload.index].height = payload.value
   }
 }
 
@@ -39,6 +38,12 @@ const actions = {
   },
   decreaseCounter ({ commit }, payload) {
     commit('DECREASE_COUNTER', payload)
+  },
+  setOpeningWidth ({ commit }, payload) {
+    commit('SET_OPENING_WIDTH', payload)
+  },
+  setOpeningHeight ({ commit }, payload) {
+    commit('SET_OPENING_HEIGHT', payload)
   }
 }
 
@@ -46,8 +51,18 @@ const getters = {
   getMask (state) {
     return state.mask
   },
-  getCounter (state) {
-    return state.counter
+  getOpening (state) {
+    return state.opening
+  },
+  getOpeningWidth (state) {
+    return (id) => {
+      return state.opening[id].width
+    }
+  },
+  getOpeningHeight (state) {
+    return (id) => {
+      return state.opening[id].height
+    }
   }
 }
 
