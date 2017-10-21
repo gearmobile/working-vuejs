@@ -1,55 +1,66 @@
 <template lang="pug">
-    
-  // Add Length, m
-  v-layout( row )
-    v-flex( xs12, md6 )
-      h4.subheading.teal--text.mb-2
-        | Длина проема, м
-    v-flex( xs12, md6 )
+  v-layout.mb-4
+    v-flex.mx-2( xs12, sm4 )
       v-text-field(
-        name="oplength",
-        :counter="9",
-        hint="Не более девяти цифр",
-        persistent-hint,
-        id="oplength",
-        label="Длина проема, м",
-        v-model.trim="opening.length",
+        name="width",
+        v-model="width",
+        id="width",
+        label="Ширина, м",
         :mask="mask",
-        prepend-icon="aspect_ratio"
+        :hint="hintText",
+        persistent-hint,
+        :counter="maskCounter"
       )
-  
-  // Add Width, m
-  v-layout( row, wrap )
-    v-flex( xs12, md6 )
-      h4.subheading.teal--text.mb-2
-        | Ширина проема, м
-    v-flex( xs12, md6 )
+    v-flex.mx-2( xs12, sm4 )
       v-text-field(
-        name="opwidth",
-        :counter="9",
-        hint="Не более девяти цифр",
-        persistent-hint,
-        id="opwidth",
-        label="Ширина проема, м",
-        v-model.trim="opening.width",
+        name="height",
+        v-model="height",
+        id="height",
+        label="Длина, м",
         :mask="mask",
-        prepend-icon="aspect_ratio"
+        :hint="hintText",
+        persistent-hint,
+        :counter="maskCounter"
       )
-
+    v-flex.mx-2( xs12, sm4 )
+      v-btn.primary( @click="onClick()" )
+        | удалить
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
+  import { mapActions, mapGetters } from 'vuex'
 
   export default {
-    name: 'OpeningComponent',
+    name: 'Opening',
+    data () {
+      return {
+        hintText: 'Целые числа'
+      }
+    },
+    props: ['id'],
     computed: {
-      mask: 'getMask'
+      ...mapGetters({
+        mask: 'getMaskOpening'
+      }),
+      maskCounter () {
+        return this.mask.length
+      },
+      width: {
+        get () { return this.$store.getters.getOpeningWidth(this.id) },
+        set (value) { this.$store.dispatch('setOpeningWidth', { index: this.id, value: value }) }
+      },
+      height: {
+        get () { return this.$store.getters.getOpeningHeight(this.id) },
+        set (value) { this.$store.dispatch('setOpeningHeight', { index: this.id, value: value }) }
+      }
+    },
+    methods: {
+      ...mapActions({
+        deleteComponent: 'removeComponent'
+      }),
+      onClick () {
+        this.deleteComponent(this.id)
+      }
     }
   }
 </script>
-
-<style scoped>
-  /**/
-</style>
-

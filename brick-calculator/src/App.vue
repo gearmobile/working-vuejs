@@ -91,7 +91,7 @@
       
       v-layout( row, wrap )
         v-flex.mb-4( xs12, md8, offset-md2 )
-          app-dummy( v-for="(component, index) in components", :key="index", :id="index" )
+          component-opening( v-for="(component, index) in components", :key="index", :id="index" )
 
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
@@ -133,7 +133,7 @@
 <script>
   import _ from 'lodash'
   import { mapGetters, mapActions } from 'vuex'
-  import Dummy from './components/Dummy.vue'
+  import Opening from './components/Opening.vue'
 
   export default {
     data () {
@@ -176,7 +176,7 @@
       }
     },
     components: {
-      appDummy: Dummy
+      componentOpening: Opening
     },
     methods: {
       ...mapActions({
