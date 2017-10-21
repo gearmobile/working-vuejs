@@ -5,13 +5,14 @@ Vue.use(Vuex)
 
 const state = {
   mask: '#########',
+  maskOpening: '##',
   opening: [
     { width: null, height: null }
   ]
 }
 
 const mutations = {
-  'INCREASE_COUNTER' (state) {
+  'ADD_COMPONENT' (state) {
     if (state.opening.length < 10) {
       state.opening.push({
         width: null,
@@ -19,7 +20,7 @@ const mutations = {
       })
     }
   },
-  'DECREASE_COUNTER' (state, payload) {
+  'REMOVE_COMPONENT' (state, payload) {
     if (state.opening.length > 1) {
       state.opening.splice(payload, 1)
     }
@@ -33,11 +34,11 @@ const mutations = {
 }
 
 const actions = {
-  increaseCounter ({ commit }) {
-    commit('INCREASE_COUNTER')
+  addComponent ({ commit }) {
+    commit('ADD_COMPONENT')
   },
-  decreaseCounter ({ commit }, payload) {
-    commit('DECREASE_COUNTER', payload)
+  removeComponent ({ commit }, payload) {
+    commit('REMOVE_COMPONENT', payload)
   },
   setOpeningWidth ({ commit }, payload) {
     commit('SET_OPENING_WIDTH', payload)
@@ -50,6 +51,9 @@ const actions = {
 const getters = {
   getMask (state) {
     return state.mask
+  },
+  getMaskOpening (state) {
+    return state.maskOpening
   },
   getOpening (state) {
     return state.opening

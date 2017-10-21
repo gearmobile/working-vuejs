@@ -1,12 +1,30 @@
 <template lang="pug">
   v-layout.mb-4
     v-flex.mx-2( xs12, sm4 )
-      v-text-field( name="width", v-model="width", id="width", label="Ширина проема, м", :mask="mask", hint="Не более девяти цифр", persistent-hint, :counter="9" )
+      v-text-field(
+        name="width",
+        v-model="width",
+        id="width",
+        label="Ширина, м",
+        :mask="mask",
+        :hint="hintText",
+        persistent-hint,
+        :counter="maskCounter"
+      )
     v-flex.mx-2( xs12, sm4 )
-      v-text-field( name="height", v-model="height", id="height", label="Длина проема, м", :mask="mask", hint="Не более девяти цифр", persistent-hint, :counter="9" )
+      v-text-field(
+        name="height",
+        v-model="height",
+        id="height",
+        label="Длина, м",
+        :mask="mask",
+        :hint="hintText",
+        persistent-hint,
+        :counter="maskCounter"
+      )
     v-flex.mx-2( xs12, sm4 )
       v-btn.primary( @click="onClick()" )
-        | удалить {{ id }}
+        | удалить
 </template>
 
 <script>
@@ -14,11 +32,19 @@
 
   export default {
     name: 'dummy',
+    data () {
+      return {
+        hintText: 'Целые числа'
+      }
+    },
     props: ['id'],
     computed: {
       ...mapGetters({
-        mask: 'getMask'
+        mask: 'getMaskOpening'
       }),
+      maskCounter () {
+        return this.mask.length
+      },
       width: {
         get () { return this.$store.getters.getOpeningWidth(this.id) },
         set (value) { this.$store.dispatch('setOpeningWidth', { index: this.id, value: value }) }
@@ -30,10 +56,10 @@
     },
     methods: {
       ...mapActions({
-        removeComponent: 'decreaseCounter'
+        deleteComponent: 'removeComponent'
       }),
       onClick () {
-        this.removeComponent(this.id)
+        this.deleteComponent(this.id)
       }
     }
   }

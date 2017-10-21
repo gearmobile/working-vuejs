@@ -61,7 +61,7 @@
             | Введите длину строения, м
       v-layout.mb-4( row )
         v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="9", hint="Не более девяти цифр", persistent-hint, name="length", id="length", label="Длина строения, м", v-model.trim="building.length", :mask="mask", prepend-icon="aspect_ratio" )
+          v-text-field( type="text", :counter="9", :hint="hintText", persistent-hint, name="length", id="length", label="Длина строения, м", v-model.trim="building.length", :mask="mask", prepend-icon="aspect_ratio" )
       
       // Add Building Width, m
       v-layout( row, wrap )
@@ -70,7 +70,7 @@
             | Введите ширину строения, м
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="9", hint="Не более девяти цифр", persistent-hint, name="width", id="width", label="Ширина строения, м", v-model.trim="building.width", :mask="mask", prepend-icon="aspect_ratio" )
+          v-text-field( type="text", :counter="maskCounter", :hint="hintText", persistent-hint, name="width", id="width", label="Ширина строения, м", v-model.trim="building.width", :mask="mask", prepend-icon="aspect_ratio" )
       
       // Add Building Height, m
       v-layout( row, wrap )
@@ -79,7 +79,7 @@
             | Введите высоту строения, м
       v-layout.mb-4( row, wrap )
         v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="9", hint="Не более девяти цифр", persistent-hint, name="height", id="height", label="Высота строения, м", v-model.trim="building.height", :mask="mask", prepend-icon="aspect_ratio" )
+          v-text-field( type="text", :counter="maskCounter", :hint="hintText", persistent-hint, name="height", id="height", label="Высота строения, м", v-model.trim="building.height", :mask="mask", prepend-icon="aspect_ratio" )
     
     // SECTION THIRD
     v-container
@@ -139,6 +139,7 @@
   export default {
     data () {
       return {
+        hintText: 'Целые числа',
         order: {
           masonry: '0.5',
           brick: 'одинарный',
@@ -180,10 +181,10 @@
     },
     methods: {
       ...mapActions({
-        counterIncrease: 'increaseCounter'
+        componentAdd: 'addComponent'
       }),
       onAdd () {
-        this.counterIncrease()
+        this.componentAdd()
       }
     },
     computed: {
@@ -191,6 +192,9 @@
         mask: 'getMask',
         components: 'getOpening'
       }),
+      maskCounter () {
+        return this.mask.length
+      },
       seamWidth () {
         return this.order.seam / 1000
       },
