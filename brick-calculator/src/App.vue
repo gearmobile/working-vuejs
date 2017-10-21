@@ -1,98 +1,28 @@
 <template lang="pug">
+  
   v-app( light)
     
-    // SECTION TOP
-    v-container
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.title.indigo--text
-            | Выбрать тип кирпича и тип кладки
-      
-      // Select Masonry Type
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Выберите тип кирпичной кладки:
-          v-select( single-line,
-            label="Тип кирпичной кладки",
-            :items="masonry",
-            item-text="name",
-            item-value="value",
-            v-model="order.masonry"
-          )
-      
-      // Select Seam Type
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Выберите тип шва кирпичной кладки:
-          v-select( single-line,
-            label="Тип шва кирпичной кладки",
-            :items="seam",
-            item-text="name",
-            item-value="value",
-            v-model="order.seam"
-          )
-      
-      // Select Brick Type
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Выберите тип кирпича:
-          v-select( single-line,
-            label="Тип кирпича",
-            :items="bricks",
-            item-text="name",
-            item-value="value",
-            v-model="order.brick"
-          )
-  
-    // SECTION SECOND
-    v-container
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.title.indigo--text
-            | Добавить размеры строения
-      
-      // Add Building Length, m
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Введите длину строения, м
-      v-layout.mb-4( row )
-        v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="9", :hint="hintText", persistent-hint, name="length", id="length", label="Длина строения, м", v-model.trim="building.length", :mask="mask", prepend-icon="aspect_ratio" )
-      
-      // Add Building Width, m
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Введите ширину строения, м
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="maskCounter", :hint="hintText", persistent-hint, name="width", id="width", label="Ширина строения, м", v-model.trim="building.width", :mask="mask", prepend-icon="aspect_ratio" )
-      
-      // Add Building Height, m
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          h4.subheading.teal--text.mb-2
-            | Введите высоту строения, м
-      v-layout.mb-4( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
-          v-text-field( type="text", :counter="maskCounter", :hint="hintText", persistent-hint, name="height", id="height", label="Высота строения, м", v-model.trim="building.height", :mask="mask", prepend-icon="aspect_ratio" )
-    
-    // SECTION THIRD
-    v-container
+    // SECTION MASONRY
+    component-masonry
 
+    // SECTION SEAM
+    component-seam
+
+    // SECTION BRICK
+    component-brick
+  
+    // SECTION BUILDING
+    component-building
+
+    // SECTION OPENING
+    v-container
       v-layout( row, wrap )
         v-flex.mb-4( xs12, md8, offset-md2 )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
-      
       v-layout( row, wrap )
         v-flex.mb-4( xs12, md8, offset-md2 )
           component-opening( v-for="(component, index) in components", :key="index", :id="index" )
-
       v-layout( row, wrap )
         v-flex( xs12, md8, offset-md2 )
           v-btn.primary( @click="onAdd()" )
@@ -133,49 +63,23 @@
 <script>
   import _ from 'lodash'
   import { mapGetters, mapActions } from 'vuex'
+  import Masonry from './components/Masonry.vue'
+  import Seam from './components/Seam.vue'
+  import Brick from './components/Brick.vue'
+  import Building from './components/Building.vue'
   import Opening from './components/Opening.vue'
 
   export default {
     data () {
       return {
-        hintText: 'Целые числа',
-        order: {
-          masonry: '0.5',
-          brick: 'одинарный',
-          seam: 0
-        },
-        masonry: [
-          { name: 'Кладка в 0,5 кирпича', value: '0.5' },
-          { name: 'Кладка в 1 кирпич', value: '1' },
-          { name: 'Кладка в 1,5 кирпича', value: '1.5' },
-          { name: 'Кладка в 2 кирпича', value: '2' },
-          { name: 'Кладка в 2,5 кирпича', value: '2.5' }
-        ],
-        bricks: [
-          { name: 'Одинарный (250×120×65 мм)', value: 'одинарный', length: 250, width: 120, height: 65, price: 7 },
-          { name: 'Полуторный (250×120×88 мм)', value: 'полуторный', length: 250, width: 120, height: 88, price: 14 },
-          { name: 'Двойной (250×120×140 мм)', value: 'двойной', length: 250, width: 120, height: 140, price: 21 },
-          { name: 'ЕВРО (250×85×65 мм)', value: 'ЕВРО', length: 250, width: 85, height: 65, price: 28 }
-        ],
-        seam: [
-          { name: 'Без учета растворного шва', value: 0 },
-          { name: 'С учетом растворного шва толщиной 5 мм', value: 5 },
-          { name: 'С учетом растворного шва толщиной 10 мм', value: 10 },
-          { name: 'С учетом растворного шва толщиной 15 мм', value: 15 },
-          { name: 'С учетом растворного шва толщиной 20 мм', value: 20 }
-        ],
-        building: {
-          length: null,
-          width: null,
-          height: null
-        },
-        opening: {
-          length: null,
-          width: null
-        }
+        hintText: 'Целые числа'
       }
     },
     components: {
+      componentMasonry: Masonry,
+      componentSeam: Seam,
+      componentBrick: Brick,
+      componentBuilding: Building,
       componentOpening: Opening
     },
     methods: {
