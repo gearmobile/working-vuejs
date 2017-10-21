@@ -97,8 +97,6 @@
         v-flex( xs12, md8, offset-md2 )
           v-btn.primary( @click="onAdd()" )
             | добавить проем
-          v-btn.primary( @click="onCalc()" )
-            | calc area
     
     // SECTION FOURTH
     v-container
@@ -186,9 +184,6 @@
       }),
       onAdd () {
         this.componentAdd()
-      },
-      onCalc () {
-        this.$store.dispatch('areaOpening')
       }
     },
     computed: {
