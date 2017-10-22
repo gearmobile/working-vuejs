@@ -33,6 +33,7 @@
           v-flex( xs12, md4 )
             h4.subheading.mb-0
               | {{ cost }}
+
 </template>
 
 <script>

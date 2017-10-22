@@ -50,10 +50,10 @@ const mutations = {
     state.order.masonry = payload
   },
   'SET_SEAM' (state, payload) {
-    state.order.seam
+    state.order.seam = payload
   },
   'SET_BRICK' (state, payload) {
-    state.order.brick
+    state.order.brick = payload
   },
   'SET_LENGTH' (state, payload) {
     state.building.length = payload
@@ -155,6 +155,9 @@ const getters = {
   getMaskOpening (state) {
     return state.maskOpening
   },
+  getHintText (state) {
+    return state.hintText
+  },
   getOpening (state) {
     return state.opening
   },
@@ -168,6 +171,7 @@ const getters = {
       return state.opening[id].height
     }
   },
+  // CALCULATIONS
   selectedBrick (state) {
     const result = _.find(state.bricks, { 'value': state.order.brick })
     return result
@@ -177,7 +181,7 @@ const getters = {
     return result
   },
   seamWidth (state) {
-    return this.state.seam / 1000
+    return state.order.seam / 1000
   },
   squareLengthHeight (state, getters) {
     const result = (getters.selectedBrick.length / 1000 + getters.seamWidth) * (getters.selectedBrick.height / 1000 + getters.seamWidth)
@@ -220,9 +224,6 @@ const getters = {
     }
     const result = ((_.toNumber(state.building.length) + _.toNumber(state.building.width)) * 2) * _.toNumber(state.building.height)
     return result
-  },
-  getHintText (state) {
-    return state.hintText
   }
 }
 
