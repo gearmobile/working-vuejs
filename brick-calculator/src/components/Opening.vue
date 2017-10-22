@@ -28,23 +28,17 @@
 </template>
 
 <script>
-  import { mapActions, mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'Opening',
-    data () {
-      return {
-        hintText: 'Целые числа'
-      }
-    },
     props: ['id'],
     computed: {
       ...mapGetters({
-        mask: 'getMaskOpening'
+        mask: 'getMaskOpening',
+        maskCounter: 'getMaskOpeningCounter',
+        hintText: 'getHintText'
       }),
-      maskCounter () {
-        return this.mask.length
-      },
       width: {
         get () { return this.$store.getters.getOpeningWidth(this.id) },
         set (value) { this.$store.dispatch('setOpeningWidth', { index: this.id, value: value }) }
@@ -55,11 +49,8 @@
       }
     },
     methods: {
-      ...mapActions({
-        deleteComponent: 'removeComponent'
-      }),
       onClick () {
-        this.deleteComponent(this.id)
+        this.$store.dispatch('removeComponent', this.id)
       }
     }
   }

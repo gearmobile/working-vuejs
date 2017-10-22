@@ -155,6 +155,9 @@ const getters = {
   getMaskOpening (state) {
     return state.maskOpening
   },
+  getMaskOpeningCounter (state) {
+    return state.maskOpening.length
+  },
   getHintText (state) {
     return state.hintText
   },
