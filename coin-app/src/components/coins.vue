@@ -8,7 +8,7 @@
           q-card-title
             | {{ currency.name }}
           q-card-main
-            q-list
+            q-list( highlight )
               q-item
                 q-item-main
                   q-item-tile( label )

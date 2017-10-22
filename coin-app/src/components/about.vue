@@ -7,10 +7,15 @@
         q-card
           q-card-title.bg-primary.text-white
             h4
-              | List of Currency
+              | List of Crypto Currency
           q-card-main
             q-list
               q-item( striped, v-for="(item, index) in currency", :key="index" )
+                q-item-main
+                  q-item-tile( label )
+                    | Rank of Currency
+                  q-item-tile( sublabel )
+                    | {{ item.rank }}
                 q-item-main
                   q-item-tile( label )
                     | Name of Currency
@@ -21,11 +26,6 @@
                     | Price of Currency
                   q-item-tile( sublabel )
                     | {{ item.price_usd }}
-                q-item-main
-                  q-item-tile( label )
-                    | Rank of Currency
-                  q-item-tile( sublabel )
-                    | {{ item.rank }}
               q-item-separator
 </template>
 
@@ -38,7 +38,7 @@
     name: 'about',
     data () {
       return {
-        currency: {}
+        currency: []
       }
     },
     components: {

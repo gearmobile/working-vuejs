@@ -8,7 +8,7 @@
     q-tabs( slot="navigation" )
       q-route-tab( slot="title", to="/", replace, label="Home" )
       q-route-tab( slot="title", to="/about", replace, label="About" )
-      q-route-tab( slot="title", to="/coins/bitcoin", replace, label="Coins" )
+      q-route-tab( slot="title", to="/coins/bitcoin", replace, label="Bitcoin" )
       q-route-tab( slot="title", to="/coins/ethereum", replace, label="Ethereum" )
 
     router-view
