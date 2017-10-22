@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import _ from 'lodash'
 import isEmpty from '../utils/isEmpty'
 
 Vue.use(Vuex)
@@ -148,6 +149,9 @@ const getters = {
   getMask (state) {
     return state.mask
   },
+  getMaskCounter (state) {
+    return state.mask.length
+  },
   getMaskOpening (state) {
     return state.maskOpening
   },
@@ -164,10 +168,58 @@ const getters = {
       return state.opening[id].height
     }
   },
+  selectedBrick (state) {
+    const result = _.find(state.bricks, { 'value': state.order.brick })
+    return result
+  },
+  bricksCost (state, getters) {
+    const result = getters.bricksQuantity * getters.selectedBrick.price
+    return result
+  },
+  seamWidth (state) {
+    return this.state.seam / 1000
+  },
+  squareLengthHeight (state, getters) {
+    const result = (getters.selectedBrick.length / 1000 + getters.seamWidth) * (getters.selectedBrick.height / 1000 + getters.seamWidth)
+    return result
+  },
+  squareWidthHeight (state, getters) {
+    const result = (getters.selectedBrick.width / 1000 + getters.seamWidth) * (getters.selectedBrick.height / 1000 + getters.seamWidth)
+    return result
+  },
+  bricksQuantity (state, getters) {
+    let result = null
+    switch (state.order.masonry) {
+      case '0.5':
+        result = Math.ceil(1 / getters.squareLengthHeight)
+        break
+      case '1':
+        result = Math.ceil(1 / getters.squareWidthHeight)
+        break
+      case '1.5':
+        result = Math.ceil(1 / getters.squareLengthHeight) + Math.ceil(1 / getters.squareWidthHeight)
+        break
+      case '2':
+        result = (Math.ceil(1 / getters.squareWidthHeight)) * 2
+        break
+      case '2.5':
+        result = Math.ceil(1 / getters.squareLengthHeight) + (Math.ceil(1 / getters.squareWidthHeight)) * 2
+        break
+    }
+    result = (getters.areaCommon - getters.getAreaOpening) * result
+    return result
+  },
   getAreaOpening (state) {
     return state.opening.reduce((total, currentIndex) => {
       return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
     }, 0)
+  },
+  areaCommon (state, getters) {
+    if (_.isNil(state.building.length) || _.isNil(state.building.width) || _.isNil(state.building.height)) {
+      return null
+    }
+    const result = ((_.toNumber(state.building.length) + _.toNumber(state.building.width)) * 2) * _.toNumber(state.building.height)
+    return result
   },
   getHintText (state) {
     return state.hintText
