@@ -6,7 +6,7 @@ import isEmpty from '../utils/isEmpty'
 Vue.use(Vuex)
 
 const state = {
-  mask: '#########',
+  mask: '###',
   maskOpening: '##',
   hintText: 'Целые числа',
   masonry: [

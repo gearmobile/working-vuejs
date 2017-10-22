@@ -1,12 +1,12 @@
 <template lang="pug">
-  
+
   v-container
-    
+
     v-layout.mb-4( row, wrap )
       v-flex( xs12, md8, offset-md2 )
         h4.title.indigo--text
           | Добавить размеры строения
-    
+
     // Add Building Length, m
     v-layout( row, wrap )
       v-flex( xs12, md8, offset-md2 )
@@ -16,17 +16,16 @@
       v-flex( xs12, md8, offset-md2 )
         v-text-field(
           type="text",
-          :counter="9",
+          :counter="maskCounter",
           :hint="hintText",
           persistent-hint,
           name="length",
           id="length",
           label="Длина строения, м",
           v-model.trim="length",
-          :mask="mask",
-          prepend-icon="aspect_ratio"
+          :mask="mask"
         )
-    
+
     // Add Building Width, m
     v-layout( row, wrap )
       v-flex( xs12, md8, offset-md2 )
@@ -43,10 +42,9 @@
           id="width",
           label="Ширина строения, м",
           v-model.trim="width",
-          :mask="mask",
-          prepend-icon="aspect_ratio"
+          :mask="mask"
         )
-    
+
     // Add Building Height, m
     v-layout( row, wrap )
       v-flex( xs12, md8, offset-md2 )
@@ -63,25 +61,22 @@
           id="height",
           label="Высота строения, м",
           v-model.trim="height",
-          :mask="mask",
-          prepend-icon="aspect_ratio"
+          :mask="mask"
         )
-  
+
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
+
   export default {
     name: 'Building',
     computed: {
-      mask () {
-        return this.$store.getters.getMask
-      },
-      maskCounter () {
-        return this.mask.length
-      },
-      hintText () {
-        return this.$store.getters.getHintText
-      },
+      ...mapGetters({
+        mask: 'getMask',
+        maskCounter: 'getMaskCounter',
+        hintText: 'getHintText'
+      }),
       length: {
         get () { return this.$store.getters.getBuildingLength },
         set (value) { this.$store.dispatch('setLength', value) }
