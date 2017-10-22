@@ -6,22 +6,47 @@
       // HEADER
       v-layout( row )
         v-flex( xs12, md6 )
-          v-radio( label="Кирпич", value="brick", v-model="material", hide-details )
+          v-radio(
+            label="Кирпич",
+            value="brick",
+            v-model="material",
+            hide-details
+          )
         v-flex( xs12, md6 )
-          v-radio( label="Бетон", value="concrete", v-model="material", hide-details )
+          v-radio(
+            label="Бетон",
+            value="concrete",
+            v-model="material",
+            hide-details
+          )
 
       // MAIN
-      v-layout.mb-2( row, wrap)
+      v-layout.mb-2( row, wrap )
         app-stepper-list
 
       // ADDITIONAL
       v-layout( row, wrap )
         v-flex( xs12 )
-          v-switch( label="Звонок", value="bell", v-model="additional", hide-details )
+          v-switch(
+            label="Звонок",
+            value="bell",
+            v-model="additional",
+            hide-details
+          )
         v-flex( xs12 )
-          v-switch( label="Щиток в подъезде", value="flapEntrance", v-model="additional", hide-details )
+          v-switch(
+            label="Щиток в подъезде",
+            value="flapEntrance",
+            v-model="additional",
+            hide-details
+          )
         v-flex( xs12 )
-          v-switch( label="Щиток в помещении", value="flapIndoors", v-model="additional", hide-details )
+          v-switch(
+            label="Щиток в помещении",
+            value="flapIndoors",
+            v-model="additional",
+            hide-details
+          )
 
 </template>
 
