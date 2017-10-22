@@ -1,17 +1,16 @@
 <template lang="pug">
 
-  v-container
-    v-layout.mb-4( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
-        h4.subheading.teal--text.mb-2
-          | Выберите тип кирпича:
-        v-select( single-line,
-          label="Тип кирпича",
-          :items="bricks",
-          item-text="name",
-          item-value="value",
-          v-model="type"
-        )
+  v-layout.mb-4( row, wrap )
+    v-flex( xs12, md8, offset-md2 )
+      h4.subheading.teal--text.mb-2
+        | Выберите тип кирпича:
+      v-select( single-line,
+        label="Тип кирпича",
+        :items="bricks",
+        item-text="name",
+        item-value="value",
+        v-model="type"
+      )
 
 </template>
 

@@ -1,16 +1,23 @@
 <template lang="pug">
-  
+
   v-app( light)
-    
-    // SECTION MASONRY
-    component-masonry
 
-    // SECTION SEAM
-    component-seam
+    v-container
 
-    // SECTION BRICK
-    component-brick
-  
+        v-layout.mb-4( row, wrap )
+          v-flex( xs12, md8, offset-md2 )
+            h4.title.indigo--text
+              | Выбрать тип кирпича и тип кладки
+
+        // SECTION MASONRY
+        component-masonry
+
+        // SECTION SEAM
+        component-seam
+
+        // SECTION BRICK
+        component-brick
+
     // SECTION BUILDING
     component-building
 
@@ -27,16 +34,14 @@
         v-flex( xs12, md8, offset-md2 )
           v-btn.primary( @click="onClick()" )
             | добавить проем
-    
+
     // SECTION OUTPUT
     component-output
 
 </template>
 
 <script>
-  
   import { mapGetters } from 'vuex'
-  
   import Masonry from './components/Masonry.vue'
   import Seam from './components/Seam.vue'
   import Brick from './components/Brick.vue'
