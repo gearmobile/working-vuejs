@@ -37,7 +37,6 @@ const state = {
   opening: [
     { width: null, height: null }
   ],
-  areaOpening: 0,
   order: {
     masonry: '0.5',
     brick: 'одинарный',
@@ -174,46 +173,20 @@ const getters = {
       return state.opening[id].height
     }
   },
-  // CALCULATIONS
-  selectedBrick (state) {
+  // CALCULATIONS SECTION
+  getSelectedBrick (state) {
     const result = _.find(state.bricks, { 'value': state.order.brick })
     return result
   },
-  bricksCost (state, getters) {
-    const result = getters.bricksQuantity * getters.selectedBrick.price
-    return result
-  },
-  seamWidth (state) {
+  getSeamWidth (state) {
     return state.order.seam / 1000
   },
-  squareLengthHeight (state, getters) {
-    const result = (getters.selectedBrick.length / 1000 + getters.seamWidth) * (getters.selectedBrick.height / 1000 + getters.seamWidth)
+  getSquareLengthHeight (state, getters) {
+    const result = (getters.getSelectedBrick.length / 1000 + getters.getSeamWidth) * (getters.getSelectedBrick.height / 1000 + getters.getSeamWidth)
     return result
   },
-  squareWidthHeight (state, getters) {
-    const result = (getters.selectedBrick.width / 1000 + getters.seamWidth) * (getters.selectedBrick.height / 1000 + getters.seamWidth)
-    return result
-  },
-  bricksQuantity (state, getters) {
-    let result = null
-    switch (state.order.masonry) {
-      case '0.5':
-        result = Math.ceil(1 / getters.squareLengthHeight)
-        break
-      case '1':
-        result = Math.ceil(1 / getters.squareWidthHeight)
-        break
-      case '1.5':
-        result = Math.ceil(1 / getters.squareLengthHeight) + Math.ceil(1 / getters.squareWidthHeight)
-        break
-      case '2':
-        result = (Math.ceil(1 / getters.squareWidthHeight)) * 2
-        break
-      case '2.5':
-        result = Math.ceil(1 / getters.squareLengthHeight) + (Math.ceil(1 / getters.squareWidthHeight)) * 2
-        break
-    }
-    result = (getters.areaCommon - getters.getAreaOpening) * result
+  getSquareWidthHeight (state, getters) {
+    const result = (getters.getSelectedBrick.width / 1000 + getters.getSeamWidth) * (getters.getSelectedBrick.height / 1000 + getters.getSeamWidth)
     return result
   },
   getAreaOpening (state) {
@@ -221,11 +194,38 @@ const getters = {
       return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
     }, 0)
   },
-  areaCommon (state, getters) {
+  // OUTPUT SECTION
+  getBricksQuantity (state, getters) {
+    let result = null
+    switch (state.order.masonry) {
+      case '0.5':
+        result = Math.ceil(1 / getters.getSquareLengthHeight)
+        break
+      case '1':
+        result = Math.ceil(1 / getters.getSquareWidthHeight)
+        break
+      case '1.5':
+        result = Math.ceil(1 / getters.getSquareLengthHeight) + Math.ceil(1 / getters.getSquareWidthHeight)
+        break
+      case '2':
+        result = (Math.ceil(1 / getters.getSquareWidthHeight)) * 2
+        break
+      case '2.5':
+        result = Math.ceil(1 / getters.getSquareLengthHeight) + (Math.ceil(1 / getters.getSquareWidthHeight)) * 2
+        break
+    }
+    result = (getters.getAreaCommon - getters.getAreaOpening) * result
+    return result
+  },
+  getAreaCommon (state, getters) {
     if (_.isNil(state.building.length) || _.isNil(state.building.width) || _.isNil(state.building.height)) {
       return null
     }
     const result = ((_.toNumber(state.building.length) + _.toNumber(state.building.width)) * 2) * _.toNumber(state.building.height)
+    return result
+  },
+  getBricksCost (state, getters) {
+    const result = getters.getBricksQuantity * getters.getSelectedBrick.price
     return result
   }
 }

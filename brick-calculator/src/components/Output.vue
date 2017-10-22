@@ -42,9 +42,9 @@
     name: 'Output',
     computed: {
       ...mapGetters({
-        quantity: 'bricksQuantity',
-        area: 'areaCommon',
-        cost: 'bricksCost'
+        quantity: 'getBricksQuantity',
+        area: 'getAreaCommon',
+        cost: 'getBricksCost'
       })
     }
   }
