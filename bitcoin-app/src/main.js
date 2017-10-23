@@ -9,6 +9,7 @@ import {
   // VList,
   VBtn,
   // VIcon,
+  VDataTable,
   VToolbar,
   VGrid
   // transitions
@@ -24,6 +25,7 @@ Vue.use(Vuetify, {
     // VList,
     VBtn,
     // VIcon,
+    VDataTable,
     VToolbar,
     VGrid
     // transitions
