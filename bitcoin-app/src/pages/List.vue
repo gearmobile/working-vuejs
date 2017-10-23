@@ -21,15 +21,15 @@
 
 <script>
   import axios from 'axios'
-  const root = 'https://api.coinmarketcap.com/v1/ticker/?limit=10'
+  const root = 'https://api.coinmarketcap.com/v1/ticker/?limit=30'
   export default {
     name: 'List',
     data () {
       return {
         headers: [
-          { text: 'Rank', value: 'points', align: 'left' },
+          { text: 'Rank', value: 'points', align: 'center', sortable: false },
           { text: 'Name', value: 'name', align: 'left', sortable: false },
-          { text: 'Symbol', value: 'symbol', align: 'left' },
+          { text: 'Symbol', value: 'symbol', align: 'left', sortable: false },
           { text: 'Price ($)', value: 'usd', align: 'left' },
           { text: '24 hours (%)', value: 'percent', align: 'left' },
           { text: '7 days (%)', value: 'percent', align: 'left' }
