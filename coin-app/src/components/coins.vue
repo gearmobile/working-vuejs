@@ -1,7 +1,6 @@
 <template lang="pug">
   
   q-layout
-    
     .layout-view
       .layout-padding
         q-card
