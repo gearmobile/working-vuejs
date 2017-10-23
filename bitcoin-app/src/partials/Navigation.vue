@@ -8,9 +8,9 @@
           v-spacer
           v-toolbar-side-icon.hidden-md-and-up
           v-toolbar-items.hidden-sm-and-down
-            v-btn( flat )
+            v-btn( flat, to="/" )
               | home
-            v-btn( flat )
+            v-btn( flat, to="/list" )
               | list of icons
 </template>
 
