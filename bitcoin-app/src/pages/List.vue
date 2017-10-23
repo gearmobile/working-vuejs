@@ -2,7 +2,7 @@
   v-container
     v-layout( row, wrap )
       v-flex( xs12 )
-        v-data-table( :items="items", hide-actions )
+        v-data-table.elevation-1( :items="items", :headers="headers", hide-actions )
           template( slot="items", slot-scope="props" )
             td.text-xs-center
               | {{ props.item.rank }}
@@ -26,6 +26,14 @@
     name: 'List',
     data () {
       return {
+        headers: [
+          { text: 'Rank', value: 'points', align: 'left' },
+          { text: 'Name', value: 'name', align: 'left', sortable: false },
+          { text: 'Symbol', value: 'symbol', align: 'left' },
+          { text: 'Price ($)', value: 'usd', align: 'left' },
+          { text: '24 hours (%)', value: 'percent', align: 'left' },
+          { text: '7 days (%)', value: 'percent', align: 'left' }
+        ],
         items: []
       }
     },
