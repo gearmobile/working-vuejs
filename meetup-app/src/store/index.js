@@ -6,7 +6,7 @@ Vue.use(Vuex)
 
 const state = {
   meetups: [],
-  users: {},
+  users: [],
   loading: false,
   authenticationError: {}
 }
