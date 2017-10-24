@@ -20,8 +20,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  const root = 'https://api.coinmarketcap.com/v1/ticker/?limit=30'
+  import axios from '../plugins/axios.js'
   export default {
     name: 'List',
     data () {
@@ -39,7 +38,7 @@
     },
     methods: {
       getData () {
-        axios.get(root)
+        axios.get('?limit=10')
           .then(response => {
             this.items = response.data
           })
