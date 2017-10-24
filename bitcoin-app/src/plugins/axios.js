@@ -1,5 +1,5 @@
-import axios from 'axios'
+import Axios from 'axios'
 
-export default axios.create({
-  baseURL: 'https://api.coinmarketcap.com/v1/ticker/'
-})
+Axios.defaults.baseURL = 'https://api.coinmarketcap.com/v1/ticker/'
+
+export default Axios

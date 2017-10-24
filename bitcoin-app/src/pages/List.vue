@@ -6,16 +6,14 @@
           template( slot="items", slot-scope="props" )
             td.text-xs-center
               | {{ props.item.rank }}
-            td.text-xs-left
+            td.text-xs-center
               | {{ props.item.name }}
-            td.text-xs-left
+            td.text-xs-center
               | {{ props.item.symbol }}
-            td.text-xs-left
-              | {{ props.item.price_usd }}
-            td.text-xs-left
-              | {{ props.item.percent_change_24h }}
-            td.text-xs-left
-              | {{ props.item.percent_change_7d }}
+            td.text-xs-center
+              v-btn( flat, icon, small, fab, outline, @click="onSelect(props.item.id)" )
+                v-icon
+                  | more_horiz
 
 </template>
 
@@ -27,11 +25,9 @@
       return {
         headers: [
           { text: 'Rank', value: 'points', align: 'center', sortable: false },
-          { text: 'Name', value: 'name', align: 'left', sortable: false },
-          { text: 'Symbol', value: 'symbol', align: 'left', sortable: false },
-          { text: 'Price ($)', value: 'usd', align: 'left' },
-          { text: '24 hours (%)', value: 'percent', align: 'left' },
-          { text: '7 days (%)', value: 'percent', align: 'left' }
+          { text: 'Name', value: 'name', align: 'center', sortable: false },
+          { text: 'Symbol', value: 'symbol', align: 'center', sortable: false },
+          { text: 'Details', value: 'more', align: 'center', sortable: false }
         ],
         items: []
       }
@@ -45,6 +41,9 @@
           .catch(error => {
             console.log(error)
           })
+      },
+      onSelect (value) {
+        this.$router.push({ path: '/list/' + value })
       }
     },
     created () {

@@ -4,11 +4,8 @@ import router from './router'
 import {
   Vuetify,
   VApp,
-  // VNavigationDrawer,
-  // VFooter,
-  // VList,
   VBtn,
-  // VIcon,
+  VIcon,
   VDataTable,
   VToolbar,
   VGrid
@@ -20,11 +17,8 @@ import App from './App.vue'
 Vue.use(Vuetify, {
   components: {
     VApp,
-    // VNavigationDrawer,
-    // VFooter,
-    // VList,
     VBtn,
-    // VIcon,
+    VIcon,
     VDataTable,
     VToolbar,
     VGrid

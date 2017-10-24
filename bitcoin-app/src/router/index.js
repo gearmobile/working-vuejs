@@ -22,6 +22,7 @@ const routes = [
     path: '/list/:id',
     component: Coin,
     name: 'Coin',
+    props: true
   }
 ]
 
