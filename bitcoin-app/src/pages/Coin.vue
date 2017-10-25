@@ -1,11 +1,18 @@
 <template lang="pug">
+
   v-container
-    v-layout( row, wrap )
+
+    v-layout.mb-4( row, wrap )
+      v-flex( xs12 )
+        h4.text-xs-center
+          | Crypto Currency - {{ id | upper }}
+
+    v-layout.mb-4( row, wrap )
       v-flex( xs12 )
         v-data-table.elevation-1( :items="items", :headers="headers", hide-actions )
           template( slot="items", slot-scope="props" )
-            td.text-xs-center
-              | {{ props.item.name }}
+            //- td.text-xs-center
+            //-   | {{ props.item.name }}
             td.text-xs-center
               | {{ props.item.symbol }}
             td.text-xs-center
@@ -14,9 +21,17 @@
               | {{ props.item.percent_change_24h }}
             td.text-xs-center
               | {{ props.item.percent_change_7d }}
+    
+    v-layout( row, wrap )
+      v-flex.text-xs-center( xs12, md6, offset-md3 )
+        v-btn.primary( dark, large, @click="onBack()" )
+          | back to list
+
 </template>
 
 <script>
+  import UpperCase from '../filters/toUppercase.js'
+
   export default {
     name: 'Coin',
     props: {
@@ -25,10 +40,13 @@
         default () { return '' }
       }
     },
+    filters: {
+      upper: UpperCase
+    },
     data () {
       return {
         headers: [
-          { text: 'Name', value: 'name', align: 'center', sortable: false },
+          // { text: 'Name', value: 'name', align: 'center', sortable: false },
           { text: 'Symbol', value: 'symbol', align: 'center', sortable: false },
           { text: 'Price ($)', value: 'usd', align: 'center', sortable: false },
           { text: '24 hours (%)', value: 'percent', align: 'center', sortable: false },
@@ -41,6 +59,11 @@
         const result = []
         result.push(this.$store.getters.getCurrencySelected(this.id))
         return result
+      }
+    },
+    methods: {
+      onBack () {
+        this.$router.push({ path: '/list' })
       }
     }
   }
