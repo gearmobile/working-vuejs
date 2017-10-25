@@ -28,23 +28,26 @@
       v-layout( row, wrap )
         v-flex( xs12 )
           v-switch(
+            id="0",
             label="Звонок",
             value="bell",
-            v-model="additional",
+            v-model="additional[0]",
             hide-details
           )
         v-flex( xs12 )
           v-switch(
+            id="1",
             label="Щиток в подъезде",
             value="flapEntrance",
-            v-model="additional",
+            v-model="additional[1]",
             hide-details
           )
         v-flex( xs12 )
           v-switch(
+            id="2",
             label="Щиток в помещении",
             value="flapIndoors",
-            v-model="additional",
+            v-model="additional[2]",
             hide-details
           )
 
