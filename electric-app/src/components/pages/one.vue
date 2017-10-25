@@ -53,34 +53,22 @@
 <script>
 
   import stepperList from '../shared/stepperList.vue'
-  import { mapGetters, mapActions } from 'vuex'
   import eventBus from '../../main.js'
 
   export default {
     computed: {
-      ...mapGetters({
-        materialGet: 'getMaterial',
-        additionalGet: 'getAdditional'
-      }),
       material: {
-        get () { return this.materialGet },
-        set (value) { this.materialSet(value) }
+        get () { return this.$store.getters.getMaterial },
+        set (value) { this.$store.dispatch('setMaterial', value) }
       },
       additional: {
-        get () { return this.additionalGet },
-        set (value) { this.additionalSet(value) }
+        get () { return this.$store.getters.getAdditional },
+        set (value) { this.$store.dispatch('setAdditional', value) }
       }
-    },
-    methods: {
-      ...mapActions({
-        materialSet: 'setMaterial',
-        additionalSet: 'setAdditional',
-        switchClear: 'clearSwitch'
-      })
     },
     watch: {
       material () {
-        this.switchClear()
+        this.$store.dispatch('clearSwitch')
         eventBus.$emit('onSwitch')
       }
     },
