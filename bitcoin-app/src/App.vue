@@ -8,11 +8,6 @@
   import NavBar from './partials/Navigation.vue'
 
   export default {
-    data () {
-      return {
-        //
-      }
-    },
     components: {
       componentNavigation: NavBar
     }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import router from './router'
+import store from './store/'
 
 import {
   Vuetify,
@@ -28,5 +29,9 @@ Vue.use(Vuetify, {
 
 new Vue({
   router,
-  render: h => h(App)
+  store,
+  render: h => h(App),
+  created () {
+    store.dispatch('getData')
+  }
 }).$mount('#app')

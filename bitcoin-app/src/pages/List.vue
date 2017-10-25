@@ -18,7 +18,6 @@
 </template>
 
 <script>
-  import axios from '../plugins/axios.js'
   export default {
     name: 'List',
     data () {
@@ -28,26 +27,18 @@
           { text: 'Name', value: 'name', align: 'center', sortable: false },
           { text: 'Symbol', value: 'symbol', align: 'center', sortable: false },
           { text: 'Details', value: 'more', align: 'center', sortable: false }
-        ],
-        items: []
+        ]
+      }
+    },
+    computed: {
+      items () {
+        return this.$store.getters.getCurrency
       }
     },
     methods: {
-      getData () {
-        axios.get('?limit=10')
-          .then(response => {
-            this.items = response.data
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      },
       onSelect (value) {
         this.$router.push({ path: '/list/' + value })
       }
-    },
-    created () {
-      this.getData()
     }
   }
 </script>
