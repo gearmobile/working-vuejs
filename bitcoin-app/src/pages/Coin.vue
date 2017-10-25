@@ -9,10 +9,8 @@
 
     v-layout.mb-4( row, wrap )
       v-flex( xs12 )
-        v-data-table.elevation-1( :items="items", :headers="headers", hide-actions )
+        v-data-table.elevation-1( :items="items", :headers="headers", hide-actions, dark )
           template( slot="items", slot-scope="props" )
-            //- td.text-xs-center
-            //-   | {{ props.item.name }}
             td.text-xs-center
               | {{ props.item.symbol }}
             td.text-xs-center
@@ -24,7 +22,7 @@
     
     v-layout( row, wrap )
       v-flex.text-xs-center( xs12, md6, offset-md3 )
-        v-btn.primary( dark, large, @click="onBack()" )
+        v-btn.secondary( dark, large, @click="onBack()" )
           | back to list
 
 </template>
@@ -46,7 +44,6 @@
     data () {
       return {
         headers: [
-          // { text: 'Name', value: 'name', align: 'center', sortable: false },
           { text: 'Symbol', value: 'symbol', align: 'center', sortable: false },
           { text: 'Price ($)', value: 'usd', align: 'center', sortable: false },
           { text: '24 hours (%)', value: 'percent', align: 'center', sortable: false },

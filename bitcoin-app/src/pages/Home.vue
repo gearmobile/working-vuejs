@@ -1,8 +1,11 @@
 <template lang="pug">
+
   v-container
     v-layout( row, wrap )
       v-flex( xs12 )
-        | home component
+        v-card
+          img( src="../static/cryptocurrency-bubble.jpg", style="width: 100%; height: auto;" )
+
 </template>
 
 <script>

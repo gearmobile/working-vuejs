@@ -1,8 +1,15 @@
 <template lang="pug">
+
   v-container
+
+    v-layout.mb-2( row, wrap )
+      v-flex( xs12 )
+        h4.text-xs-center
+          | List of Crypto Currency
+
     v-layout( row, wrap )
       v-flex( xs12 )
-        v-data-table.elevation-1( :items="items", :headers="headers", hide-actions )
+        v-data-table.elevation-1( :items="items", :headers="headers", dark )
           template( slot="items", slot-scope="props" )
             td.text-xs-center
               | {{ props.item.rank }}
@@ -11,7 +18,7 @@
             td.text-xs-center
               | {{ props.item.symbol }}
             td.text-xs-center
-              v-btn( flat, icon, small, fab, outline, @click="onSelect(props.item.id)" )
+              v-btn.secondary--text( flat, icon, small, fab, outline, @click="onSelect(props.item.id)" )
                 v-icon
                   | more_horiz
 

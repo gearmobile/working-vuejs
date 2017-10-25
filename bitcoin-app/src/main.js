@@ -9,8 +9,8 @@ import {
   VIcon,
   VDataTable,
   VToolbar,
+  VCard,
   VGrid
-  // transitions
 } from 'vuetify'
 
 import App from './App.vue'
@@ -22,8 +22,8 @@ Vue.use(Vuetify, {
     VIcon,
     VDataTable,
     VToolbar,
+    VCard,
     VGrid
-    // transitions
   }
 })
 
