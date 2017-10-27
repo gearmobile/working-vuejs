@@ -67,7 +67,9 @@ const mutations = {
   },
   'SET_MATERIAL' (state, payload) {
     state.material = payload
-    state.additional.length = 0
+    for (let i = state.additional.length; i > 0; i -= 1) {
+      state.additional.pop()
+    }
   },
   'CLEAR_ORDER' (state) {
     state.order.length = 0
