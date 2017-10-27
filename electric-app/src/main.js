@@ -5,9 +5,6 @@ import Vuetify from 'vuetify'
 import App from './App'
 import store from './store'
 
-const eventBus = new Vue()
-export default eventBus
-
 Vue.use(Vuetify)
 Vue.config.productionTip = false
 

@@ -41,13 +41,12 @@
 </template>
 
 <script>
-  import One from './components/pages/one.vue'
-  import Two from './components/pages/two.vue'
-  import Three from './components/pages/three.vue'
-  import Four from './components/pages/four.vue'
-  import Description from './components/pages/description.vue'
-  import Output from './components/shared/output.vue'
-  import { mapActions } from 'vuex'
+  const One = () => import('./components/pages/PageOne.vue')
+  const Two = () => import('./components/pages/PageTwo.vue')
+  const Three = () => import('./components/pages/PageThree.vue')
+  const Four = () => import('./components/pages/PageFour.vue')
+  const Description = () => import('./components/pages/PageDescription.vue')
+  const Output = () => import('./components/shared/ComponentOutput.vue')
 
   export default {
     data () {
@@ -64,17 +63,13 @@
       appFour: Four
     },
     methods: {
-      ...mapActions({
-        dataInit: 'initData',
-        orderClear: 'clearOrder'
-      }),
       onSwitch (value) {
         this.current = value
-        this.orderClear()
+        this.$store.dispatch('clearOrder')
       }
     },
     created () {
-      this.dataInit()
+      this.$store.dispatch('initData')
     }
   }
 </script>
