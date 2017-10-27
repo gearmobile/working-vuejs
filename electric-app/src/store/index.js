@@ -68,17 +68,17 @@ const mutations = {
   'SET_MATERIAL' (state, payload) {
     state.material = payload
   },
-  'SET_ADDITIONAL' (state, payload) {
-    Vue.set(state.additional, payload, !state.additional[payload])
-  },
   'CLEAR_ORDER' (state) {
     state.order.length = 0
-    state.additional = _.fill(Array(3), null)
+    // state.additional = _.fill(Array(3), null)
     state.material = 'brick'
   },
   'CLEAR_SWITCH' (state) {
     state.order.length = 0
-    state.additional = _.fill(Array(3), null)
+    // state.additional = _.fill(Array(3), null)
+  },
+  'SET_ADDITIONAL' (state, payload) {
+    state.additional = payload
   }
 }
 

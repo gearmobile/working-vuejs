@@ -27,27 +27,27 @@
       // ADDITIONAL
       v-layout( row, wrap )
         v-flex( xs12 )
-          v-switch(
-            id="0",
+          v-checkbox(
             label="Звонок",
             value="bell",
-            v-model="additional[0]",
+            name="bell",
+            v-model="additional",
             hide-details
           )
         v-flex( xs12 )
-          v-switch(
-            id="1",
+          v-checkbox(
             label="Щиток в подъезде",
             value="flapEntrance",
-            v-model="additional[1]",
+            name="flapEntrance",
+            v-model="additional",
             hide-details
           )
         v-flex( xs12 )
-          v-switch(
-            id="2",
+          v-checkbox(
             label="Щиток в помещении",
             value="flapIndoors",
-            v-model="additional[2]",
+            name="flapIndoors",
+            v-model="additional",
             hide-details
           )
 
