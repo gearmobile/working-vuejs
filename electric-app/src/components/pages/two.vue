@@ -6,13 +6,13 @@
       // HEADER
       v-layout( row )
         v-flex( xs12, md6 )
-          v-radio( label="Кирпич", value="brick", v-model="material", hide-details )
+          v-radio( label="Кирпич", value="brick", name="brick", id="brick", v-model="material", hide-details )
         v-flex( xs12, md6 )
-          v-radio( label="Бетон", value="concrete", v-model="material", hide-details )
+          v-radio( label="Бетон", value="concrete", name="concrete", id="concrete", v-model="material", hide-details )
         v-flex( xs12, md6 )
-          v-radio( label="Дерево", value="wood", v-model="material", hide-details )
+          v-radio( label="Дерево", value="wood", name="wood", id="wood", v-model="material", hide-details )
         v-flex( xs12, md6 )
-          v-radio( label="Блоки", value="blocks", v-model="material", hide-details )
+          v-radio( label="Блоки", value="blocks", name="blocks", id="blocks", v-model="material", hide-details )
 
       // MAIN
       v-layout.mb-2( row, wrap)
@@ -20,46 +20,27 @@
 
       v-layout( row, wrap )
         v-flex( xs12 )
-          v-switch( label="Звонок", value="bell", v-model="additional", hide-details )
+          v-checkbox( label="Звонок", value="bell", name="bell", id="bell", v-model="additional", hide-details )
         v-flex( xs12 )
-          v-switch( label="Заземление", value="grounding", v-model="additional", hide-details )
+          v-checkbox( label="Заземление", value="grounding", name="grounding", id="grounding", v-model="additional", hide-details )
         v-flex( xs12 )
-          v-switch( label="Щиток в помещении", value="flapIndoors", v-model="additional", hide-details )
+          v-checkbox( label="Щиток в помещении", value="flapIndoors", name="flapIndoors", id="flapIndoors", v-model="additional", hide-details )
 
 </template>
 
 <script>
-  import stepperList from '../shared/stepperList.vue'
-  import { mapGetters, mapActions } from 'vuex'
-  import eventBus from '../../main.js'
+  const stepperList = () => import('../shared/stepperList.vue')
 
   export default {
     name: 'two',
     computed: {
-      ...mapGetters({
-        materialGet: 'getMaterial',
-        additionalGet: 'getAdditional'
-      }),
       material: {
-        get () { return this.materialGet },
-        set (value) { this.materialSet(value) }
+        get () { return this.$store.getters.getMaterial },
+        set (value) { this.$store.dispatch('setMaterial', value) }
       },
       additional: {
-        get () { return this.additionalGet },
-        set (value) { this.additionalSet(value) }
-      }
-    },
-    methods: {
-      ...mapActions({
-        materialSet: 'setMaterial',
-        additionalSet: 'setAdditional',
-        switchClear: 'clearSwitch'
-      })
-    },
-    watch: {
-      material () {
-        this.switchClear()
-        eventBus.$emit('onSwitch')
+        get () { return this.$store.getters.getAdditional },
+        set (value) { this.$store.dispatch('setAdditional', value) }
       }
     },
     components: {

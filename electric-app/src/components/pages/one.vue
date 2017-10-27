@@ -61,7 +61,8 @@
 </template>
 
 <script>
-  import stepperList from '../shared/stepperList.vue'
+  const stepperList = () => import('../shared/stepperList.vue')
+  
   export default {
     computed: {
       material: {
