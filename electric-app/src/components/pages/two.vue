@@ -32,7 +32,7 @@
   const stepperList = () => import('../shared/stepperList.vue')
 
   export default {
-    name: 'two',
+    name: 'PageTwo',
     computed: {
       material: {
         get () { return this.$store.getters.getMaterial },

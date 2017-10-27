@@ -62,8 +62,9 @@
 
 <script>
   const stepperList = () => import('../shared/stepperList.vue')
-  
+
   export default {
+    name: 'PageOne',
     computed: {
       material: {
         get () { return this.$store.getters.getMaterial },
