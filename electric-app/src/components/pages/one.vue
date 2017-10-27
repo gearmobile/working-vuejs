@@ -9,6 +9,8 @@
           v-radio(
             label="Кирпич",
             value="brick",
+            name="brick",
+            id="brick",
             v-model="material",
             hide-details
           )
@@ -16,6 +18,8 @@
           v-radio(
             label="Бетон",
             value="concrete",
+            name="concrete",
+            concrete="concrete",
             v-model="material",
             hide-details
           )
@@ -31,6 +35,7 @@
             label="Звонок",
             value="bell",
             name="bell",
+            id="bell",
             v-model="additional",
             hide-details
           )
@@ -39,6 +44,7 @@
             label="Щиток в подъезде",
             value="flapEntrance",
             name="flapEntrance",
+            id="flapEntrance",
             v-model="additional",
             hide-details
           )
@@ -47,6 +53,7 @@
             label="Щиток в помещении",
             value="flapIndoors",
             name="flapIndoors",
+            id="flapIndoors",
             v-model="additional",
             hide-details
           )
@@ -54,10 +61,7 @@
 </template>
 
 <script>
-
   import stepperList from '../shared/stepperList.vue'
-  import eventBus from '../../main.js'
-
   export default {
     computed: {
       material: {
@@ -69,19 +73,9 @@
         set (value) { this.$store.dispatch('setAdditional', value) }
       }
     },
-    watch: {
-      material () {
-        this.$store.dispatch('clearSwitch')
-        eventBus.$emit('onSwitch')
-      }
-    },
     components: {
       appStepperList: stepperList
     }
   }
 
 </script>
-
-<style lang="stylus">
-  //
-</style>

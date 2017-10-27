@@ -67,15 +67,14 @@ const mutations = {
   },
   'SET_MATERIAL' (state, payload) {
     state.material = payload
+    state.additional.length = 0
   },
   'CLEAR_ORDER' (state) {
     state.order.length = 0
-    // state.additional = _.fill(Array(3), null)
     state.material = 'brick'
   },
   'CLEAR_SWITCH' (state) {
     state.order.length = 0
-    // state.additional = _.fill(Array(3), null)
   },
   'SET_ADDITIONAL' (state, payload) {
     state.additional = payload
