@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import emptyArray from '../utils/emptyArray'
 import _ from 'lodash'
 
 const root = 'http://localhost:3000'
@@ -67,16 +68,14 @@ const mutations = {
   },
   'SET_MATERIAL' (state, payload) {
     state.material = payload
-    for (let i = state.additional.length; i > 0; i -= 1) {
-      state.additional.pop()
-    }
+    emptyArray(state.additional)
   },
   'CLEAR_ORDER' (state) {
-    state.order.length = 0
+    emptyArray(state.order)
     state.material = 'brick'
   },
   'CLEAR_SWITCH' (state) {
-    state.order.length = 0
+    emptyArray(state.order)
   },
   'SET_ADDITIONAL' (state, payload) {
     state.additional = payload
