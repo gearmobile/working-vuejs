@@ -61,7 +61,7 @@
 </template>
 
 <script>
-  const stepperList = () => import('../shared/stepperList.vue')
+  const StepperList = () => import('../shared/StepperList.vue')
 
   export default {
     name: 'PageOne',
@@ -76,7 +76,7 @@
       }
     },
     components: {
-      appStepperList: stepperList
+      appStepperList: StepperList
     }
   }
 

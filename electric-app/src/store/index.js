@@ -72,7 +72,6 @@ const mutations = {
   },
   'CLEAR_ORDER' (state) {
     emptyArray(state.order)
-    // state.commit('CLEAR_SWITCH' // TODO проверить правильность догадки
     state.material = 'brick'
   },
   'CLEAR_SWITCH' (state) {

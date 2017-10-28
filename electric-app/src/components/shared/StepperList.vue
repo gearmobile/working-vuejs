@@ -6,18 +6,17 @@
 </template>
 
 <script>
-  import stepper from './stepper.vue'
-  import { mapGetters } from 'vuex'
+  const Stepper = () => import('./Stepper.vue')
 
   export default {
-    name: 'stepper-list',
+    name: 'StepperList',
     components: {
-      appStepper: stepper
+      appStepper: Stepper
     },
     computed: {
-      ...mapGetters({
-        points: 'getData'
-      })
+      points () {
+        return this.$store.getters.getData
+      }
     }
   }
 

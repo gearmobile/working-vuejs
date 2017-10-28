@@ -1,4 +1,5 @@
 <template lang="pug">
+  
   v-layout.stepper( row, wrap, align-center )
     v-flex( xs12, md4 )
       v-subheader.stepper__title
@@ -14,6 +15,7 @@
         @input="onInput()",
         hide-details
       )
+
 </template>
 
 <script>
@@ -21,7 +23,7 @@
   import eventBus from '../../main.js'
 
   export default {
-    name: 'stepper',
+    name: 'Stepper',
     props: {
       point: {
         type: Object,
@@ -41,36 +43,25 @@
       increment () {
         if (this.value < this.point.max) {
           this.value = (this.value || 0) + 1
-          this.orderAdd({
-            order: this.point,
-            value: this.value
-          })
+          this.orderAdd({ order: this.point, value: this.value })
         } else {
           return
         }
       },
       onInput () {
-        this.orderAdd({
-          order: this.point,
-          value: this.value
-        })
+        this.orderAdd({ order: this.point, value: this.value })
       },
       decrement () {
         if (this.value > this.point.min) {
           this.value = (this.value || 0) - 1
-          this.orderRemove({
-            order: this.point,
-            value: this.value
-          })
+          this.orderRemove({ order: this.point, value: this.value })
         } else {
           return
         }
       }
     },
     created () {
-      eventBus.$on('onSwitch', () => {
-        this.value = null
-      })
+      eventBus.$on('onSwitch', () => { this.value = null })
     }
   }
 </script>

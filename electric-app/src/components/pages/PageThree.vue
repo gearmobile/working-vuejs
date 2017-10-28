@@ -28,7 +28,7 @@
 </template>
 
 <script>
-  const stepperList = () => import('../shared/stepperList.vue')
+  const StepperList = () => import('../shared/StepperList.vue')
 
   export default {
     name: 'PageThree',
@@ -43,7 +43,7 @@
       }
     },
     components: {
-      appStepperList: stepperList
+      appStepperList: StepperList
     }
   }
 </script>
