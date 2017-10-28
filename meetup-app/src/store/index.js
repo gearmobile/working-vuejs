@@ -70,7 +70,7 @@ const actions = {
   createNewMeetup ({ commit }, payload) {
     const newMeetup = {
       title: payload.title,
-      src: payload.image,
+      image: payload.image,
       location: payload.location,
       description: payload.description,
       schedule: {
@@ -78,11 +78,27 @@ const actions = {
         time: payload.schedule.time
       }
     }
+    let key = null
+    let imagePath = null
     firebase.database().ref('meetups').push(newMeetup)
       .then((response) => {
+        key = response.key
+        return key
+      })
+      .then((key) => {
+        const fileName = payload.image.name
+        const ext = fileName.slice(fileName.lastIndexOf('.'))
+        return firebase.storage().ref('meetups/' + key + '.' + ext).put(payload.image)
+      })
+      .then((imageInfo) => {
+        imagePath = imageInfo.metadata.downloadURLs[0]
+        return firebase.database().ref('meetups').child(key).update({ imageURL: imagePath })
+      })
+      .then(() => {
         commit('CREATE_NEW_MEETUP', {
           ...newMeetup,
-          id: response.key
+          imageURL: imagePath,
+          id: key
         })
       })
       .catch(error => {

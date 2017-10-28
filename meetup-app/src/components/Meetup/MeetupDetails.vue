@@ -6,7 +6,7 @@
           v-card-title
             h5.primary--text
               | {{ meetup.title }}
-          v-card-media( :src="meetup.src", height="400px" )
+          v-card-media( :src="meetup.imageURL", height="400px" )
           v-card-text
             h6.card-info.info--text
               | {{ meetup.schedule.date }} {{ meetup.schedule.time }} - {{ meetup.location }}

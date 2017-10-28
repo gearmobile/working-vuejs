@@ -16,10 +16,12 @@
               v-text-field( name="location", id="location", label="Location", v-model="meetup.location", required, hide-details )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-text-field( name="image", id="image", label="Image Upload", v-model="meetup.image", required, hide-details )
+              v-btn.primary( @click="onTrigger()" )
+                | upload image
+              input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              img( src="http://via.placeholder.com/800x400", alt="", style="width: 100%; height: auto" )
+              img( :src="meetup.imageURL", :alt="meetup.title", style="width: 100%; height: auto" )
           v-layout.mb-4( row )
             v-flex( xs12 )
               v-text-field( name="description", id="description", label="Description", v-model="meetup.description", textarea, rows="6", required, hide-details )
@@ -37,7 +39,6 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
   export default {
     name: 'MeetupNew',
     data () {
@@ -46,7 +47,8 @@
           title: '',
           location: '',
           description: '',
-          image: '',
+          image: null,
+          imageURL: '',
           schedule: {
             date: new Date(),
             time: new Date()
@@ -60,22 +62,36 @@
       }
     },
     methods: {
-      ...mapActions({
-        createMeetup: 'createNewMeetup'
-      }),
       onClick () {
-        const meetup = {
-          title: this.meetup.title,
-          location: this.meetup.location,
-          schedule: {
-            date: this.meetup.schedule.date,
-            time: this.meetup.schedule.time
-          },
-          description: this.meetup.description,
-          image: this.meetup.image
+        if (this.meetup.image) {
+          const meetup = {
+            title: this.meetup.title,
+            location: this.meetup.location,
+            schedule: {
+              date: this.meetup.schedule.date,
+              time: this.meetup.schedule.time
+            },
+            description: this.meetup.description,
+            image: this.meetup.image
+          }
+          this.$store.dispatch('createNewMeetup', meetup)
+          this.$router.push({ path: '/meetuplist' })
         }
-        this.createMeetup(meetup)
-        this.$router.push({ path: '/meetuplist' })
+      },
+      onTrigger () {
+        this.$refs.fileInput.click()
+      },
+      onFilePicked (event) {
+        const files = event.target.files
+        if (files[0].name.lastIndexOf('.') <= 0) {
+          return alert('Add a valid file')
+        }
+        const fileReader = new FileReader()
+        fileReader.addEventListener('load', () => {
+          this.meetup.imageURL = fileReader.result
+        })
+        fileReader.readAsDataURL(files[0])
+        this.meetup.image = files[0]
       }
     }
   }
