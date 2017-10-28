@@ -1,7 +1,7 @@
 <template lang="pug">
   
   v-flex( xs12 )
-    app-stepper( v-for="(point, index) in points", :key="index", :point="point" )
+    component-stepper( v-for="(point, index) in points", :key="index", :point="point" )
 
 </template>
 
@@ -11,7 +11,7 @@
   export default {
     name: 'StepperList',
     components: {
-      appStepper: Stepper
+      ComponentStepper: Stepper
     },
     computed: {
       points () {

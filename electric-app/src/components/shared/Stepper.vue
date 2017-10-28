@@ -9,8 +9,8 @@
         single-line,
         prepend-icon='remove',
         append-icon='add',
-        :append-icon-cb="(() => increment())",
-        :prepend-icon-cb="(() => decrement())",
+        :append-icon-cb="(() => onIncrement())",
+        :prepend-icon-cb="(() => onDecrement())",
         v-model='value',
         @input="onInput()",
         hide-details
@@ -19,9 +19,6 @@
 </template>
 
 <script>
-  import { mapActions } from 'vuex'
-  import eventBus from '../../main.js'
-
   export default {
     name: 'Stepper',
     props: {
@@ -36,32 +33,23 @@
       }
     },
     methods: {
-      ...mapActions({
-        orderAdd: 'addOrder',
-        orderRemove: 'removeOrder'
-      }),
-      increment () {
+      onIncrement () {
         if (this.value < this.point.max) {
-          this.value = (this.value || 0) + 1
-          this.orderAdd({ order: this.point, value: this.value })
+          this.value = (this.value || 0) + this.point.step
+          this.$store.dispatch('addOrder', { order: this.point, value: this.value })
+        }
+      },
+      onDecrement () {
+        if (this.value > this.point.min) {
+          this.value = (this.value || 0) - this.point.step
+          this.$store.dispatch('removeOrder', { order: this.point, value: this.value })
         } else {
-          return
+          console.log('dismiss')
         }
       },
       onInput () {
-        this.orderAdd({ order: this.point, value: this.value })
-      },
-      decrement () {
-        if (this.value > this.point.min) {
-          this.value = (this.value || 0) - 1
-          this.orderRemove({ order: this.point, value: this.value })
-        } else {
-          return
-        }
+        this.$store.dispatch('addOrder', { order: this.point, value: this.value })
       }
-    },
-    created () {
-      eventBus.$on('onSwitch', () => { this.value = null })
     }
   }
 </script>
@@ -77,7 +65,7 @@
     & .icon
       cursor pointer !important
       background-color #008080 !important
-      color #fff !important
+      color white !important
 
       &:hover
         background-color #26a69a !important
