@@ -45,8 +45,9 @@ const mutations = {
     }
   },
   'SET_MATERIAL' (state, payload) {
-    state.material = payload
+    emptyArray(state.order)
     emptyArray(state.additional)
+    state.material = payload
   },
   'CLEAR_ORDER' (state) {
     emptyArray(state.order)
