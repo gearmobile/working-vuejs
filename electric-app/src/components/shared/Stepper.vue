@@ -12,8 +12,8 @@
         :append-icon-cb="(() => onIncrement())",
         :prepend-icon-cb="(() => onDecrement())",
         v-model='value',
-        @input="onInput()",
-        hide-details
+        hide-details,
+        disabled
       )
 
 </template>
@@ -21,15 +21,15 @@
 <script>
   export default {
     name: 'Stepper',
+    data () {
+      return {
+        value: null
+      }
+    },
     props: {
       point: {
         type: Object,
         default: null
-      }
-    },
-    data () {
-      return {
-        value: null
       }
     },
     methods: {
@@ -43,12 +43,7 @@
         if (this.value > this.point.min) {
           this.value = (this.value || 0) - this.point.step
           this.$store.dispatch('removeOrder', { order: this.point, value: this.value })
-        } else {
-          console.log('dismiss')
         }
-      },
-      onInput () {
-        this.$store.dispatch('addOrder', { order: this.point, value: this.value })
       }
     }
   }

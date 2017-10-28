@@ -67,9 +67,6 @@
         this.current = value
         this.$store.dispatch('clearOrder')
       }
-    },
-    created () {
-      this.$store.dispatch('initData')
     }
   }
 </script>
