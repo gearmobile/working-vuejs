@@ -4,8 +4,11 @@
       v-flex( xs12 )
         v-card
           v-card-title
-            h5.primary--text
+            h5.primary--text.mb-0
               | {{ meetup.title }}
+            v-spacer
+            template( v-if="true" )
+              component-meetup-edit
           v-card-media( :src="meetup.src", height="400px" )
           v-card-text
             h6.card-info.info--text
@@ -19,6 +22,8 @@
 </template>
 
 <script>
+  import MeetupEdit from './MeetupEdit/MeetupDetailsEdit.vue'
+
   export default {
     name: 'MeetupDetails',
     props: ['id'],
@@ -26,6 +31,9 @@
       meetup () {
         return this.$store.getters.getMeetupFeatured(this.id)
       }
+    },
+    components: {
+      ComponentMeetupEdit: MeetupEdit
     }
   }
 </script>
