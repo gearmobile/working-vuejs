@@ -38,7 +38,11 @@
         return this.$store.getters.getMeetupFeatured(this.id)
       },
       isCreator () {
-        return this.meetup.creator === this.$store.getters.getExistingUser.id
+        if (this.$store.getters.getExistingUser === null || this.$store.getters.getExistingUser === undefined) {
+          return false
+        } else {
+          return this.meetup.creator === this.$store.getters.getExistingUser.id
+        }
       }
     },
     components: {

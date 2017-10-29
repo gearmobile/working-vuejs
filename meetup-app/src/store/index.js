@@ -49,6 +49,7 @@ const actions = {
         for (let key in obj) {
           meetups.push({
             id: key,
+            creator: obj[key].creator,
             title: obj[key].title,
             location: obj[key].location,
             description: obj[key].description,
