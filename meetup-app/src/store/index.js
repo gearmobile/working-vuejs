@@ -18,6 +18,20 @@ const mutations = {
   'CREATE_NEW_MEETUP' (state, payload) {
     state.meetups.push(payload)
   },
+  'UPDATE_MEETUP' (state, payload) {
+    const meetup = state.meetups.find(el => {
+      return el.id === payload.id
+    })
+    if (payload.title) {
+      meetup.title = payload.title
+    }
+    if (payload.description) {
+      meetup.description = payload.description
+    }
+    if (payload.date) {
+      meetup.date = payload.date
+    }
+  },
   'CREATE_NEW_USER' (state, payload) {
     const newUser = {
       id: payload.uid,
@@ -105,6 +119,27 @@ const actions = {
       })
       .catch(error => {
         console.log(error)
+      })
+  },
+  updateMeetup ({ commit }, payload) {
+    commit('SET_LOADING', true)
+    const object = {}
+    if (payload.title) {
+      object.title = payload.title
+    }
+    if (payload.description) {
+      object.description = payload.description
+    }
+    if (payload.date) {
+      object.date = payload.date
+    }
+    firebase.database().ref('meetups').child(payload.id).update(object)
+      .then(() => {
+        commit('SET_LOADING', false)
+        commit('UPDATE_MEETUP', payload)
+      })
+      .catch(() => {
+        commit('SET_LOADING', false)
       })
   },
   createNewUser ({ commit }, payload) {
