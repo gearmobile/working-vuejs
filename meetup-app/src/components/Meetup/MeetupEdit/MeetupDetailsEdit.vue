@@ -1,7 +1,7 @@
 <template lang="pug">
 
   v-dialog( persistent, v-model="dialog", max-width="600px" )
-    v-btn( color="primary", fab, small, dark, slot="activator" )
+    v-btn( color="info", fab, small, dark, slot="activator" )
       v-icon
         | edit
     v-card
@@ -21,9 +21,9 @@
           v-flex( xs12 )
             v-card-actions
               v-spacer
-              v-btn( flat, color="amber darken-2", @click.native="onClose()" )
-                | close
-              v-btn( flat, color="amber darken-2", @click.native="onSave()" )
+              v-btn( flat, color="primary darken-2", @click.native="onClose()" )
+                | cancel
+              v-btn( flat, color="primary darken-2", @click.native="onSave()" )
                 | save
 
 </template>

@@ -11,13 +11,11 @@
               component-meetup-edit( :meetup="meetup" )
           v-card-media( :src="meetup.src", height="400px" )
           v-card-text
-            v-layout( row, justify-space-between )
-              v-flex( xs6 )
-                h6.card-info.info--text.mb-0
-                  | {{ meetup.schedule.date }} {{ meetup.schedule.time }} - {{ meetup.location }}
-              v-flex( xs6 )
-                component-meetup-edit-date( :meetup="meetup" )
-            p.mb-0
+            h6.card-info.info--text.mb-2
+              | {{ meetup.schedule.date }} {{ meetup.schedule.time }} - {{ meetup.location }}
+            component-meetup-edit-date( :meetup="meetup" )
+            component-meetup-edit-time( :meetup="meetup" )
+            p.mb-0.mt-4
               | {{ meetup.description }}
           v-card-actions
             v-spacer
@@ -27,7 +25,8 @@
 
 <script>
   import MeetupEdit from './MeetupEdit/MeetupDetailsEdit.vue'
-  import MeetupEditDateAndTime from './MeetupEdit/MeetupDetailsEditDateAndTime.vue'
+  import MeetupEditDate from './MeetupEdit/MeetupDetailsEditDate.vue'
+  import MeetupEditTime from './MeetupEdit/MeetupDetailsEditTime.vue'
 
   export default {
     name: 'MeetupDetails',
@@ -52,7 +51,8 @@
     },
     components: {
       ComponentMeetupEdit: MeetupEdit,
-      ComponentMeetupEditDate: MeetupEditDateAndTime
+      ComponentMeetupEditDate: MeetupEditDate,
+      ComponentMeetupEditTime: MeetupEditTime
     }
   }
 </script>
