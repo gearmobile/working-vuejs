@@ -67,12 +67,13 @@ const actions = {
         commit('SET_ERROR', error)
       })
   },
-  createNewMeetup ({ commit }, payload) {
+  createNewMeetup ({ commit, getters }, payload) {
     const newMeetup = {
       title: payload.title,
       image: payload.image,
       location: payload.location,
       description: payload.description,
+      creator: getters.getExistingUser.id,
       schedule: {
         date: payload.schedule.date,
         time: payload.schedule.time
@@ -92,7 +93,7 @@ const actions = {
       })
       .then((imageInfo) => {
         src = imageInfo.metadata.downloadURLs[0]
-        return firebase.database().ref('meetups').child(key).update({ imageURL: src })
+        return firebase.database().ref('meetups').child(key).update({ src: src })
       })
       .then(() => {
         commit('CREATE_NEW_MEETUP', {

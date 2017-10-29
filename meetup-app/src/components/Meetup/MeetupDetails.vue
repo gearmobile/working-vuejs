@@ -7,7 +7,7 @@
             h5.primary--text.mb-0
               | {{ meetup.title }}
             v-spacer
-            template( v-if="true" )
+            template( v-if="isCreator" )
               component-meetup-edit
           v-card-media( :src="meetup.src", height="400px" )
           v-card-text
@@ -26,10 +26,19 @@
 
   export default {
     name: 'MeetupDetails',
-    props: ['id'],
+    props: {
+      id: {
+        type: String,
+        required: true,
+        default () { return '' }
+      }
+    },
     computed: {
       meetup () {
         return this.$store.getters.getMeetupFeatured(this.id)
+      },
+      isCreator () {
+        return this.meetup.creator === this.$store.getters.getExistingUser.id
       }
     },
     components: {
