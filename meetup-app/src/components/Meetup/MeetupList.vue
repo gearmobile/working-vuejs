@@ -6,7 +6,7 @@
           v-container( fluid )
             v-layout( row )
               v-flex( xs5, sm4, md3 )
-                v-card-media( :src="meetup.imageURL", height="125px" )
+                v-card-media( :src="meetup.src", height="125px" )
               v-flex( xs7, sm8, md9 )
                 v-card-title( primary-title )
                   section
@@ -22,17 +22,12 @@
 </template>
 
 <script>
-  // import DateFilter from '../../filters/date.js'
-  import { mapGetters } from 'vuex'
   export default {
     name: 'MeetupList',
     computed: {
-      ...mapGetters({
-        meetups: 'getMeetupsSorted'
-      })
-    },
-    filters: {
-      // date: DateFilter
+      meetups () {
+        return this.$store.getters.getMeetupsSorted
+      }
     }
   }
 </script>

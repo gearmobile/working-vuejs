@@ -79,7 +79,7 @@ const actions = {
       }
     }
     let key = null
-    let imagePath = null
+    let src = null
     firebase.database().ref('meetups').push(newMeetup)
       .then((response) => {
         key = response.key
@@ -91,13 +91,13 @@ const actions = {
         return firebase.storage().ref('meetups/' + key + '.' + ext).put(payload.image)
       })
       .then((imageInfo) => {
-        imagePath = imageInfo.metadata.downloadURLs[0]
-        return firebase.database().ref('meetups').child(key).update({ imageURL: imagePath })
+        src = imageInfo.metadata.downloadURLs[0]
+        return firebase.database().ref('meetups').child(key).update({ imageURL: src })
       })
       .then(() => {
         commit('CREATE_NEW_MEETUP', {
           ...newMeetup,
-          imageURL: imagePath,
+          src: src,
           id: key
         })
       })

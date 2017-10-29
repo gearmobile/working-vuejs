@@ -21,7 +21,7 @@
               input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              img( :src="meetup.imageURL", :alt="meetup.title", style="width: 100%; height: auto" )
+              img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
           v-layout.mb-4( row )
             v-flex( xs12 )
               v-text-field( name="description", id="description", label="Description", v-model="meetup.description", textarea, rows="6", required, hide-details )
@@ -48,7 +48,7 @@
           location: '',
           description: '',
           image: null,
-          imageURL: '',
+          src: '',
           schedule: {
             date: new Date(),
             time: new Date()
@@ -88,7 +88,7 @@
         }
         const fileReader = new FileReader()
         fileReader.addEventListener('load', () => {
-          this.meetup.imageURL = fileReader.result
+          this.meetup.src = fileReader.result
         })
         fileReader.readAsDataURL(files[0])
         this.meetup.image = files[0]

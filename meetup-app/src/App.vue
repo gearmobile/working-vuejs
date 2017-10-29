@@ -24,8 +24,6 @@
 </template>
 
 <script>
-  
-  import { mapGetters } from 'vuex'
   import isEmpty from 'lodash.isempty'
   
   export default {
@@ -40,9 +38,9 @@
       }
     },
     computed: {
-      ...mapGetters({
-        userExisting: 'getExistingUser'
-      }),
+      userExisting () {
+        return this.$store.getters.getExistingUser
+      },
       menuItems () {
         let items = []
         if (isEmpty(this.userExisting)) {
