@@ -107,6 +107,14 @@ const getters = {
     }, 0)
     return result
   },
+  getCostAdditional (state, getters) {
+    let totalCost = 0
+    getters.getAdditional.forEach((item) => {
+      const sample = state.selectAdditional.find(el => el.value === item)
+      totalCost += sample.price
+    })
+    return totalCost
+  },
   getSupport (state) {
     return state.selectAdditional
   },
