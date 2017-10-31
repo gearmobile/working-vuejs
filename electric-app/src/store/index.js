@@ -21,27 +21,25 @@ const state = {
 
 const mutations = {
   'ADD_ORDER' (state, payload) {
-    const sample = state.order.find(el => {
-      return el.name === payload.order.name
-    })
+    const sample = state.order.find(el => el.name === payload.name)
     if (!sample) {
-      const order = {
-        name: payload.order.name,
-        title: payload.order.title,
-        price: payload.order.price,
+      const orderNew = {
+        name: payload.name,
+        title: payload.title,
+        price: payload.price,
         quantity: payload.value
       }
-      state.order.push(order)
+      state.order.push(orderNew)
     } else {
-      sample.quantity += payload.order.step
+      sample.quantity += payload.step
     }
   },
   'REMOVE_ORDER' (state, payload) {
-    const sample = state.order.find(el => {
-      return el.name === payload.order.name
-    })
-    if (sample && sample.quantity > payload.value) {
-      sample.quantity -= payload.order.step
+    const sample = state.order.find(el => el.name === payload.name)
+    if (sample.quantity > payload.value) {
+      sample.quantity -= payload.step
+    } else {
+      state.order.splice(state.order.indexOf(payload), 1)
     }
   },
   'SET_MATERIAL' (state, payload) {

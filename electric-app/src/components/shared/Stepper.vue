@@ -36,13 +36,19 @@
       onIncrement () {
         if (this.value < this.point.max) {
           this.value = (this.value || 0) + this.point.step
-          this.$store.dispatch('addOrder', { order: this.point, value: this.value })
+          this.$store.dispatch('addOrder', {
+            ...this.point,
+            value: this.value
+          })
         }
       },
       onDecrement () {
         if (this.value > this.point.min) {
           this.value = (this.value || 0) - this.point.step
-          this.$store.dispatch('removeOrder', { order: this.point, value: this.value })
+          this.$store.dispatch('removeOrder', {
+            ...this.point,
+            value: this.value
+          })
         }
       }
     }
