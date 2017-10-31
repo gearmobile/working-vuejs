@@ -5,24 +5,8 @@
 
       // HEADER
       v-layout( row )
-        v-flex( xs12, md6 )
-          v-radio(
-            label="Кирпич",
-            value="brick",
-            name="brick",
-            id="brick",
-            v-model="material",
-            hide-details
-          )
-        v-flex( xs12, md6 )
-          v-radio(
-            label="Бетон",
-            value="concrete",
-            name="concrete",
-            concrete="concrete",
-            v-model="material",
-            hide-details
-          )
+        component-radio( :item="radios[0]" )
+        component-radio( :item="radios[1]" )
 
       // MAIN
       v-layout.mb-2( row, wrap )
@@ -38,22 +22,23 @@
 
 <script>
   const StepperList = () => import('../shared/StepperList.vue')
+  const RadioIn = () => import('../shared/RadioIn.vue')
   const CheckIn = () => import('../shared/CheckIn.vue')
 
   export default {
     name: 'PageOne',
     computed: {
-      material: {
-        get () { return this.$store.getters.getMaterial },
-        set (value) { this.$store.dispatch('setMaterial', value) }
-      },
       items () {
         return this.$store.getters.getSupport
+      },
+      radios () {
+        return this.$store.getters.getSelectMaterial
       }
     },
     components: {
       ComponentStepperList: StepperList,
-      ComponentCheck: CheckIn
+      ComponentCheck: CheckIn,
+      ComponentRadio: RadioIn
     }
   }
 

@@ -14,28 +14,19 @@ const state = {
     { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 15, name: 'bra', value: null },
     { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light', value: null }
   ],
-  support: [
+  selectAdditional: [
     // https://www.npmjs.com/package/lodash.intersection
-    {
-      label: 'Звонок',
-      value: 'bell',
-      price: 100
-    },
-    {
-      label: 'Заземление',
-      value: 'grounding',
-      price: 110
-    },
-    {
-      label: 'Щиток в подъезде',
-      value: 'flapEntrance',
-      price: 120
-    },
-    {
-      label: 'Щиток в помещении',
-      value: 'flapIndoors',
-      price: 130
-    }
+    { label: 'Звонок', value: 'bell', price: 100 },
+    { label: 'Заземление', value: 'grounding', price: 110 },
+    { label: 'Щиток в подъезде', value: 'flapEntrance', price: 120 },
+    { label: 'Щиток в помещении', value: 'flapIndoors', price: 130 }
+  ],
+  selectMaterial: [
+    { label: 'Кирпич', value: 'brick', ratio: 1 },
+    { label: 'Бетон', value: 'concrete', ratio: 1.2 },
+    { label: 'Дерево', value: 'wood', ratio: 1.1 },
+    { label: 'Блоки', value: 'blocks', ratio: 1.4 },
+    { label: 'Гипсокартон', value: 'drywall', ratio: 0.8 }
   ],
   order: [],
   material: 'brick',
@@ -117,7 +108,10 @@ const getters = {
     return result
   },
   getSupport (state) {
-    return state.support
+    return state.selectAdditional
+  },
+  getSelectMaterial (state) {
+    return state.selectMaterial
   },
   getAdditional (state) {
     return state.additional
