@@ -16,10 +16,26 @@ const state = {
   ],
   support: [
     // https://www.npmjs.com/package/lodash.intersection
-    { name: 'bell', price: 100 },
-    { name: 'grounding', price: 110 },
-    { name: 'flapEntrance', price: 120 },
-    { name: 'flapIndoors', price: 130 }
+    {
+      label: 'Звонок',
+      value: 'bell',
+      price: 100
+    },
+    {
+      label: 'Заземление',
+      value: 'grounding',
+      price: 110
+    },
+    {
+      label: 'Щиток в подъезде',
+      value: 'flapEntrance',
+      price: 120
+    },
+    {
+      label: 'Щиток в помещении',
+      value: 'flapIndoors',
+      price: 130
+    }
   ],
   order: [],
   material: 'brick',
@@ -99,6 +115,9 @@ const getters = {
       return total + currentIndex.quantity * currentIndex.price
     }, 0)
     return result
+  },
+  getSupport (state) {
+    return state.support
   },
   getAdditional (state) {
     return state.additional

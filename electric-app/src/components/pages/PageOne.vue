@@ -26,42 +26,19 @@
 
       // MAIN
       v-layout.mb-2( row, wrap )
-        app-stepper-list
+        component-stepper-list
 
       // ADDITIONAL
       v-layout( row, wrap )
-        v-flex( xs12 )
-          v-checkbox(
-            label="Звонок",
-            value="bell",
-            name="bell",
-            id="bell",
-            v-model="additional",
-            hide-details
-          )
-        v-flex( xs12 )
-          v-checkbox(
-            label="Щиток в подъезде",
-            value="flapEntrance",
-            name="flapEntrance",
-            id="flapEntrance",
-            v-model="additional",
-            hide-details
-          )
-        v-flex( xs12 )
-          v-checkbox(
-            label="Щиток в помещении",
-            value="flapIndoors",
-            name="flapIndoors",
-            id="flapIndoors",
-            v-model="additional",
-            hide-details
-          )
+        component-check( :item="items[0]" )
+        component-check( :item="items[2]" )
+        component-check( :item="items[3]" )
 
 </template>
 
 <script>
   const StepperList = () => import('../shared/StepperList.vue')
+  const CheckIn = () => import('../shared/CheckIn.vue')
 
   export default {
     name: 'PageOne',
@@ -70,13 +47,13 @@
         get () { return this.$store.getters.getMaterial },
         set (value) { this.$store.dispatch('setMaterial', value) }
       },
-      additional: {
-        get () { return this.$store.getters.getAdditional },
-        set (value) { this.$store.dispatch('setAdditional', value) }
+      items () {
+        return this.$store.getters.getSupport
       }
     },
     components: {
-      appStepperList: StepperList
+      ComponentStepperList: StepperList,
+      ComponentCheck: CheckIn
     }
   }
 
