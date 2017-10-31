@@ -14,6 +14,13 @@ const state = {
     { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 15, name: 'bra', value: null },
     { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light', value: null }
   ],
+  support: [
+    // https://www.npmjs.com/package/lodash.intersection
+    { name: 'bell', price: 100 },
+    { name: 'grounding', price: 110 },
+    { name: 'flapEntrance', price: 120 },
+    { name: 'flapIndoors', price: 130 }
+  ],
   order: [],
   material: 'brick',
   additional: []
