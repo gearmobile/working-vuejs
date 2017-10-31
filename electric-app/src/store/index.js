@@ -10,9 +10,9 @@ const state = {
     { min: 0, max: 10, step: 1, title: 'Розетки (220 V)', price: 11, name: 'socket', value: null },
     { min: 0, max: 10, step: 1, title: 'Розетки ТВ', price: 12, name: 'tv', value: null },
     { min: 0, max: 10, step: 1, title: 'Розетки телефон, интернет', price: 13, name: 'phone', value: null },
-    { min: 0, max: 10, step: 1, title: 'Выключатели', price: 13, name: 'switch', value: null },
-    { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 14, name: 'bra', value: null },
-    { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 15, name: 'light', value: null }
+    { min: 0, max: 10, step: 1, title: 'Выключатели', price: 14, name: 'switch', value: null },
+    { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 15, name: 'bra', value: null },
+    { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light', value: null }
   ],
   order: [],
   material: 'brick',
@@ -36,7 +36,7 @@ const mutations = {
   },
   'REMOVE_ORDER' (state, payload) {
     const sample = state.order.find(el => el.name === payload.name)
-    if (sample.quantity > payload.value) {
+    if (sample && sample.quantity > payload.value) {
       sample.quantity -= payload.step
     } else {
       state.order.splice(state.order.indexOf(payload), 1)
@@ -86,6 +86,12 @@ const getters = {
   },
   getMaterial (state) {
     return state.material
+  },
+  getCostTotal (state) {
+    const result = state.order.reduce((total, currentIndex) => {
+      return total + currentIndex.quantity * currentIndex.price
+    }, 0)
+    return result
   },
   getAdditional (state) {
     return state.additional
