@@ -15,7 +15,6 @@ const state = {
     { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light', value: null }
   ],
   selectAdditional: [
-    // https://www.npmjs.com/package/lodash.intersection
     { label: 'Звонок', value: 'bell', price: 100 },
     { label: 'Заземление', value: 'grounding', price: 110 },
     { label: 'Щиток в подъезде', value: 'flapEntrance', price: 120 },
@@ -114,6 +113,10 @@ const getters = {
       totalCost += sample.price
     })
     return totalCost
+  },
+  getMaterialRatio (state, getters) {
+    const result = state.selectMaterial.find(el => el.value === getters.getMaterial)
+    return result.ratio
   },
   getSupport (state) {
     return state.selectAdditional
