@@ -18,7 +18,7 @@
             td.text-xs-center
               | {{ props.item.symbol }}
             td.text-xs-center
-              v-btn.secondary--text( flat, icon, small, fab, outline, @click="onSelect(props.item.id)" )
+              v-btn( flat, color="secondary", icon, small, fab, outline, @click="onSelect(props.item.id)" )
                 v-icon
                   | more_horiz
 

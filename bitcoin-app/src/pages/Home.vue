@@ -4,7 +4,7 @@
     v-layout( row, wrap )
       v-flex( xs12 )
         v-card.card
-          img.card__logo( src="../static/cryptocurrency-bubble.jpg", style="width: 100%; height: auto;" )
+          img.card__logo( src="../static/cryptocurrency-bubble.jpg" )
 
 </template>
 
@@ -15,10 +15,14 @@
 </script>
 
 <style lang="scss" scoped>
+
   .card {
     //
     &__logo {
       vertical-align: top;
+      width: 100% !important;
+      height: auto !important;
     }
   }
+  
 </style>
