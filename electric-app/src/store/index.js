@@ -100,9 +100,9 @@ const getters = {
   getMaterial (state) {
     return state.material
   },
-  getCostTotal (state) {
+  getCostTotal (state, getters) {
     const result = state.order.reduce((total, currentIndex) => {
-      return total + currentIndex.quantity * currentIndex.price
+      return total + currentIndex.quantity * (currentIndex.price * getters.getMaterialRatio)
     }, 0)
     return result
   },
@@ -110,7 +110,7 @@ const getters = {
     let totalCost = 0
     getters.getAdditional.forEach((item) => {
       const sample = state.selectAdditional.find(el => el.value === item)
-      totalCost += sample.price
+      totalCost += (sample.price * getters.getMaterialRatio)
     })
     return totalCost
   },
