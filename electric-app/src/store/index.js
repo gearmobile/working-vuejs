@@ -6,13 +6,13 @@ Vue.use(Vuex)
 
 const state = {
   points: [
-    { min: 0, max: 10, step: 1, title: 'Квадратура помещения', price: 10, name: 'area', value: null },
-    { min: 0, max: 10, step: 1, title: 'Розетки (220 V)', price: 11, name: 'socket', value: null },
-    { min: 0, max: 10, step: 1, title: 'Розетки ТВ', price: 12, name: 'tv', value: null },
-    { min: 0, max: 10, step: 1, title: 'Розетки телефон, интернет', price: 13, name: 'phone', value: null },
-    { min: 0, max: 10, step: 1, title: 'Выключатели', price: 14, name: 'switch', value: null },
-    { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 15, name: 'bra', value: null },
-    { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light', value: null }
+    { min: 0, max: 10, step: 1, title: 'Квадратура помещения', price: 10, name: 'area' },
+    { min: 0, max: 10, step: 1, title: 'Розетки (220 V)', price: 11, name: 'socket' },
+    { min: 0, max: 10, step: 1, title: 'Розетки ТВ', price: 12, name: 'tv' },
+    { min: 0, max: 10, step: 1, title: 'Розетки телефон, интернет', price: 13, name: 'phone' },
+    { min: 0, max: 10, step: 1, title: 'Выключатели', price: 14, name: 'switch' },
+    { min: 0, max: 10, step: 1, title: 'Люстра, светильник, бра', price: 15, name: 'bra' },
+    { min: 0, max: 10, step: 1, title: 'Точечный свет', price: 16, name: 'light' }
   ],
   selectAdditional: [
     { label: 'Звонок', value: 'bell', price: 100 },
@@ -52,7 +52,7 @@ const mutations = {
     if (sample && sample.quantity > payload.value) {
       sample.quantity -= payload.step
     } else {
-      state.order.splice(state.order.indexOf(payload), 1)
+      state.order.splice(state.order.indexOf(payload), 1) // => not working
     }
   },
   'SET_MATERIAL' (state, payload) {
