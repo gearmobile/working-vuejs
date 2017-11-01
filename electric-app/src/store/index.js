@@ -114,6 +114,9 @@ const getters = {
     })
     return totalCost
   },
+  getCostCommon (state, getters) {
+    return getters.getCostTotal + getters.getCostAdditional
+  },
   getMaterialRatio (state, getters) {
     const result = state.selectMaterial.find(el => el.value === getters.getMaterial)
     return result.ratio
