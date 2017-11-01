@@ -6,16 +6,16 @@
 
       // NAVIGATION SECTION
       v-layout.amber.text-xs-center.white--text.mb-3( row, wrap )
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('appOne')", :class="{ 'app__nav--active': current === 'appOne' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentOne')", :class="{ 'app__nav--active': current === 'appOne' }" )
           .title
             | Квартира
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('appTwo')", :class="{ 'app__nav--active': current === 'appTwo' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentTwo')", :class="{ 'app__nav--active': current === 'appTwo' }" )
           .title
             | Коттедж
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('appThree')", :class="{ 'app__nav--active': current === 'appThree' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentThree')", :class="{ 'app__nav--active': current === 'appThree' }" )
           .title
             | Офис
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('appFour')", :class="{ 'app__nav--active': current === 'appFour' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentFour')", :class="{ 'app__nav--active': current === 'appFour' }" )
           .title
             | Дача
 
@@ -35,8 +35,8 @@
                   | attach_money
                 | расчитать стоимость
         v-flex( xs12, md6 )
-          app-description
-          app-output
+          component-description
+          component-output
 
 </template>
 
@@ -46,7 +46,7 @@
   const Three = () => import('./components/pages/PageThree.vue')
   const Four = () => import('./components/pages/PageFour.vue')
   const Description = () => import('./components/pages/PageDescription.vue')
-  const Output = () => import('./components/shared/ComponentOutput.vue')
+  const Output = () => import('./components/shared/Output.vue')
 
   export default {
     data () {
@@ -55,12 +55,12 @@
       }
     },
     components: {
-      appDescription: Description,
-      appOutput: Output,
-      appOne: One,
-      appTwo: Two,
-      appThree: Three,
-      appFour: Four
+      ComponentDescription: Description,
+      ComponentOutput: Output,
+      ComponentOne: One,
+      ComponentTwo: Two,
+      ComponentThree: Three,
+      ComponentFour: Four
     },
     methods: {
       onSwitch (value) {
