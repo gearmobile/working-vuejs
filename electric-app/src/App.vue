@@ -30,13 +30,15 @@
               .title( style="width: 100%" )
                 | расчет
             v-card-text
-              v-btn( block, primary )
+              v-btn( block, primary, @click.native="onClick()" )
                 v-icon( left, dark )
                   | attach_money
                 | расчитать стоимость
+              v-btn( block, secondary, @click.native="onClick()", v-if="show" )
+                | вернуть назад
         v-flex( xs12, md6 )
-          component-description
-          component-output
+          component-description( v-if="!show" )
+          component-output( v-else )
 
 </template>
 
@@ -66,6 +68,14 @@
       onSwitch (value) {
         this.current = value
         this.$store.dispatch('clearOrder')
+      },
+      onClick () {
+        this.$store.dispatch('setShow')
+      }
+    },
+    computed: {
+      show () {
+        return this.$store.getters.getStatus
       }
     }
   }

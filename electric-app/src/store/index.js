@@ -106,7 +106,8 @@ const state = {
   order: [],
   material: 'brick',
   additional: [],
-  discount: 10
+  discount: 10,
+  isCalculation: false
 }
 
 const mutations = {
@@ -147,6 +148,9 @@ const mutations = {
   },
   'SET_ADDITIONAL' (state, payload) {
     state.additional = payload
+  },
+  'SET_SHOW' (state) {
+    state.isCalculation = !state.isCalculation
   }
 }
 
@@ -168,6 +172,9 @@ const actions = {
   },
   setAdditional ({ commit }, payload) {
     commit('SET_ADDITIONAL', payload)
+  },
+  setShow ({ commit }) {
+    commit('SET_SHOW')
   }
 }
 
@@ -245,6 +252,9 @@ const getters = {
   },
   getAdditional (state) {
     return state.additional
+  },
+  getStatus (state) {
+    return state.isCalculation
   }
 }
 
