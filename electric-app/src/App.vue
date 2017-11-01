@@ -34,11 +34,13 @@
                 v-icon( left, dark )
                   | attach_money
                 | расчитать стоимость
-              v-btn( block, secondary, @click.native="onClick()", v-if="show" )
+              v-btn( block, secondary, @click.native="onReset()", v-if="show" )
                 | вернуть назад
         v-flex( xs12, md6 )
-          component-description( v-if="!show" )
-          component-output( v-else )
+          v-fade-transition( mode="out-in" )
+            keep-alive
+              component-description( v-if="!show" )
+              component-output( v-else )
 
 </template>
 
@@ -49,6 +51,8 @@
   const Four = () => import('./components/pages/PageFour.vue')
   const Description = () => import('./components/pages/PageDescription.vue')
   const Output = () => import('./components/shared/Output.vue')
+
+  import EventBus from './events/eventBus'
 
   export default {
     data () {
@@ -70,6 +74,12 @@
         this.$store.dispatch('clearOrder')
       },
       onClick () {
+        this.$store.dispatch('setShow')
+      },
+      onReset () {
+        EventBus.$emit('ON_SWITCH_MATERIAL')
+        this.$store.dispatch('clearOrder')
+        this.$store.dispatch('clearAdditional')
         this.$store.dispatch('setShow')
       }
     },
