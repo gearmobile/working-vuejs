@@ -6,16 +6,16 @@
 
       // NAVIGATION SECTION
       v-layout.amber.text-xs-center.white--text.mb-3( row, wrap )
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentOne')", :class="{ 'app__nav--active': current === 'appOne' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentOne')", :class="{ 'app__nav--active': current === 'ComponentOne' }" )
           .title
             | Квартира
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentTwo')", :class="{ 'app__nav--active': current === 'appTwo' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentTwo')", :class="{ 'app__nav--active': current === 'ComponentTwo' }" )
           .title
             | Коттедж
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentThree')", :class="{ 'app__nav--active': current === 'appThree' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentThree')", :class="{ 'app__nav--active': current === 'ComponentThree' }" )
           .title
             | Офис
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentFour')", :class="{ 'app__nav--active': current === 'appFour' }" )
+        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentFour')", :class="{ 'app__nav--active': current === 'ComponentFour' }" )
           .title
             | Дача
 
@@ -26,7 +26,7 @@
             keep-alive
               component( :is="current" )
           v-card.mt-4
-            v-card-title.secondary.white--text.text-xs-center( style="text-transform: capitalize" )
+            v-card-title.secondary.white--text.text-xs-center( style="text-transform: capitalize;" )
               .title( style="width: 100%" )
                 | расчет
             v-card-text
@@ -51,7 +51,7 @@
   export default {
     data () {
       return {
-        current: 'appOne'
+        current: 'ComponentOne'
       }
     },
     components: {

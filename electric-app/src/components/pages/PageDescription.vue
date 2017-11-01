@@ -79,12 +79,7 @@
 
 <script>
 export default {
-  name: 'description',
-  data () {
-    return {
-      //
-    }
-  }
+  name: 'PageDescription'
 }
 </script>
 

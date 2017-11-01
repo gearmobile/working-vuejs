@@ -21,9 +21,9 @@
 </template>
 
 <script>
-  const StepperList = () => import('../shared/StepperList.vue')
-  const RadioIn = () => import('../shared/RadioIn.vue')
-  const CheckIn = () => import('../shared/CheckIn.vue')
+  import StepperList from '../shared/StepperList.vue'
+  import RadioIn from '../shared/RadioIn.vue'
+  import CheckIn from '../shared/CheckIn.vue'
 
   export default {
     name: 'PageOne',

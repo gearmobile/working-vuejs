@@ -32,33 +32,52 @@
     
     v-layout( row )
       v-flex( xs8 )
-        | Персональная скидка на работы (10% от стоимсоит работ)
+        | Персональная скидка на работы (10% от стоимости всей работы)
       v-flex( xs4 )
-        | сумма в рублях
+        | {{ discount | currency }}
     
     v-layout( row )
       v-flex( xs8 )
         | Стоимость электромонтажных работ с учетом скидки (10%)
       v-flex( xs4 )
-        | Стоимость работы
+        | {{ costWork | currency }}
 
     v-layout( row )
       v-flex( xs8 )
         | Стоимость материалов
       v-flex( xs4 )
-        | сумма в рублях
+        | {{ costMaterial | currency }}
 
     v-layout( row )
       v-flex( xs8 )
         | Примерная сумма к оплате за работы и материалы, со скидкой
       v-flex( xs4 )
-        | сумма в рублях
+        | {{ costTotal | currency }}
 
 </template>
 
 <script>
+  import currency from '../../filters/currency'
+
   export default {
-    //
+    name: 'Output',
+    filters: {
+      currency
+    },
+    computed: {
+      discount () {
+        return this.$store.getters.getCostCommonWorkDiscount
+      },
+      costWork () {
+        return this.$store.getters.getCostCommonWorkWithDiscount
+      },
+      costMaterial () {
+        return this.$store.getters.getCostMaterialCommon
+      },
+      costTotal () {
+        return this.$store.getters.getCostTotal
+      }
+    }
   }
 </script>
 
