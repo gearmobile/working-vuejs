@@ -11,8 +11,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Квадратура помещения',
-      priceWork: 10,
-      priceMaterial: 10,
+      priceWork: 101,
+      priceMaterial: 102,
       name: 'area'
     },
     {
@@ -20,8 +20,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Розетки (220 V)',
-      priceWork: 11,
-      priceMaterial: 11,
+      priceWork: 201,
+      priceMaterial: 202,
       name: 'socket'
     },
     {
@@ -29,8 +29,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Розетки ТВ',
-      priceWork: 12,
-      priceMaterial: 12,
+      priceWork: 301,
+      priceMaterial: 302,
       name: 'tv'
     },
     {
@@ -38,8 +38,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Розетки телефон, интернет',
-      priceWork: 13,
-      priceMaterial: 13,
+      priceWork: 401,
+      priceMaterial: 402,
       name: 'phone'
     },
     {
@@ -47,8 +47,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Выключатели',
-      priceWork: 14,
-      priceMaterial: 14,
+      priceWork: 501,
+      priceMaterial: 502,
       name: 'switch'
     },
     {
@@ -56,8 +56,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Люстра, светильник, бра',
-      priceWork: 15,
-      priceMaterial: 15,
+      priceWork: 601,
+      priceMaterial: 602,
       name: 'bra'
     },
     {
@@ -65,8 +65,8 @@ const state = {
       max: 10,
       step: 1,
       title: 'Точечный свет',
-      priceWork: 16,
-      priceMaterial: 16,
+      priceWork: 701,
+      priceMaterial: 702,
       name: 'light'
     }
   ],
@@ -116,7 +116,8 @@ const mutations = {
       const orderNew = {
         name: payload.name,
         title: payload.title,
-        price: payload.price,
+        priceWork: payload.priceWork,
+        priceMaterial: payload.priceMaterial,
         quantity: payload.value
       }
       state.order.push(orderNew)
