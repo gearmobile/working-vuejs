@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import EventBus from '../../events/eventBus.js'
+
   export default {
     name: 'RadioIn',
     props: {
@@ -25,6 +27,11 @@
       material: {
         get () { return this.$store.getters.getMaterial },
         set (value) { this.$store.dispatch('setMaterial', value) }
+      }
+    },
+    watch: {
+      material () {
+        EventBus.$emit('ON_SWITCH_MATERIAL')
       }
     }
   }

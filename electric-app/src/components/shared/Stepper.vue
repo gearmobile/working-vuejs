@@ -19,6 +19,8 @@
 </template>
 
 <script>
+  import EventBus from '../../events/eventBus.js'
+
   export default {
     name: 'Stepper',
     data () {
@@ -51,6 +53,11 @@
           })
         }
       }
+    },
+    mounted () {
+      EventBus.$on('ON_SWITCH_MATERIAL', () => {
+        this.value = null
+      })
     }
   }
 </script>
