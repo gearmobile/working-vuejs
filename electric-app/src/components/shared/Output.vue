@@ -50,30 +50,37 @@
                   | Проверка работоспособности системы.
                 li
                   | Установка тв розеток.
+
+      v-layout.mb-4( row )
+        v-flex( xs12 )
+          v-card
+            v-card-text
+              h4.title
+                | Стоимость работы и материалов
   
-      v-layout( row )
-        v-flex( xs8 )
-          | Персональная скидка на работу:
-        v-flex( xs4 )
-          | {{ discount | currency }}
+              v-layout.mb-2( row )
+                v-flex( xs8 )
+                  | Персональная скидка на работу:
+                v-flex.text-xs-right( xs4 )
+                  | {{ discount | currency }}
       
-      v-layout( row )
-        v-flex( xs8 )
-          | Стоимость работы с учетом скидки:
-        v-flex( xs4 )
-          | {{ costWork | currency }}
+              v-layout.mb-2( row )
+                v-flex( xs8 )
+                  | Стоимость работы с учетом скидки:
+                v-flex.text-xs-right( xs4 )
+                  | {{ costWork | currency }}
 
-      v-layout( row )
-        v-flex( xs8 )
-          | Стоимость материалов:
-        v-flex( xs4 )
-          | {{ costMaterial | currency }}
+              v-layout.mb-2( row )
+                v-flex( xs8 )
+                  | Стоимость материалов:
+                v-flex.text-xs-right( xs4 )
+                  | {{ costMaterial | currency }}
 
-      v-layout( row )
-        v-flex( xs8 )
-          | Сумма к оплате за работу и материалы, со скидкой:
-        v-flex( xs4 )
-          | {{ costTotal | currency }}
+              v-layout( row )
+                v-flex( xs8 )
+                  | Сумма к оплате за работу и материалы, со скидкой:
+                v-flex.text-xs-right( xs4 )
+                  | {{ costTotal | currency }}
 
 </template>
 
