@@ -1,9 +1,11 @@
 <template lang="pug">
   
   v-layout.stepper( row, wrap, align-center )
+    
     v-flex( xs12, md4 )
       v-subheader.stepper__title
         | {{ point.title }}
+    
     v-flex.pr-3( xs12, md8 )
       v-text-field(
         single-line,
@@ -46,7 +48,8 @@
       },
       onDecrement () {
         if (this.value > this.point.min) {
-          this.value = (this.value || 0) - this.point.step
+          let result = this.value - this.point.step
+          this.value = result === 0 ? null : result
           this.$store.dispatch('removeOrder', {
             ...this.point,
             value: this.value
