@@ -1,14 +1,14 @@
 <template lang="pug">
 
   v-flex( xs12, md6 )
-    v-radio(
-      :label="item.label",
-      :value="item.value",
-      :name="item.value",
-      :id="item.value",
-      v-model="material",
-      hide-details
-    )
+    v-radio-group( v-model="material", :mandatory="false" )
+      v-radio(
+        :label="item.label",
+        :value="item.value",
+        :name="item.value",
+        :id="item.value",
+        hide-details
+      )
 
 </template>
 

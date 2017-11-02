@@ -5,17 +5,37 @@
     v-container
 
       // NAVIGATION SECTION
-      v-layout.amber.text-xs-center.white--text.mb-3( row, wrap )
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentOne')", :class="{ 'app__nav--active': current === 'ComponentOne' }" )
+      v-layout.teal.lighten-3.text-xs-center.white--text.mb-3( row, wrap )
+        v-flex.py-3.app__nav(
+          xs12,
+          md3,
+          @click="onSwitch('ComponentOne')",
+          :class="{ 'app__nav--active': current === 'ComponentOne' }"
+        )
           .title
             | Квартира
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentTwo')", :class="{ 'app__nav--active': current === 'ComponentTwo' }" )
+        v-flex.py-3.app__nav(
+          xs12,
+          md3,
+          @click="onSwitch('ComponentTwo')",
+          :class="{ 'app__nav--active': current === 'ComponentTwo' }"
+        )
           .title
             | Коттедж
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentThree')", :class="{ 'app__nav--active': current === 'ComponentThree' }" )
+        v-flex.py-3.app__nav(
+          xs12,
+          md3,
+          @click="onSwitch('ComponentThree')",
+          :class="{ 'app__nav--active': current === 'ComponentThree' }"
+        )
           .title
             | Офис
-        v-flex.py-3.app__nav( xs12, md3, @click="onSwitch('ComponentFour')", :class="{ 'app__nav--active': current === 'ComponentFour' }" )
+        v-flex.py-3.app__nav(
+          xs12,
+          md3,
+          @click="onSwitch('ComponentFour')",
+          :class="{ 'app__nav--active': current === 'ComponentFour' }"
+        )
           .title
             | Дача
 
@@ -30,11 +50,11 @@
               .title( style="width: 100%" )
                 | расчет
             v-card-text
-              v-btn( block, primary, @click.native="onClick()", :disabled="!disableCalcButton" )
+              v-btn( block, color="primary", @click.native="onClick()", :disabled="!disableCalcButton" )
                 v-icon( left, dark )
                   | attach_money
                 | расчитать стоимость
-              v-btn( block, secondary, @click.native="onReset()", v-if="show" )
+              v-btn( block, color="secondary", @click.native="onReset()", v-if="show" )
                 | вернуть назад
         v-flex( xs12, md6 )
           v-fade-transition( mode="out-in" )

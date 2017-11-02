@@ -1,11 +1,11 @@
 <template lang="pug">
 
-  v-card
+  v-card( color="teal lighten-4" )
     v-card-text
 
       v-layout.mb-4( row )
         v-flex( xs12 )
-          v-card
+          v-card( color="teal lighten-3" )
             v-card-text
               h4.title
                 | Перечень материалов
@@ -35,7 +35,7 @@
 
       v-layout.mb-4( row )
         v-flex( xs12 )
-          v-card
+          v-card( color="teal lighten-3" )
             v-card-text
               h4.title
                 | Перечень работ
@@ -51,9 +51,9 @@
                 li
                   | Установка тв розеток.
 
-      v-layout.mb-4( row )
+      v-layout( row )
         v-flex( xs12 )
-          v-card
+          v-card( color="teal lighten-3" )
             v-card-text
               h4.title
                 | Стоимость работы и материалов
