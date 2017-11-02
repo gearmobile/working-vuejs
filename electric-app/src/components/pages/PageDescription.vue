@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import PageDescriptionItems from '../shared/PageDescriptionItem.vue'
+  import DescriptionItem from '../shared/DescriptionItem.vue'
 
   export default {
     name: 'PageDescription',
@@ -33,7 +33,7 @@
       }
     },
     components: {
-      ComponentDescription: PageDescriptionItems
+      ComponentDescription: DescriptionItem
     }
   }
 </script>

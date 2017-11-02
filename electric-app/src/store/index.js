@@ -133,7 +133,8 @@ const state = {
   material: 'brick',
   additional: [],
   discount: 10,
-  isCalculation: false
+  isCalculation: false,
+  isStart: false
 }
 
 const mutations = {
@@ -220,10 +221,6 @@ const getters = {
   getDescription (state) {
     return state.description
   },
-  getMaterialRatio (state, getters) { // коэффициент трудозатрат в зависимости от материала
-    const result = state.selectMaterial.find(el => el.value === getters.getMaterial)
-    return result.ratio
-  },
   // ------------------------
   // СТОИМОСТЬ МАТЕРИАЛОВ
   // ------------------------
@@ -247,6 +244,10 @@ const getters = {
   // ------------------------
   // СТОИОМСТЬ РАБОТ
   // ------------------------
+  getMaterialRatio (state, getters) { // коэффициент трудозатрат в зависимости от материала
+    const result = state.selectMaterial.find(el => el.value === getters.getMaterial)
+    return result.ratio
+  },
   getCostMaterialMainWork (state, getters) { // стоимость работы с основными материалами
     const result = state.order.reduce((total, currentIndex) => {
       return total + currentIndex.quantity * (currentIndex.priceWork * getters.getMaterialRatio)
@@ -277,8 +278,11 @@ const getters = {
     return getters.getCostMaterialCommon + getters.getCostCommonWorkWithDiscount
   },
   // ------------------------
-  //
+  // ОТКЛЮЧИТЬ КНОПКУ ЕСЛИ ВВОДА НЕТ
   // ------------------------
+  getCheckInputs (state) {
+    return state.order.length !== 0
+  },
   getSupport (state) {
     return state.selectAdditional
   },

@@ -30,7 +30,7 @@
               .title( style="width: 100%" )
                 | расчет
             v-card-text
-              v-btn( block, primary, @click.native="onClick()" )
+              v-btn( block, primary, @click.native="onClick()", :disabled="!disableCalcButton" )
                 v-icon( left, dark )
                   | attach_money
                 | расчитать стоимость
@@ -86,6 +86,9 @@
     computed: {
       show () {
         return this.$store.getters.getStatus
+      },
+      disableCalcButton () {
+        return this.$store.getters.getCheckInputs
       }
     }
   }

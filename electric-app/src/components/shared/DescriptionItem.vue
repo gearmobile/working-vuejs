@@ -15,7 +15,7 @@
 
 <script>
   export default {
-    name: 'PageDescriptionItem',
+    name: 'DescriptionItem',
     props: {
       item: {
         type: Object,
