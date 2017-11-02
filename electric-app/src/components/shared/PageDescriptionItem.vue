@@ -9,7 +9,7 @@
           | {{ item.title }}
         v-list-tile-sub-title
           | {{ item.subtitle }}
-    v-divider
+    v-divider( v-if="!show" )
 
 </template>
 
@@ -24,11 +24,18 @@
       itemIndex: {
         type: Number,
         default () { return null }
+      },
+      itemDividerShow: {
+        type: Number,
+        default () { return null }
       }
     },
     computed: {
       itemNumber () {
         return this.itemIndex + 1
+      },
+      show () {
+        return this.itemNumber === this.itemDividerShow
       }
     }
   }

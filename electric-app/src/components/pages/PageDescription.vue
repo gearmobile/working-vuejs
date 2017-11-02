@@ -18,7 +18,7 @@
       // ------------------------------
       // DESCRIPTION ITEMS
       // ------------------------------
-      component-description( v-for="(item ,index) in items", :key="index", :item="item", :itemIndex="index" )
+      component-description( v-for="(item ,index) in items", :key="index", :item="item", :itemIndex="index", :itemDividerShow="items.length" )
 
 </template>
 
