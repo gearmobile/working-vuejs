@@ -155,10 +155,10 @@ const mutations = {
   },
   'REMOVE_ORDER' (state, payload) {
     const sample = state.order.find(el => el.name === payload.name)
-    if (sample && sample.quantity > payload.value) {
+    if (sample.quantity > 1) {
       sample.quantity -= payload.step
     } else {
-      state.order.splice(state.order.indexOf(payload), 1) // => not working
+      state.order.splice(state.order.indexOf(payload), 1)
     }
   },
   'SET_MATERIAL' (state, payload) {
