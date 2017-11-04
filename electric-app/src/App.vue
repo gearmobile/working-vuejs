@@ -41,7 +41,7 @@
 
       // OUTPUT SECTION
       v-layout( row, wrap )
-        v-flex( xs12, md6 )
+        v-flex.pr-2( xs12, md6 )
           v-fade-transition( mode="out-in" )
             keep-alive
               component( :is="current" )
@@ -56,7 +56,7 @@
                 | расчитать стоимость
               v-btn( block, color="secondary", @click.native="onReset()", v-if="show" )
                 | вернуть назад
-        v-flex( xs12, md6 )
+        v-flex.pl-2( xs12, md6 )
           v-fade-transition( mode="out-in" )
             keep-alive
               component-description( v-if="!show" )
