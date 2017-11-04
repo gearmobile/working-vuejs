@@ -68,19 +68,21 @@
 <style lang="stylus">
 
   .stepper
-    margin-bottom 1rem
+    margin-bottom 1.8rem
 
     &:last-child
       margin-bottom 0
 
-    & .icon
+    & .material-icons
       cursor pointer !important
       background-color #008080 !important
-      color white !important
 
       &:hover
         background-color #26a69a !important
         transition background-color .2s
+    
+    & .application--light .icon.icon--disabled
+      color white !important
 
     & .input-group
       padding .8rem .8rem .8rem 0

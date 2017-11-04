@@ -13,9 +13,9 @@
         component-stepper-list
 
       // ADDITIONAL
-      v-layout( row, wrap )
-        component-check( :item="items[0]" )
-        component-check( :item="items[2]" )
+      v-layout.mt-4( row, wrap )
+        component-check.mb-2( :item="items[0]" )
+        component-check.mb-2( :item="items[2]" )
         component-check( :item="items[3]" )
 
 </template>
