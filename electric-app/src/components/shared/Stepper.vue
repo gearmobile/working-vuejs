@@ -82,6 +82,9 @@
         background-color #26a69a !important
         transition background-color .2s
 
+    & .input-group
+      padding .8rem .8rem .8rem 0
+
     & .input-group__prepend-icon
       justify-content center !important
 
@@ -89,7 +92,7 @@
       display none
 
     & .input-group__input
-      padding .2rem !important
+      padding .2rem .6rem !important
       border .1rem solid #008080
 
     & input
