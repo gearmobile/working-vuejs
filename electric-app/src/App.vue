@@ -83,7 +83,7 @@
   const Output = () => import('./components/shared/Output.vue')
   const Alert = () => import('./components/shared/Alert.vue')
 
-  // import EventBus from './events/eventBus'
+  import EventBus from './events/eventBus'
 
   export default {
     data () {
@@ -104,6 +104,8 @@
       onSwitch (value) {
         this.current = value
         this.$store.dispatch('clearOrder')
+        this.$store.dispatch('clearAdditional')
+        EventBus.$emit('ON_SWITCH_MATERIAL')
       }
       // onClick () {
       //   this.$store.dispatch('setShow')

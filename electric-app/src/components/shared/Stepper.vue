@@ -110,5 +110,7 @@
       padding 0 .6rem
       text-align center
       color white !important
+      font-size 1.4rem
+      font-weight 700
 
 </style>
