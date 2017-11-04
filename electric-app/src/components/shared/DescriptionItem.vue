@@ -1,16 +1,16 @@
 <template lang="pug">
 
-
-      v-list.teal.lighten-2( three-line )
-        v-list-tile
-          v-list-tile-avatar
+  v-card.mb-2( color="teal lighten-2" )
+    v-container( fluid )
+      v-layout( row )
+        v-flex.pr-2( xs1 )
+          .display-2.white--text
             | {{ itemNumber }}
-          v-list-tile-content
-            v-list-tile-title.white--text
-              | {{ item.title }}
-            v-list-tile-sub-title
-              | {{ item.subtitle }}
-        v-divider( v-if="!show" )
+        v-flex.pl-2( xs11 )
+          .headline.white--text
+            | {{ item.title }}
+          .body-1
+            | {{ item.subtitle }}
 
 </template>
 
@@ -34,9 +34,6 @@
     computed: {
       itemNumber () {
         return this.itemIndex + 1
-      },
-      show () {
-        return this.itemNumber === this.itemDividerShow
       }
     }
   }
