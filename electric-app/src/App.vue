@@ -61,6 +61,9 @@
             keep-alive
               component-description( v-if="!show" )
               component-output( v-else )
+    
+    // ALERT COMPONENT
+    component-alert
 
 </template>
 
@@ -71,6 +74,7 @@
   const Four = () => import('./components/pages/PageFour.vue')
   const Description = () => import('./components/pages/PageDescription.vue')
   const Output = () => import('./components/shared/Output.vue')
+  const Alert = () => import('./components/shared/Alert.vue')
 
   import EventBus from './events/eventBus'
 
@@ -86,7 +90,8 @@
       ComponentOne: One,
       ComponentTwo: Two,
       ComponentThree: Three,
-      ComponentFour: Four
+      ComponentFour: Four,
+      ComponentAlert: Alert
     },
     methods: {
       onSwitch (value) {

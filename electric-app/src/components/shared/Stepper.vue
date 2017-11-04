@@ -11,11 +11,11 @@
         v-flex( xs12, md8 )
           v-text-field(
             single-line,
-            prepend-icon='remove',
-            append-icon='add',
+            prepend-icon="remove",
+            append-icon="add",
             :append-icon-cb="(() => onIncrement())",
             :prepend-icon-cb="(() => onDecrement())",
-            v-model='value',
+            v-model="value",
             hide-details,
             disabled
           )
@@ -46,6 +46,11 @@
             ...this.point,
             value: this.value
           })
+        } else {
+          EventBus.$emit('eventValueMax', {
+            text: 'Вы ввели максимальное значение!',
+            color: 'error'
+          })
         }
       },
       onDecrement () {
@@ -55,6 +60,11 @@
           this.$store.dispatch('removeOrder', {
             ...this.point,
             value: this.value
+          })
+        } else {
+          EventBus.$emit('eventValueMin', {
+            text: 'Значение не может быть меньше нуля!',
+            color: 'info'
           })
         }
       }
@@ -78,18 +88,16 @@
     & .material-icons
       cursor pointer !important
       background-color teal !important
-      padding .1rem !important
 
       &:hover
         background-color #26a69a !important
         transition background-color .2s
 
-    // & .input-group
-    //   padding .8rem .8rem .8rem 0
+    & .input-group
+      padding 0
 
     & .input-group__prepend-icon
       justify-content center !important
-      padding 0 !important
 
     & .input-group__details
       display none
@@ -98,9 +106,9 @@
       padding .2rem .6rem !important
       border .1rem solid white
 
-    // & input
-    //   padding 0 .6rem
-    //   text-align center
-    //   color #009688 !important
+    & input
+      padding 0 .6rem
+      text-align center
+      color white !important
 
 </style>
