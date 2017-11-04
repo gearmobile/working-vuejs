@@ -1,10 +1,10 @@
 <template lang="pug">
 
-  v-card.two( color="teal lighten-4" )
+  v-card( color="teal lighten-4" )
     v-card-text
 
       // HEADER
-      v-layout( row )
+      v-layout( row, wrap )
         component-radio( :item="radios[0]" )
         component-radio( :item="radios[1]" )
         component-radio( :item="radios[2]" )
@@ -44,7 +44,3 @@
     }
   }
 </script>
-
-<style lang="stylus" scoped>
-  //
-</style>

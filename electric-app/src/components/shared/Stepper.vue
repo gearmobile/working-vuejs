@@ -5,7 +5,7 @@
       v-layout( row, fluid, wrap )
   
         v-flex( xs12, md4 )
-          v-subheader.stepper__title
+          v-subheader.point__title
             | {{ point.title }}
         
         v-flex( xs12, md8 )
@@ -110,7 +110,7 @@
       padding 0 .6rem
       text-align center
       color white !important
-      font-size 1.4rem
+      font-size 1.3rem
       font-weight 700
 
 </style>

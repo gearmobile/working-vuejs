@@ -1,10 +1,10 @@
 <template lang="pug">
 
-  v-card.one( color="teal lighten-4" )
+  v-card( color="teal lighten-4" )
     v-card-text
 
       // HEADER
-      v-layout( row )
+      v-layout( row, wrap )
         component-radio( :item="radios[0]" )
         component-radio( :item="radios[1]" )
 
