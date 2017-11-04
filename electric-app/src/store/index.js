@@ -281,7 +281,7 @@ const getters = {
   // ОТКЛЮЧИТЬ КНОПКУ ЕСЛИ ВВОДА НЕТ
   // ------------------------
   getCheckInputs (state) {
-    return state.order.length !== 0
+    return state.order.length !== 0 || state.additional.length !== 0
   },
   getSupport (state) {
     return state.selectAdditional

@@ -41,26 +41,33 @@
 
       // OUTPUT SECTION
       v-layout( row, wrap )
+
+        // LEFT SECTION OUTPUT
         v-flex.pr-2( xs12, md6 )
+
+          // MIAN OUTPUT SECTION
           v-fade-transition( mode="out-in" )
             keep-alive
               component( :is="current" )
-          v-card.mt-4
-            v-card-title.secondary.white--text.text-xs-center( style="text-transform: capitalize;" )
-              .title( style="width: 100%" )
-                | расчет
-            v-card-text
-              v-btn( block, color="primary", @click.native="onClick()", :disabled="!disableCalcButton" )
-                v-icon( left, dark )
-                  | attach_money
-                | расчитать стоимость
-              v-btn( block, color="secondary", @click.native="onReset()", v-if="show" )
-                | вернуть назад
+
+          // CONTROL SECTION
+          //- v-card.mt-4
+          //-   v-card-title.secondary.white--text.text-xs-center( style="text-transform: capitalize;" )
+          //-     .title( style="width: 100%" )
+          //-       | расчет
+          //-   v-card-text
+          //-     v-btn( block, color="primary", @click.native="onClick()", :disabled="!disableCalcButton" )
+          //-       v-icon( left, dark )
+          //-         | attach_money
+          //-       | расчитать стоимость
+          //-     v-btn( block, color="secondary", @click.native="onReset()", v-if="show", slot="activator" )
+          //-       | вернуть назад
+
+        // RIGHT SECTION OUTPUT
         v-flex.pl-2( xs12, md6 )
-          v-fade-transition( mode="out-in" )
-            keep-alive
-              component-description( v-if="!show" )
-              component-output( v-else )
+          v-slide-x-reverse-transition( mode="out-in" )
+            component-description( v-if="!show" )
+            component-output( v-else )
     
     // ALERT COMPONENT
     component-alert
@@ -76,7 +83,7 @@
   const Output = () => import('./components/shared/Output.vue')
   const Alert = () => import('./components/shared/Alert.vue')
 
-  import EventBus from './events/eventBus'
+  // import EventBus from './events/eventBus'
 
   export default {
     data () {
@@ -97,22 +104,22 @@
       onSwitch (value) {
         this.current = value
         this.$store.dispatch('clearOrder')
-      },
-      onClick () {
-        this.$store.dispatch('setShow')
-      },
-      onReset () {
-        EventBus.$emit('ON_SWITCH_MATERIAL')
-        this.$store.dispatch('clearOrder')
-        this.$store.dispatch('clearAdditional')
-        this.$store.dispatch('setShow')
       }
+      // onClick () {
+      //   this.$store.dispatch('setShow')
+      // },
+      // onReset () {
+      //   EventBus.$emit('ON_SWITCH_MATERIAL')
+      //   this.$store.dispatch('clearOrder')
+      //   this.$store.dispatch('clearAdditional')
+      //   this.$store.dispatch('setShow')
+      // }
     },
     computed: {
+      // show () {
+      //   return this.$store.getters.getStatus
+      // },
       show () {
-        return this.$store.getters.getStatus
-      },
-      disableCalcButton () {
         return this.$store.getters.getCheckInputs
       }
     }

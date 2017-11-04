@@ -38,6 +38,7 @@
 </script>
 
 <style lang="stylus" scoped>
-  //
+  .input-group__details
+    display none
 </style>
 
