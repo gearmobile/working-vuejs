@@ -1,22 +1,24 @@
 <template lang="pug">
   
-  v-layout.stepper( row, wrap, align-center )
-    
-    v-flex( xs12, md4 )
-      v-subheader.stepper__title
-        | {{ point.title }}
-    
-    v-flex( xs12, md8 )
-      v-text-field(
-        single-line,
-        prepend-icon='remove',
-        append-icon='add',
-        :append-icon-cb="(() => onIncrement())",
-        :prepend-icon-cb="(() => onDecrement())",
-        v-model='value',
-        hide-details,
-        disabled
-      )
+  v-card.point( color="teal lighten-3" )
+    v-card-text
+      v-layout( row, fluid, wrap )
+  
+        v-flex( xs12, md4 )
+          v-subheader.stepper__title
+            | {{ point.title }}
+        
+        v-flex( xs12, md8 )
+          v-text-field(
+            single-line,
+            prepend-icon='remove',
+            append-icon='add',
+            :append-icon-cb="(() => onIncrement())",
+            :prepend-icon-cb="(() => onDecrement())",
+            v-model='value',
+            hide-details,
+            disabled
+          )
 
 </template>
 
@@ -24,7 +26,7 @@
   import EventBus from '../../events/eventBus.js'
 
   export default {
-    name: 'Stepper',
+    name: 'Point',
     data () {
       return {
         value: null
@@ -67,7 +69,7 @@
 
 <style lang="stylus">
 
-  .stepper
+  .point
     margin-bottom 1.8rem
 
     &:last-child
@@ -75,31 +77,30 @@
 
     & .material-icons
       cursor pointer !important
-      background-color #008080 !important
+      background-color teal !important
+      padding .1rem !important
 
       &:hover
         background-color #26a69a !important
         transition background-color .2s
-    
-    & .application--light .icon.icon--disabled
-      color white !important
 
-    & .input-group
-      padding .8rem .8rem .8rem 0
+    // & .input-group
+    //   padding .8rem .8rem .8rem 0
 
     & .input-group__prepend-icon
       justify-content center !important
+      padding 0 !important
 
     & .input-group__details
       display none
 
     & .input-group__input
       padding .2rem .6rem !important
-      border .1rem solid #008080
+      border .1rem solid white
 
-    & input
-      padding 0 .6rem
-      text-align center
-      color #009688 !important
+    // & input
+    //   padding 0 .6rem
+    //   text-align center
+    //   color #009688 !important
 
 </style>

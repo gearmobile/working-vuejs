@@ -1,7 +1,6 @@
 <template lang="pug">
   
   v-card
-    
     v-card-title
       div
         .title.mb-2.teal--text

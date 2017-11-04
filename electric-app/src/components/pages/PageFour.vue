@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card.four
+  v-card.four( color="teal lighten-4" )
     v-card-text
 
       // HEADER

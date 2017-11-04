@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card.two
+  v-card.two( color="teal lighten-4" )
     v-card-text
 
       // HEADER
