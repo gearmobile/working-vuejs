@@ -47,7 +47,7 @@
         v-flex( xs12, md6 )
 
           // MAIN OUTPUT SECTION
-          v-fade-transition( mode="out-in" )
+          v-slide-x-reverse-transition( mode="out-in" )
             keep-alive
               component( :is="current" )
 
