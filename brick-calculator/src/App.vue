@@ -22,7 +22,7 @@
     component-building
 
     // SECTION OPENING
-    v-container( tag="section" )
+    v-container( tag="section", grid-list-lg )
       h4.title.indigo--text.mb-4
         | Добавить оконные и дверные проемы
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )

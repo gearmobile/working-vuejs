@@ -1,7 +1,7 @@
 <template lang="pug">
   
   
-  v-card.mb-4( tag="section", color="teal lighten-4" )
+  v-card( tag="section", color="teal lighten-4" )
     
     v-card-text
       

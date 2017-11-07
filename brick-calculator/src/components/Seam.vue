@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card( tag="section" )
+  v-card( tag="section", color="teal lighten-4" )
     v-card-text
       h4.subheading.teal--text.mb-2
         | Выберите тип шва кирпичной кладки:
