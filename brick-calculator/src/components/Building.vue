@@ -1,68 +1,52 @@
 <template lang="pug">
 
-  v-container( tag="section" )
+  v-card.mb-4( color="teal lighten-3" )
+    v-card-text
 
-    v-layout.mb-4( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        h4.title.indigo--text
-          | Добавить размеры строения
+      h4.title.white--text
+        | Добавить размеры строения
 
-    // Add Building Length, m
-    v-layout( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        h4.subheading.teal--text.mb-2
-          | Введите длину строения, м
-    v-layout.mb-4( row, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        v-text-field(
-          type="text",
-          :counter="maskCounter",
-          :hint="hintText",
-          persistent-hint,
-          name="length",
-          id="length",
-          label="Длина строения, м",
-          v-model.trim="length",
-          :mask="mask"
-        )
+      v-layout( row, tag="section" )
+        v-flex( xs12 )
+          v-text-field(
+            type="text",
+            :counter="maskCounter",
+            :hint="hintText",
+            persistent-hint,
+            name="length",
+            id="length",
+            label="Длина строения, м",
+            v-model.trim="length",
+            :mask="mask"
+          )
 
-    // Add Building Width, m
-    v-layout( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        h4.subheading.teal--text.mb-2
-          | Введите ширину строения, м
-    v-layout.mb-4( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        v-text-field(
-          type="text",
-          :counter="maskCounter",
-          :hint="hintText",
-          persistent-hint,
-          name="width",
-          id="width",
-          label="Ширина строения, м",
-          v-model.trim="width",
-          :mask="mask"
-        )
+      v-layout( row tag="section" )
+        v-flex( xs12 )
+          v-text-field(
+            type="text",
+            :counter="maskCounter",
+            :hint="hintText",
+            persistent-hint,
+            name="width",
+            id="width",
+            label="Ширина строения, м",
+            v-model.trim="width",
+            :mask="mask"
+          )
 
-    // Add Building Height, m
-    v-layout( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        h4.subheading.teal--text.mb-2
-          | Введите высоту строения, м
-    v-layout.mb-4( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        v-text-field(
-          type="text",
-          :counter="maskCounter",
-          :hint="hintText",
-          persistent-hint,
-          name="height",
-          id="height",
-          label="Высота строения, м",
-          v-model.trim="height",
-          :mask="mask"
-        )
+      v-layout( row tag="section" )
+        v-flex( xs12 )
+          v-text-field(
+            type="text",
+            :counter="maskCounter",
+            :hint="hintText",
+            persistent-hint,
+            name="height",
+            id="height",
+            label="Высота строения, м",
+            v-model.trim="height",
+            :mask="mask"
+          )
 
 </template>
 

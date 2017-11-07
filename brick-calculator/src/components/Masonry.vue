@@ -1,8 +1,8 @@
 <template lang="pug">
 
-  v-card( tag="section", color="teal lighten-4" )
+  v-card.mb-4( tag="section", color="teal lighten-3" )
     v-card-text
-      h4.subheading.teal--text.mb-2
+      h4.title.white--text.mb-2
         | Выберите тип кирпичной кладки:
       v-select(
         single-line,
