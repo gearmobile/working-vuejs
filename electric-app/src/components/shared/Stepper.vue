@@ -64,7 +64,7 @@
         } else {
           EventBus.$emit('eventValueMin', {
             text: 'Значение не может быть меньше нуля!',
-            color: 'info'
+            color: 'teal darken-1'
           })
         }
       }
