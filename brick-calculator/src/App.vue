@@ -1,51 +1,44 @@
 <template lang="pug">
 
   v-app( light)
+    
+    // COMPONENT ALERT
+    component-alert
 
-    v-container( tag="section" )
-
-      component-alert
-
-        v-layout.mb-4( row, wrap, tag="section" )
-          v-flex( xs12, md8, offset-md2, tag="article" )
-            h4.title.indigo--text
-              | Выбрать тип кирпича и тип кладки
-
-        // SECTION MASONRY
-        component-masonry
-
-        // SECTION SEAM
-        component-seam
-
-        // SECTION BRICK
-        component-brick
-
-    // SECTION BUILDING
-    component-building
-
-    // SECTION OPENING
+    // CONTAINER
     v-container( tag="section", grid-list-lg )
-      v-card( color="teal lighten-3" )
-        v-card-text
-          h4.title.white--text.mb-4
-            | Добавить оконные и дверные проемы
-          component-opening( v-for="(component, index) in components", :key="index", :id="index" )
-          v-flex.text-xs-right( xs12, tag="section" )
-            v-btn( color="teal lighten-2", dark, @click.native="onClick()" )
-              | добавить проем
 
-    // SECTION OUTPUT
-    component-output
+      // SECTION TITLE
+      component-title
+
+      // SECTION MASONRY
+      component-masonry
+
+      // SECTION SEAM
+      component-seam
+
+      // SECTION BRICK
+      component-brick
+
+      // SECTION BUILDING
+      component-building
+
+      // SECTION OPENING
+      component-opening
+
+      // SECTION OUTPUT
+      component-output
 
 </template>
 
 <script>
   import { mapGetters } from 'vuex'
+  import Title from './components/Title.vue'
   import Masonry from './components/Masonry.vue'
   import Seam from './components/Seam.vue'
   import Brick from './components/Brick.vue'
   import Building from './components/Building.vue'
-  import Opening from './components/Opening.vue'
+  import Opening from './components/OpeningWrapper.vue'
   import Output from './components/Output.vue'
   import Alert from './components/Alert.vue'
 
@@ -57,19 +50,13 @@
       ComponentBuilding: Building,
       ComponentOpening: Opening,
       ComponentOutput: Output,
-      ComponentAlert: Alert
-    },
-    methods: {
-      onClick () {
-        this.$store.dispatch('addComponent')
-      }
+      ComponentAlert: Alert,
+      ComponentTitle: Title
     },
     computed: {
       ...mapGetters({
         mask: 'getMask',
-        components: 'getOpening',
         maskCounter: 'getMaskCounter'
-        // alertShow: 'getOpeningValueMax'
       })
     }
   }

@@ -1,51 +1,48 @@
 <template lang="pug">
   
-  v-container( tag="section" )
-    
-    v-layout.mb-4( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        h4.title.indigo--text
-          | Вывод:
-    
-    v-layout( row, wrap, tag="section" )
-      v-flex( xs12, md8, offset-md2, tag="article" )
-        
-        v-layout( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            | Количество кирпича, шт
-        v-layout.mb-4( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            h4.subheading.mb-0
-              | {{ quantity }}
-        
-        v-layout( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            | Общая площадь, кв. м.
-        v-layout.mb-4( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            h4.subheading.mb-0
-              | {{ area }}
-        
-        v-layout( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            | Общая стоимость, руб.
-        v-layout.mb-4( row, wrap, tag="section" )
-          v-flex( xs12, md4, tag="article" )
-            h4.subheading.mb-0
-              | {{ cost }}
+
+  v-card( color="teal lighten-3" )
+    v-card-text
+
+      h4.title.white--text.mb-4
+        | Вывод:
+
+      v-layout( row, wrap, tag="section" )
+        v-flex( xs12, md6 )
+          | Количество кирпича, шт
+        v-flex( xs12, md6 )
+          | {{ quantity }}
+      
+      v-layout( row, wrap )
+        v-flex( xs12, md6 )
+          | Общая площадь, кв. м.
+        v-flex( xs12, md6 )
+          | {{ area }}
+      
+      v-layout( row, wrap, tag="section" )
+        v-flex( xs12, md6 )
+          | Общая стоимость, руб.
+        v-flex( xs12, md6 )
+          | {{ cost }}
 
 </template>
 
 <script>
-  import { mapGetters } from 'vuex'
   export default {
     name: 'Output',
     computed: {
-      ...mapGetters({
-        quantity: 'getBricksQuantity',
-        area: 'getAreaCommon',
-        cost: 'getBricksCost'
-      })
+      quantity () {
+        const result = this.$store.getters.getBricksQuantity
+        return result === 0 ? null : result
+      },
+      area () {
+        const result = this.$store.getters.getAreaCommon
+        return result === 0 ? null : result
+      },
+      cost () {
+        const result = this.$store.getters.getBricksCost
+        return result === 0 ? null : result
+      }
     }
   }
 </script>
