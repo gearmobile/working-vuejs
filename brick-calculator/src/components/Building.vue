@@ -1,19 +1,19 @@
 <template lang="pug">
 
-  v-container
+  v-container( tag="section" )
 
-    v-layout.mb-4( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout.mb-4( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         h4.title.indigo--text
           | Добавить размеры строения
 
     // Add Building Length, m
-    v-layout( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         h4.subheading.teal--text.mb-2
           | Введите длину строения, м
-    v-layout.mb-4( row )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout.mb-4( row, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         v-text-field(
           type="text",
           :counter="maskCounter",
@@ -27,12 +27,12 @@
         )
 
     // Add Building Width, m
-    v-layout( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         h4.subheading.teal--text.mb-2
           | Введите ширину строения, м
-    v-layout.mb-4( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout.mb-4( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         v-text-field(
           type="text",
           :counter="maskCounter",
@@ -46,12 +46,12 @@
         )
 
     // Add Building Height, m
-    v-layout( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         h4.subheading.teal--text.mb-2
           | Введите высоту строения, м
-    v-layout.mb-4( row, wrap )
-      v-flex( xs12, md8, offset-md2 )
+    v-layout.mb-4( row, wrap, tag="section" )
+      v-flex( xs12, md8, offset-md2, tag="article" )
         v-text-field(
           type="text",
           :counter="maskCounter",

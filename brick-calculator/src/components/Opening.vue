@@ -1,6 +1,9 @@
 <template lang="pug">
-  v-layout.mb-4
-    v-flex.mx-2( xs12, sm4 )
+  
+  
+  v-layout.mb-4( tag="section" )
+    
+    v-flex.mx-2( xs12, sm4, tag="article" )
       v-text-field(
         name="width",
         v-model="width",
@@ -11,7 +14,8 @@
         persistent-hint,
         :counter="maskCounter"
       )
-    v-flex.mx-2( xs12, sm4 )
+    
+    v-flex.mx-2( xs12, sm4, tag="article" )
       v-text-field(
         name="height",
         v-model="height",
@@ -22,9 +26,11 @@
         persistent-hint,
         :counter="maskCounter"
       )
-    v-flex.mx-2( xs12, sm4 )
+    
+    v-flex.mx-2( xs12, sm4, tag="article" )
       v-btn.primary( @click="onClick()" )
         | удалить
+
 </template>
 
 <script>

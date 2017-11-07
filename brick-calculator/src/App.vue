@@ -2,10 +2,10 @@
 
   v-app( light)
 
-    v-container
+    v-container( tag="section" )
 
-        v-layout.mb-4( row, wrap )
-          v-flex( xs12, md8, offset-md2 )
+        v-layout.mb-4( row, wrap, tag="section" )
+          v-flex( xs12, md8, offset-md2, tag="article" )
             h4.title.indigo--text
               | Выбрать тип кирпича и тип кладки
 
@@ -22,16 +22,16 @@
     component-building
 
     // SECTION OPENING
-    v-container
-      v-layout( row, wrap )
-        v-flex.mb-4( xs12, md8, offset-md2 )
+    v-container( tag="section" )
+      v-layout( row, wrap, tag="section" )
+        v-flex.mb-4( xs12, md8, offset-md2, tag="article" )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
-      v-layout( row, wrap )
-        v-flex.mb-4( xs12, md8, offset-md2 )
+      v-layout( row, wrap, tag="section" )
+        v-flex.mb-4( xs12, md8, offset-md2, tag="article" )
           component-opening( v-for="(component, index) in components", :key="index", :id="index" )
-      v-layout( row, wrap )
-        v-flex( xs12, md8, offset-md2 )
+      v-layout( row, wrap, tag="section" )
+        v-flex( xs12, md8, offset-md2, tag="article" )
           v-btn.primary( @click="onClick()" )
             | добавить проем
 
