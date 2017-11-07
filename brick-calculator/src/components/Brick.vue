@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  v-layout.mb-4( row, wrap, tag="section" )
-    v-flex( xs12, md8, offset-md2, tag="article" )
+  v-card( tag="section" )
+    v-card-text
       h4.subheading.teal--text.mb-2
         | Выберите тип кирпича:
       v-select( single-line,

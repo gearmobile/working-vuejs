@@ -24,15 +24,15 @@
     // SECTION OPENING
     v-container( tag="section" )
       v-layout( row, wrap, tag="section" )
-        v-flex.mb-4( xs12, md8, offset-md2, tag="article" )
+        v-flex.mb-4( xs12 tag="article" )
           h4.title.indigo--text
             | Добавить оконные и дверные проемы
       v-layout( row, wrap, tag="section" )
-        v-flex.mb-4( xs12, md8, offset-md2, tag="article" )
+        v-flex.mb-4( xs12, tag="article" )
           component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       v-layout( row, wrap, tag="section" )
-        v-flex( xs12, md8, offset-md2, tag="article" )
-          v-btn.primary( @click="onClick()" )
+        v-flex( xs12, tag="article" )
+          v-btn( color="primary", @click="onClick()" )
             | добавить проем
 
     // SECTION OUTPUT

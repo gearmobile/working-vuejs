@@ -1,35 +1,36 @@
 <template lang="pug">
   
   
-  v-layout.mb-4( tag="section" )
+  v-card( tag="section" )
+    v-card-text
     
-    v-flex.mx-2( xs12, sm4, tag="article" )
-      v-text-field(
-        name="width",
-        v-model="width",
-        id="width",
-        label="Ширина, м",
-        :mask="mask",
-        :hint="hintText",
-        persistent-hint,
-        :counter="maskCounter"
-      )
+      v-flex( xs12, tag="article" )
+        v-text-field(
+          name="width",
+          v-model="width",
+          id="width",
+          label="Ширина, м",
+          :mask="mask",
+          :hint="hintText",
+          persistent-hint,
+          :counter="maskCounter"
+        )
     
-    v-flex.mx-2( xs12, sm4, tag="article" )
-      v-text-field(
-        name="height",
-        v-model="height",
-        id="height",
-        label="Длина, м",
-        :mask="mask",
-        :hint="hintText",
-        persistent-hint,
-        :counter="maskCounter"
-      )
+      v-flex( xs12, tag="article" )
+        v-text-field(
+          name="height",
+          v-model="height",
+          id="height",
+          label="Длина, м",
+          :mask="mask",
+          :hint="hintText",
+          persistent-hint,
+          :counter="maskCounter"
+        )
     
-    v-flex.mx-2( xs12, sm4, tag="article" )
-      v-btn.primary( @click="onClick()" )
-        | удалить
+      v-flex( xs12, tag="article" )
+        v-btn( color="primary", @click="onClick()" )
+          | удалить
 
 </template>
 
