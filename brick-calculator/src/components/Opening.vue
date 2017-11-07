@@ -44,7 +44,13 @@
 
   export default {
     name: 'Opening',
-    props: ['id'], // TODO => add verifying support
+    props: {
+      id: {
+        type: Number,
+        required: true,
+        default () { return null }
+      }
+    },
     computed: {
       ...mapGetters({
         mask: 'getMaskOpening',
