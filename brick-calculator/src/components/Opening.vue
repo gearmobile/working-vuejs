@@ -18,6 +18,7 @@
               :mask="mask",
               :hint="hintText",
               persistent-hint,
+              color="teal darken-2",
               :counter="maskCounter"
             )
         
@@ -30,6 +31,7 @@
               :mask="mask",
               :hint="hintText",
               persistent-hint,
+              color="teal darken-2",
               :counter="maskCounter"
             )
         

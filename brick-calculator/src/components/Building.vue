@@ -17,6 +17,7 @@
             id="length",
             label="Длина строения, м",
             v-model.trim="length",
+            color="teal darken-2",
             :mask="mask"
           )
 
@@ -31,6 +32,7 @@
             id="width",
             label="Ширина строения, м",
             v-model.trim="width",
+            color="teal darken-2",
             :mask="mask"
           )
 
@@ -45,6 +47,7 @@
             id="height",
             label="Высота строения, м",
             v-model.trim="height",
+            color="teal darken-2",
             :mask="mask"
           )
 

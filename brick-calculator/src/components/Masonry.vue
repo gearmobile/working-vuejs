@@ -10,6 +10,7 @@
         :items="items",
         item-text="name",
         item-value="value",
+        color="teal darken-2",
         v-model="item"
       )
 
