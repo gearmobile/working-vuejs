@@ -9,25 +9,39 @@
     v-container( tag="section", grid-list-lg )
 
       // SECTION TITLE
-      component-title
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-title
 
       // SECTION MASONRY
-      component-masonry
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-masonry
 
       // SECTION SEAM
-      component-seam
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-seam
 
       // SECTION BRICK
-      component-brick
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-brick
 
       // SECTION BUILDING
-      component-building
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-building
 
       // SECTION OPENING
-      component-opening
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-opening
 
       // SECTION OUTPUT
-      component-output
+      v-layout( row )
+        v-flex( xs12, md8, offset-md2 )
+          component-output
 
 </template>
 
