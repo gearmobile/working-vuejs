@@ -7,41 +7,43 @@
 
     // CONTAINER
     v-container( tag="section", grid-list-lg )
+      v-card( color="teal lighten-4" )
+        v-card-text
 
-      // SECTION TITLE
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-title
+          // SECTION TITLE
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-title
 
-      // SECTION MASONRY
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-masonry
+          // SECTION MASONRY
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-masonry
 
-      // SECTION SEAM
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-seam
+          // SECTION SEAM
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-seam
 
-      // SECTION BRICK
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-brick
+          // SECTION BRICK
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-brick
 
-      // SECTION BUILDING
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-building
+          // SECTION BUILDING
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-building
 
-      // SECTION OPENING
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-opening
+          // SECTION OPENING
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-opening
 
-      // SECTION OUTPUT
-      v-layout( row )
-        v-flex( xs12, md8, offset-md2 )
-          component-output
+          // SECTION OUTPUT
+          v-layout( row )
+            v-flex( xs12, md8, offset-md2 )
+              component-output
 
 </template>
 
