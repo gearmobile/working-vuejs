@@ -37,6 +37,10 @@ const state = {
   opening: [
     { width: null, height: null }
   ],
+  openingValueMax: 3,
+  openingValueMin: 1,
+  openingValueMaxStatus: false,
+  openingText: '',
   order: {
     masonry: '0.5',
     brick: 'одинарный',
@@ -64,16 +68,26 @@ const mutations = {
     state.building.height = payload
   },
   'ADD_COMPONENT' (state) {
-    if (state.opening.length < 10) {
+    if (state.opening.length < state.openingValueMax) {
+      state.openingValueMaxStatus = false
+      state.openingText = ''
       state.opening.push({
         width: null,
         height: null
       })
+    } else {
+      state.openingValueMaxStatus = true
+      state.openingText = 'Вы добавили максимальное количество проемов'
     }
   },
   'REMOVE_COMPONENT' (state, payload) {
-    if (state.opening.length > 1) {
+    if (state.opening.length > state.openingValueMin) {
+      state.openingValueMaxStatus = false
+      state.openingText = ''
       state.opening.splice(payload, 1)
+    } else {
+      state.openingValueMaxStatus = true
+      state.openingText = 'Последний проем удалить нельзя'
     }
   },
   'SET_OPENING_WIDTH' (state, payload) {
@@ -81,10 +95,16 @@ const mutations = {
   },
   'SET_OPENING_HEIGHT' (state, payload) {
     state.opening[payload.index].height = payload.value
+  },
+  'CLOSE_ALERT' (state) {
+    state.openingValueMaxStatus = false
   }
 }
 
 const actions = {
+  closeAlert ({ commit }) {
+    commit('CLOSE_ALERT')
+  },
   setMasonry ({ commit }, payload) {
     commit('SET_MASONRY', payload)
   },
@@ -118,6 +138,12 @@ const actions = {
 }
 
 const getters = {
+  getOpeningText (state) {
+    return state.openingText
+  },
+  getOpeningStatus (state) {
+    return state.openingValueMaxStatus
+  },
   getMasonry (state) {
     return state.masonry
   },

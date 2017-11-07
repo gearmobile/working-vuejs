@@ -4,6 +4,8 @@
 
     v-container( tag="section" )
 
+      component-alert
+
         v-layout.mb-4( row, wrap, tag="section" )
           v-flex( xs12, md8, offset-md2, tag="article" )
             h4.title.indigo--text
@@ -45,15 +47,17 @@
   import Building from './components/Building.vue'
   import Opening from './components/Opening.vue'
   import Output from './components/Output.vue'
+  import Alert from './components/Alert.vue'
 
   export default {
     components: {
-      componentMasonry: Masonry,
-      componentSeam: Seam,
-      componentBrick: Brick,
-      componentBuilding: Building,
-      componentOpening: Opening,
-      componentOutput: Output
+      ComponentMasonry: Masonry,
+      ComponentSeam: Seam,
+      ComponentBrick: Brick,
+      ComponentBuilding: Building,
+      ComponentOpening: Opening,
+      ComponentOutput: Output,
+      ComponentAlert: Alert
     },
     methods: {
       onClick () {
@@ -65,6 +69,7 @@
         mask: 'getMask',
         components: 'getOpening',
         maskCounter: 'getMaskCounter'
+        // alertShow: 'getOpeningValueMax'
       })
     }
   }
