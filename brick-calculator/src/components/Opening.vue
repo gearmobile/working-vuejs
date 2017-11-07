@@ -1,7 +1,7 @@
 <template lang="pug">
   
   
-  v-card( tag="section", color="teal lighten-4" )
+  v-card.mb-4( tag="section", color="teal lighten-4" )
     
     v-card-text
       
@@ -33,7 +33,7 @@
               :counter="maskCounter"
             )
         
-          v-flex( xs12, sm2, tag="article" )
+          v-flex.text-xs-right( xs12, sm2, tag="article" )
             v-btn( color="teal lighten-2", dark, @click="onClick()" )
               | удалить
 
