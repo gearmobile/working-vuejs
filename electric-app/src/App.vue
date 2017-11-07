@@ -39,11 +39,12 @@
           .title
             | Дача
 
-      // OUTPUT SECTION
+    // OUTPUT SECTION
+    v-container( grid-list-lg )
       v-layout( row, wrap )
 
         // LEFT SECTION OUTPUT
-        v-flex.pr-2( xs12, md6 )
+        v-flex( xs12, md6 )
 
           // MAIN OUTPUT SECTION
           v-fade-transition( mode="out-in" )
@@ -51,7 +52,7 @@
               component( :is="current" )
 
         // RIGHT SECTION OUTPUT
-        v-flex.pl-2( xs12, md6 )
+        v-flex( xs12, md6 )
           v-slide-x-reverse-transition( mode="out-in" )
             keep-alive
               component-description( v-if="!show" )
