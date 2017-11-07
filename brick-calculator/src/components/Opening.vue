@@ -1,36 +1,41 @@
 <template lang="pug">
   
   
-  v-card( tag="section" )
+  v-card.mb-4( tag="section", color="teal lighten-4" )
+    
     v-card-text
-    
-      v-flex( xs12, tag="article" )
-        v-text-field(
-          name="width",
-          v-model="width",
-          id="width",
-          label="Ширина, м",
-          :mask="mask",
-          :hint="hintText",
-          persistent-hint,
-          :counter="maskCounter"
-        )
-    
-      v-flex( xs12, tag="article" )
-        v-text-field(
-          name="height",
-          v-model="height",
-          id="height",
-          label="Длина, м",
-          :mask="mask",
-          :hint="hintText",
-          persistent-hint,
-          :counter="maskCounter"
-        )
-    
-      v-flex( xs12, tag="article" )
-        v-btn( color="primary", @click="onClick()" )
-          | удалить
+      
+      v-container( grid-list-xl, fluid, text-xs-center )
+      
+        v-layout( row, wrap )
+      
+          v-flex( xs12, sm5, tag="article" )
+            v-text-field(
+              name="width",
+              v-model="width",
+              id="width",
+              label="Ширина, м",
+              :mask="mask",
+              :hint="hintText",
+              persistent-hint,
+              :counter="maskCounter"
+            )
+        
+          v-flex( xs12, sm5, tag="article" )
+            v-text-field(
+              name="height",
+              v-model="height",
+              id="height",
+              label="Длина, м",
+              :mask="mask",
+              :hint="hintText",
+              persistent-hint,
+              :counter="maskCounter"
+            )
+        
+          v-flex( xs12, sm2, tag="article" )
+            v-btn( color="teal lighten-2", dark, @click="onClick()" )
+              | удалить
 
 </template>
 
@@ -39,7 +44,7 @@
 
   export default {
     name: 'Opening',
-    props: ['id'],
+    props: ['id'], // TODO => add verifying support
     computed: {
       ...mapGetters({
         mask: 'getMaskOpening',
