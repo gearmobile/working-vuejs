@@ -3,7 +3,8 @@
     v-snackbar( v-model="alert.show", :timeout="alert.timeout", :top="alert.top", :color="alert.color" )
       | {{ alert.text }}
       v-btn( flat, color="black", @click.native="onShow()" )
-        | close
+        | закрыть
+        
 </template>
 
 <script>
@@ -15,7 +16,7 @@
       return {
         alert: {
           show: false,
-          timeout: 6000,
+          timeout: 2000,
           top: true
         }
       }
