@@ -26,13 +26,12 @@ const app = new Vue({
       authDomain: 'meetup-app-1062e.firebaseapp.com',
       databaseURL: 'https://meetup-app-1062e.firebaseio.com',
       projectId: 'meetup-app-1062e',
-      // storageBucket: 'meetup-app-1062e.appspot.com',
       storageBucket: 'gs://meetup-app-1062e.appspot.com',
       messagingSenderId: '57079436689'
     })
-    firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$store.dispatch('autoLogiExistingUser', user)
+        this.$store.dispatch('autoLoginExistingUser', user)
       }
     })
     this.$store.dispatch('loadMeetupsFromFirebase')

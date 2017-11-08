@@ -8,6 +8,12 @@
               | {{ item.icon }}
           v-list-tile-content
             | {{ item.title }}
+        v-list-tile( v-if="userExisting" )
+          v-list-tile-action
+            v-icon
+              | exit_to_app
+          v-list-tile-content
+            | logout
     v-toolbar
       v-toolbar-side-icon.hidden-sm-and-up( @click.stop="onShowSideNav()" )
       v-toolbar-title
@@ -19,6 +25,10 @@
           v-icon( left )
             | {{ item.icon }}
           | {{ item.title }}
+        v-btn( flat, v-if="userExisting", @click="onLogoutExistingUser()" )
+          v-icon( left )
+            | exit_to_app
+          | logout
     section.main
       router-view
 </template>
@@ -35,6 +45,9 @@
     methods: {
       onShowSideNav () {
         this.sideNav = !this.sideNav
+      },
+      onLogoutExistingUser () {
+        this.$store.dispatch('onLogoutUser')
       }
     },
     computed: {

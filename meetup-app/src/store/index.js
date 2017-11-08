@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
+// import EmptyArray from '../utils/emptyArray'
 
 Vue.use(Vuex)
 
@@ -168,8 +169,12 @@ const actions = {
         commit('SET_ERROR', error)
       })
   },
-  autoLogiExistingUser ({ commit }, payload) {
+  autoLoginExistingUser ({ commit }, payload) {
     commit('SET_USER', { id: payload.uid, meetups: [] })
+  },
+  onLogoutUser ({ commit }) {
+    firebase.auth().signOut()
+    commit('SET_USER', null)
   },
   resetError ({ commit }) {
     commit('CLEAR_ERROR')
