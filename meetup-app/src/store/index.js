@@ -31,7 +31,7 @@ const mutations = {
       meetup.location = payload.location
     }
     if (payload.date) {
-      meetup.date = payload.date
+      meetup.schedule.date = payload.date
     }
   },
   'CREATE_NEW_USER' (state, payload) {
@@ -136,8 +136,11 @@ const actions = {
       object.location = payload.location
     }
     if (payload.date) {
-      object.date = payload.date
+      object.schedule = {
+        date: payload.date
+      }
     }
+    console.log('step - 6', payload, object)
     firebase.database().ref('meetups').child(payload.id).update(object)
       .then(() => {
         commit('SET_LOADING', false)
