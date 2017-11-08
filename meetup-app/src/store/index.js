@@ -20,14 +20,15 @@ const mutations = {
     state.meetups.push(payload)
   },
   'UPDATE_MEETUP' (state, payload) {
-    const meetup = state.meetups.find(el => {
-      return el.id === payload.id
-    })
+    const meetup = state.meetups.find(el => el.id === payload.id)
     if (payload.title) {
       meetup.title = payload.title
     }
     if (payload.description) {
       meetup.description = payload.description
+    }
+    if (payload.location) {
+      meetup.location = payload.location
     }
     if (payload.date) {
       meetup.date = payload.date
@@ -130,6 +131,9 @@ const actions = {
     }
     if (payload.description) {
       object.description = payload.description
+    }
+    if (payload.location) {
+      object.location = payload.location
     }
     if (payload.date) {
       object.date = payload.date
