@@ -106,6 +106,8 @@
 </script>
 
 <style lang="stylus">
+
   @import './stylus/main'
   @import './stylus/app'
+
 </style>
