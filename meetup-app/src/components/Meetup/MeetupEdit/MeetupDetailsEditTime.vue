@@ -1,8 +1,8 @@
 <template lang="pug">
 
-  v-dialog( persistent, v-model="dialog", max-width="400px" )
+  v-dialog( persistent, v-model="meetupEdit.dialog", max-width="400px" )
     v-btn( color="info", dark, slot="activator" )
-      | edit meetup time
+      | edit time
     v-card
       v-container
         v-layout( row, wrap )
@@ -13,7 +13,7 @@
         v-divider
         v-layout( row, wrap )
           v-flex( xs12 )
-            v-time-picker( v-model="edit.time", actions, style="width: 100%" )
+            v-time-picker( v-model="meetupEdit.time", actions, style="width: 100%" )
               template( scope="{ save, cancel }" )
                 v-btn( color="primary darken-3", flat, @click.native="onClose()" )
                   | cancel
@@ -34,18 +34,23 @@
     },
     data () {
       return {
-        dialog: false,
-        edit: {
+        meetupEdit: {
+          dialog: false,
           time: this.meetup.schedule.time
         }
       }
     },
     methods: {
-      onClose () {
-        this.dialog = false
-      },
       onSave () {
+        const newTime = {
+          time: this.meetupEdit.time,
+          id: this.meetup.id
+        }
+        this.$store.dispatch('updateMeetup', newTime)
         this.onClose()
+      },
+      onClose () {
+        this.meetupEdit.dialog = false
       }
     }
   }

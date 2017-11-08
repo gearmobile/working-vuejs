@@ -14,7 +14,7 @@
             h6.card-info.info--text.mb-2
               | {{ meetup.schedule.date }} {{ meetup.schedule.time }} - {{ meetup.location }}
             component-edit-date( :meetup="meetup" )
-            //- component-edit-time( :meetup="meetup.schedule.time" )
+            component-edit-time( :meetup="meetup" )
             p.mb-0.mt-2
               | {{ meetup.description }}
           v-card-actions
@@ -26,7 +26,7 @@
 <script>
   import MeetupEdit from './MeetupEdit/MeetupDetailsEdit.vue'
   import MeetupEditDate from './MeetupEdit/MeetupDetailsEditDate.vue'
-  // import MeetupEditTime from './MeetupEdit/MeetupDetailsEditTime.vue'
+  import MeetupEditTime from './MeetupEdit/MeetupDetailsEditTime.vue'
 
   export default {
     name: 'MeetupDetails',
@@ -51,8 +51,8 @@
     },
     components: {
       ComponentEdit: MeetupEdit,
-      ComponentEditDate: MeetupEditDate
-      // ComponentEditTime: MeetupEditTime
+      ComponentEditDate: MeetupEditDate,
+      ComponentEditTime: MeetupEditTime
     }
   }
 </script>

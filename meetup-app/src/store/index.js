@@ -140,7 +140,11 @@ const actions = {
         date: payload.date
       }
     }
-    console.log('step - 6', payload, object)
+    if (payload.time) {
+      object.schedule = {
+        time: payload.time
+      }
+    }
     firebase.database().ref('meetups').child(payload.id).update(object)
       .then(() => {
         commit('SET_LOADING', false)
