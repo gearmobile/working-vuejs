@@ -192,15 +192,11 @@ const getters = {
     return getters.getMeetupsSorted.slice(0, 3)
   },
   getMeetupsSorted (state) {
-    return state.meetups.sort((a, b) => {
-      return a.date < b.date
-    })
+    return state.meetups.sort((a, b) => a.date < b.date)
   },
   getMeetupFeatured (state) {
     return (meetupID) => {
-      return state.meetups.find(el => {
-        return el.id === meetupID
-      })
+      return state.meetups.find(el => el.id === meetupID)
     }
   },
   getExistingUser (state) {

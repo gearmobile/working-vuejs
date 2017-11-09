@@ -10,13 +10,13 @@
               v-flex( xs7, sm8, md9 )
                 v-card-title( primary-title )
                   section
-                    h5.white--text.mb-0
+                    h5.white--text.mb-1
                       | {{ meetup.title }}
-                    div
+                    article.pl-2
                       | {{ meetup.date }} {{ meetup.time }}
                 v-card-actions
-                  v-btn.orange--text( flat, :to="'/meetupdetails/' + meetup.id" )
-                    v-icon.orange--text( left, light )
+                  v-btn.white--text( flat, :to="'/meetupdetails/' + meetup.id" )
+                    v-icon.white--text( left, light )
                       | arrow_forward
                     | view meetup
 </template>

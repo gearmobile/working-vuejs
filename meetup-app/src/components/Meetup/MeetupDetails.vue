@@ -12,7 +12,7 @@
           v-card-media( :src="meetup.src", height="400px" )
           v-card-text
             h6.card-info.info--text.mb-2
-              | {{ meetup.schedule.date }} {{ meetup.schedule.time }} - {{ meetup.location }}
+              | {{ meetup.date }} {{ meetup.time }} - {{ meetup.location }}
             component-edit-date( :meetup="meetup" )
             component-edit-time( :meetup="meetup" )
             p.mb-0.mt-2

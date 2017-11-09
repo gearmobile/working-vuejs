@@ -18,7 +18,7 @@
       v-toolbar-side-icon.hidden-sm-and-up( @click.stop="onShowSideNav()" )
       v-toolbar-title
         router-link( tag="span", to="/", style="cursor: pointer" )
-          | meetup app
+          | Meetup Organizer
       v-spacer
       v-toolbar-items.hidden-xs-only
         v-btn( v-for="(item, index) in menuItems", :key="index", :to="item.path", flat )

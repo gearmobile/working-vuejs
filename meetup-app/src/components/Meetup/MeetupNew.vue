@@ -1,40 +1,48 @@
 <template lang="pug">
   
   v-container.mt-4
+    
     v-layout.mb-4( row )
-      v-flex( xs12, md8, offset-md2 )
+      v-flex( xs12, md6, offset-md3, sm-8, offset-sm2 )
         h4
           | Create a New Meetup
+    
     v-layout( row )
-      v-flex( xs12, md8, offset-md2 )
+      v-flex( xs12, md6, offset-md3, sm-8, offset-sm2 )
         form( @submit.prevent="onClick()" )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-text-field( name="title", id="title", label="Title", v-model="meetup.title", required, hide-details )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-text-field( name="location", id="location", label="Location", v-model="meetup.location", required, hide-details )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-btn( color="primary", @click="onTrigger()" )
-                | upload image
-              input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-text-field( name="description", id="description", label="Description", color="pink", v-model="meetup.description", textarea, rows="6", required, hide-details )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-date-picker( v-model="meetup.date", landscape )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-time-picker( v-model="meetup.time", format="24hr", landscape )
-          v-layout.mb-4( row )
-            v-flex( xs12 )
-              v-btn( color="primary", :disabled="!formIsValid", type="submit" )
-                | create new meetup
+
+          // TITLE SECTION
+          v-layout.mb-4
+            v-text-field( name="title", id="title", label="Title", color="pink", v-model="meetup.title", required, hide-details )
+
+          // LOCATION SECTION
+          v-layout.mb-4
+            v-text-field( name="location", id="location", label="Location", color="pink", v-model="meetup.location", required, hide-details )
+
+          // UPLOAD SECTION
+          v-layout.mb-4( justify-center )
+            v-btn( color="primary", @click="onTrigger()", block )
+              | upload image
+            input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
+          v-layout.mb-4
+            img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
+
+          // DESCRIPTION SECTION
+          v-layout.mb-4
+            v-text-field( name="description", id="description", label="Description", color="pink", v-model="meetup.description", textarea, rows="6", required, hide-details )
+
+          // DATE SECTION
+          v-layout.mb-4( justify-center )
+            v-date-picker( v-model="meetup.date", landscape )
+
+          // TIME SECTION
+          v-layout.mb-4( justify-center )
+            v-time-picker( v-model="meetup.time", format="24hr", landscape )
+
+          // CONTROL SECTION
+          v-layout.mb-4( justify-center )
+            v-btn( color="primary", :disabled="!formIsValid", type="submit" )
+              | create new meetup
 
 </template>
 
