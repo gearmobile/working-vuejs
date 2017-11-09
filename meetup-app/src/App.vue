@@ -8,6 +8,7 @@
               | {{ item.icon }}
           v-list-tile-content
             | {{ item.title }}
+        // LOGOUT BUTTON
         v-list-tile( v-if="userExisting" )
           v-list-tile-action
             v-icon
@@ -25,6 +26,7 @@
           v-icon( left )
             | {{ item.icon }}
           | {{ item.title }}
+        // LOGOUT BUTTON
         v-btn( flat, v-if="userExisting", @click="onLogoutExistingUser()" )
           v-icon( left )
             | exit_to_app
@@ -34,7 +36,7 @@
 </template>
 
 <script>
-  import isEmpty from 'lodash.isempty'
+  // import isEmpty from 'lodash.isempty'
   
   export default {
     data () {
@@ -56,7 +58,7 @@
       },
       menuItems () {
         let items = []
-        if (isEmpty(this.userExisting)) {
+        if (!this.userExisting) {
           items = [
             { icon: 'face', title: 'sign up', path: '/signup' },
             { icon: 'lock_open', title: 'sign in', path: '/signin' }

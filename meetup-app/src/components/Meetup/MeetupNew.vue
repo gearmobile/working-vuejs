@@ -9,7 +9,7 @@
     
     v-layout( row )
       v-flex( xs12, md6, offset-md3, sm-8, offset-sm2 )
-        form( @submit.prevent="onClick()" )
+        form( @submit.prevent="onSubmitHandler()" )
 
           // TITLE SECTION
           v-layout.mb-4
@@ -21,9 +21,9 @@
 
           // UPLOAD SECTION
           v-layout.mb-4( justify-center )
-            v-btn( color="primary", @click="onTrigger()", block )
+            v-btn( color="primary", @click="onTriggerHandler()", large )
               | upload image
-            input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
+            input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePickHandler($event)" )
           v-layout.mb-4
             img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
 
@@ -41,7 +41,7 @@
 
           // CONTROL SECTION
           v-layout.mb-4( justify-center )
-            v-btn( color="primary", :disabled="!formIsValid", type="submit" )
+            v-btn( color="primary", :disabled="!formIsValid", type="submit", large )
               | create new meetup
 
 </template>
@@ -68,7 +68,7 @@
       }
     },
     methods: {
-      onClick () {
+      onSubmitHandler () {
         if (this.meetup.image) {
           const meetup = {
             title: this.meetup.title,
@@ -82,10 +82,10 @@
           this.$router.push({ path: '/meetuplist' })
         }
       },
-      onTrigger () {
+      onTriggerHandler () {
         this.$refs.fileInput.click()
       },
-      onFilePicked (event) {
+      onFilePickHandler (event) {
         const files = event.target.files
         if (files[0].name.lastIndexOf('.') <= 0) {
           return alert('Add a valid file')

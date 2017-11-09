@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-dialog( persistent, v-model="meetupEdit.dialog", max-width="400px" )
+  v-dialog( persistent, v-model="meetupEdit.show", max-width="400px" )
 
     // TRIGGER DIALOG
     v-btn( color="info", dark, slot="activator" )
@@ -20,9 +20,9 @@
         v-layout.mb-2
           v-date-picker( v-model="meetupEdit.date", actions, style="width: 100%" )
             template( scope="{ save, cancel }" )
-              v-btn( color="primary darken-3", flat, @click.native="onClose()" )
+              v-btn( color="primary darken-3", flat, @click.native="onCloseHandler()" )
                 | cancel
-              v-btn( color="primary darken-3", flat, @click.native="onSave()" )
+              v-btn( color="primary darken-3", flat, @click.native="onSaveHandler()" )
                 | save
 
 </template>
@@ -40,22 +40,22 @@
     data () {
       return {
         meetupEdit: {
-          dialog: false,
+          show: false,
           date: this.meetup.date
         }
       }
     },
     methods: {
-      onSave () {
+      onSaveHandler () {
         const object = {
           date: this.meetupEdit.date,
           id: this.meetup.id
         }
         this.$store.dispatch('updateMeetup', object)
-        this.onClose()
+        this.onCloseHandler()
       },
-      onClose () {
-        this.meetupEdit.dialog = false
+      onCloseHandler () {
+        this.meetupEdit.show = false
       }
     }
   }
