@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-dialog( persistent, v-model="dialog", max-width="600px" )
+  v-dialog( persistent, v-model="meetupEdit.dialog", max-width="600px" )
     v-btn( color="info", fab, small, dark, slot="activator" )
       v-icon
         | edit
@@ -70,9 +70,9 @@
         meetupEdit: {
           title: this.meetup.title,
           description: this.meetup.description,
-          location: this.meetup.location
-        },
-        dialog: false
+          location: this.meetup.location,
+          dialog: false
+        }
       }
     },
     methods: {
@@ -91,7 +91,7 @@
         }
       },
       onClose () {
-        this.dialog = false
+        this.meetupEdit.dialog = false
       }
     }
   }

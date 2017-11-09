@@ -13,7 +13,7 @@
                     h5.white--text.mb-0
                       | {{ meetup.title }}
                     div
-                      | {{ meetup.schedule.date }} {{ meetup.schedule.time }}
+                      | {{ meetup.date }} {{ meetup.time }}
                 v-card-actions
                   v-btn.orange--text( flat, :to="'/meetupdetails/' + meetup.id" )
                     v-icon.orange--text( left, light )

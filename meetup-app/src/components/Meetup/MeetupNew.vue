@@ -4,7 +4,7 @@
     v-layout.mb-4( row )
       v-flex( xs12, md8, offset-md2 )
         h4
-          | create a new meetup
+          | Create a New Meetup
     v-layout( row )
       v-flex( xs12, md8, offset-md2 )
         form( @submit.prevent="onClick()" )
@@ -16,7 +16,7 @@
               v-text-field( name="location", id="location", label="Location", v-model="meetup.location", required, hide-details )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-btn.primary( @click="onTrigger()" )
+              v-btn( color="primary", @click="onTrigger()" )
                 | upload image
               input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePicked($event)" )
           v-layout.mb-4( row )
@@ -24,16 +24,16 @@
               img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-text-field( name="description", id="description", label="Description", v-model="meetup.description", textarea, rows="6", required, hide-details )
+              v-text-field( name="description", id="description", label="Description", color="pink", v-model="meetup.description", textarea, rows="6", required, hide-details )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-date-picker( v-model="meetup.schedule.date" )
+              v-date-picker( v-model="meetup.date", landscape )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-time-picker( v-model="meetup.schedule.time", format="24hr" )
+              v-time-picker( v-model="meetup.time", format="24hr", landscape )
           v-layout.mb-4( row )
             v-flex( xs12 )
-              v-btn.primary( :disabled="!formIsValid", type="submit" )
+              v-btn( color="primary", :disabled="!formIsValid", type="submit" )
                 | create new meetup
 
 </template>
@@ -49,10 +49,8 @@
           description: '',
           image: null,
           src: '',
-          schedule: {
-            date: new Date(),
-            time: new Date()
-          }
+          date: new Date(),
+          time: new Date()
         }
       }
     },
@@ -67,10 +65,8 @@
           const meetup = {
             title: this.meetup.title,
             location: this.meetup.location,
-            schedule: {
-              date: this.meetup.schedule.date,
-              time: this.meetup.schedule.time
-            },
+            date: this.meetup.date,
+            time: this.meetup.time,
             description: this.meetup.description,
             image: this.meetup.image
           }

@@ -31,7 +31,10 @@ const mutations = {
       meetup.location = payload.location
     }
     if (payload.date) {
-      meetup.schedule.date = payload.date
+      meetup.date = payload.date
+    }
+    if (payload.time) {
+      meetup.time = payload.time
     }
   },
   'CREATE_NEW_USER' (state, payload) {
@@ -69,10 +72,8 @@ const actions = {
             title: obj[key].title,
             location: obj[key].location,
             description: obj[key].description,
-            schedule: {
-              date: obj[key].schedule.date,
-              time: obj[key].schedule.time
-            },
+            date: obj[key].date,
+            time: obj[key].time,
             src: obj[key].src
           })
         }
@@ -91,10 +92,8 @@ const actions = {
       location: payload.location,
       description: payload.description,
       creator: getters.getExistingUser.id,
-      schedule: {
-        date: payload.schedule.date,
-        time: payload.schedule.time
-      }
+      date: payload.date,
+      time: payload.time
     }
     let key = null
     let src = null
@@ -136,14 +135,10 @@ const actions = {
       object.location = payload.location
     }
     if (payload.date) {
-      object.schedule = {
-        date: payload.date
-      }
+      object.date = payload.date
     }
     if (payload.time) {
-      object.schedule = {
-        time: payload.time
-      }
+      object.time = payload.time
     }
     firebase.database().ref('meetups').child(payload.id).update(object)
       .then(() => {
@@ -198,7 +193,7 @@ const getters = {
   },
   getMeetupsSorted (state) {
     return state.meetups.sort((a, b) => {
-      return a.schedule.date < b.schedule.date
+      return a.date < b.date
     })
   },
   getMeetupFeatured (state) {

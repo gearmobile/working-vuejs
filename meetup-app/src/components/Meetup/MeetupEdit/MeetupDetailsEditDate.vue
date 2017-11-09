@@ -36,7 +36,7 @@
       return {
         meetupEdit: {
           dialog: false,
-          date: this.meetup.schedule.date
+          date: this.meetup.date
         }
       }
     },
