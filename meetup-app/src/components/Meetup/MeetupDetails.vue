@@ -32,14 +32,15 @@
 
           v-card-actions
             v-spacer
-            v-btn.primary
-              | register new meetup
+            component-register( :meetupID="id" )
+
 </template>
 
 <script>
   import MeetupEdit from './MeetupEdit/MeetupDetailsEdit.vue'
   import MeetupEditDate from './MeetupEdit/MeetupDetailsEditDate.vue'
   import MeetupEditTime from './MeetupEdit/MeetupDetailsEditTime.vue'
+  import RegisterDialog from './Registration/RegistrationDialog.vue'
 
   export default {
     name: 'MeetupDetails',
@@ -65,7 +66,8 @@
     components: {
       ComponentEdit: MeetupEdit,
       ComponentEditDate: MeetupEditDate,
-      ComponentEditTime: MeetupEditTime
+      ComponentEditTime: MeetupEditTime,
+      ComponentRegister: RegisterDialog
     }
   }
 </script>

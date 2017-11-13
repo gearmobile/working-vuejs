@@ -55,10 +55,33 @@ const mutations = {
   },
   'SET_USER' (state, payload) {
     state.users = payload
+  },
+  'REGISTER_USER_FOR_MEETUP' (state, payload) {
+    const ID = payload.id
+    if (state.users.meetups.findIndex(el => el.id === ID) >= 0) {
+      return
+    }
+    state.users.meetups.push(ID)
+    state.users.fdKeys[ID] = payload.fbKey
   }
 }
 
 const actions = {
+  registerUserMeetup ({ commit, getters }, payload) {
+    commit('SET_LOADING', true)
+    firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registration/').push(payload)
+      .then((data) => {
+        commit('SET_LOADING', false)
+        commit('REGISTER_USER_FOR_MEETUP', { id: payload, fbKey: data.key })
+      })
+      .catch(error => {
+        console.log(error)
+        commit('SET_LOADING', false)
+      })
+  },
+  unregisterUserMeetup ({ commit }, payload) {
+    //
+  },
   loadMeetupsFromFirebase ({ commit }) {
     commit('SET_LOADING', true)
     firebase.database().ref('meetups').once('value')
