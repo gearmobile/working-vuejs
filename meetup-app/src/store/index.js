@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
-// import EmptyArray from '../utils/emptyArray'
 
 Vue.use(Vuex)
 
@@ -57,22 +56,22 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
-    const ID = payload.id
-    if (state.users.meetups.findIndex(el => el.id === ID) >= 0) {
+    const meetupID = payload.meetupID
+    if (state.users.meetups.findIndex(el => el === meetupID) >= 0) {
       return
     }
-    state.users.meetups.push(ID)
-    state.users.fdKeys[ID] = payload.fbKey
+    state.users.meetups.push(meetupID)
+    state.users.meetupKEYS[meetupID] = payload.meetupKEY // => ?
   }
 }
 
 const actions = {
   registerUserMeetup ({ commit, getters }, payload) {
     commit('SET_LOADING', true)
-    firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registration/').push(payload)
+    firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registrations/').push(payload)
       .then((data) => {
         commit('SET_LOADING', false)
-        // commit('REGISTER_USER_FOR_MEETUP', { id: payload, fbKey: data.key })
+        commit('REGISTER_USER_FOR_MEETUP', { meetupID: payload, meetupKEY: data.key })
       })
       .catch(error => {
         console.log(error)

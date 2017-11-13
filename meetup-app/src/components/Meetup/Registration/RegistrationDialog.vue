@@ -3,7 +3,7 @@
   v-dialog( persistent, v-model="dialog.show" )
 
     // TRIGGER DIALOG
-    v-btn( color="success", dark, slot="activator" )
+    v-btn( color="primary darken-1", dark, slot="activator" )
       | {{ registerLabel }}
 
     // CONTENT SECTION
@@ -25,7 +25,6 @@
 
         v-layout.mb-2
           v-card-actions
-            v-spacer
             v-btn( flat, color="red darken-1", @click="onCloseHandler()" )
               | cancel
             v-btn( flat, color="green darken-1", @click="onSaveHandler()" )

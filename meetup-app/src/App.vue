@@ -36,8 +36,6 @@
 </template>
 
 <script>
-  // import isEmpty from 'lodash.isempty'
-  
   export default {
     data () {
       return {
