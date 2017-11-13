@@ -50,6 +50,7 @@
       },
       onLogoutExistingUser () {
         this.$store.dispatch('onLogoutUser')
+        this.$router.push({ name: 'Home' })
       }
     },
     computed: {

@@ -11,11 +11,10 @@
       v-container
         
         v-layout.mb-2
-          v-card-title( v-if="userIsRegistered" )
-            h5.mb-0
+          v-card-title
+            h5.mb-0( v-if="userIsRegistered" )
               | Unregister from Meetup?
-          v-card-title( v-else )
-            h5.mb-0
+            h5.mb-0( v-else )
               | Register for Meetup?
         
         v-divider
@@ -26,6 +25,7 @@
 
         v-layout.mb-2
           v-card-actions
+            v-spacer
             v-btn( flat, color="red darken-1", @click="onCloseHandler()" )
               | cancel
             v-btn( flat, color="green darken-1", @click="onSaveHandler()" )
@@ -52,25 +52,24 @@
     },
     computed: {
       userIsRegistered () {
-        return this.$store.getters.getExistingUser.meetups.findIndex(el => {
-          return el === this.meetupID
-        }) >= 0
+        return this.$store.getters.getExistingUser.meetups.findIndex(el => el === this.meetupID) >= 0
       },
       registerLabel () {
         return this.userIsRegistered ? 'Unregister' : 'Register'
       }
     },
     methods: {
-      onCloseHandler () {
-        if (userIsRegistered) {
-          this.$store.dispatch('unregisterUserMeetup', this.meetupID)
-        } else {
-          this.$store.dispatch('registerUserMeetup', this.meetupID)
-        }
-        this.dialog.show = false
-      },
       onSaveHandler () {
+        const IDMeetup = this.meetupID
+        if (this.userIsRegistered) {
+          this.$store.dispatch('unregisterUserMeetup', IDMeetup)
+        } else {
+          this.$store.dispatch('registerUserMeetup', IDMeetup)
+        }
         this.onCloseHandler()
+      },
+      onCloseHandler () {
+        this.dialog.show = false
       }
     }
   }

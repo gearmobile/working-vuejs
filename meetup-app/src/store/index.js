@@ -72,7 +72,7 @@ const actions = {
     firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registration/').push(payload)
       .then((data) => {
         commit('SET_LOADING', false)
-        commit('REGISTER_USER_FOR_MEETUP', { id: payload, fbKey: data.key })
+        // commit('REGISTER_USER_FOR_MEETUP', { id: payload, fbKey: data.key })
       })
       .catch(error => {
         console.log(error)
