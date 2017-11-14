@@ -12,15 +12,19 @@
       v-flex( xs12, md6, offset-md3 )
         h4
           | signin user
+    
     v-layout( row )
       v-flex( xs12, md6, offset-md3 )
         form( @submit.prevent="onSignIn()" )
+    
           v-layout.mb-5( row )
             v-flex( xs12 )
               v-text-field( name="email", id="email", label="Input Email", type="email", v-model="user.email", hide-details, required )
+    
           v-layout.mb-5( row )
             v-flex( xs12 )
               v-text-field( name="password", id="password", label="Input Password", type="password", v-model="user.password", hide-details, required )   
+    
           v-layout( row )
             v-flex( xs12 )
               v-btn.primary( type="submit", :disabled="loading", :loading="loading" )

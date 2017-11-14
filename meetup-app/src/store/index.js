@@ -39,6 +39,7 @@ const mutations = {
   'CREATE_NEW_USER' (state, payload) {
     const newUser = {
       id: payload.uid,
+      meetupKEYS: {},
       meetups: []
     }
     state.users = newUser
@@ -56,12 +57,17 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
-    const meetupID = payload.meetupID
-    if (state.users.meetups.findIndex(el => el === meetupID) >= 0) {
+    console.log(payload)
+    if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
       return
     }
-    state.users.meetups.push(meetupID)
-    state.users.meetupKEYS[meetupID] = payload.meetupKEY // => ?
+    state.users.meetups.push(payload.meetupID)
+    state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
+  },
+  'UNREGISTER_USER_FOR_MEETUP' (state, payload) {
+    const meetups = state.users.meetups
+    meetups.splice(meetups.findIndex(el => el === payload), 1)
+    Reflect.deleteProperty(state.users.meetupKEYS, payload)
   }
 }
 
@@ -78,8 +84,23 @@ const actions = {
         commit('SET_LOADING', false)
       })
   },
-  unregisterUserMeetup ({ commit }, payload) {
-    //
+  unregisterUserMeetup ({ commit, getters }, payload) {
+    commit('SET_LOADING', true)
+    const userCurrent = getters.getExistingUser
+    if (!userCurrent.meetupKEYS) {
+      return
+    }
+    const userCurrentMeetupKEY = userCurrent.meetupKEYS[payload]
+    firebase.database().ref('/users/' + userCurrent.id + '/registrations/').child(userCurrentMeetupKEY)
+      .remove()
+      .then(() => {
+        commit('SET_LOADING', false)
+        commit('UNREGISTER_USER_FOR_MEETUP')
+      })
+      .catch(error => {
+        commit('SET_LOADING', false)
+        console.log(error)
+      })
   },
   loadMeetupsFromFirebase ({ commit }) {
     commit('SET_LOADING', true)
@@ -198,7 +219,11 @@ const actions = {
       })
   },
   autoLoginExistingUser ({ commit }, payload) {
-    commit('SET_USER', { id: payload.uid, meetups: [] })
+    commit('SET_USER', {
+      id: payload.uid,
+      meetupKEYS: {},
+      meetups: []
+    })
   },
   onLogoutUser ({ commit }) {
     firebase.auth().signOut()
