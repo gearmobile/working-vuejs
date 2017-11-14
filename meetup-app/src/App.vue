@@ -15,7 +15,7 @@
               | exit_to_app
           v-list-tile-content
             | logout
-    v-toolbar
+    v-toolbar( dark, color="primary" )
       v-toolbar-side-icon.hidden-sm-and-up( @click.stop="onShowSideNav()" )
       v-toolbar-title
         router-link( tag="span", to="/", style="cursor: pointer" )

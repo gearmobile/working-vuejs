@@ -17,7 +17,7 @@
             v-spacer
             
             // EDIT MEETUP DETAILS
-            template( v-if="isCreator" )
+            template( v-if="userCreator" )
               component-edit( :meetup="meetup" )
 
           v-card-media( :src="meetup.src", height="400px" )
@@ -27,11 +27,11 @@
               | {{ meetup.date }} {{ meetup.time }} - {{ meetup.location }}
             
             // EDIT MEETUP DATE
-            template( v-if="isCreator" )
+            template( v-if="userCreator" )
               component-edit-date( :meetup="meetup" )
             
             // EDIT MEETUP TIME
-            template( v-if="isCreator" )
+            template( v-if="userCreator" )
               component-edit-time( :meetup="meetup" )
             
             p.mb-0.mt-2
@@ -39,7 +39,7 @@
 
           v-card-actions
             v-spacer
-            component-register( :meetupID="id" )
+            component-register( :meetupID="id", v-if="userAuthenticated && !userCreator" )
 
 </template>
 
@@ -62,8 +62,11 @@
       meetup () {
         return this.$store.getters.getMeetupFeatured(this.id)
       },
-      isCreator () {
-        if (this.$store.getters.getExistingUser === null || this.$store.getters.getExistingUser === undefined) {
+      userAuthenticated () {
+        return this.$store.getters.getExistingUser !== null || this.$store.getters.getExistingUser !== undefined
+      },
+      userCreator () {
+        if (!this.userAuthenticated) {
           return false
         } else {
           return this.meetup.creator === this.$store.getters.getExistingUser.id

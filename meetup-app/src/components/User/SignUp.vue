@@ -11,7 +11,8 @@
     v-layout.my-4( row )
       v-flex( xs12, md6, offset-md3 )
         h4
-          | signup new user
+          | Signup New User
+    
     v-layout( row )
       v-flex( xs12, md6, offset-md3 )
         form( @submit.prevent="onSignUp()" )

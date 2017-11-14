@@ -3,7 +3,7 @@
   v-dialog( persistent, v-model="dialog.show" )
 
     // TRIGGER DIALOG
-    v-btn( :color="registerColor", dark, slot="activator" )
+    v-btn( :color="registerColor", dark, large, slot="activator" )
       | {{ registerLabel }}
 
     // CONTENT SECTION

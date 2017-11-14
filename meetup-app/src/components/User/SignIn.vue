@@ -11,7 +11,7 @@
     v-layout.my-4( row )
       v-flex( xs12, md6, offset-md3 )
         h4
-          | signin user
+          | Signin User
     
     v-layout( row )
       v-flex( xs12, md6, offset-md3 )
