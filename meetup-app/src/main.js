@@ -31,8 +31,8 @@ const app = new Vue({
     })
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.$store.dispatch('autoLoginExistingUser', user)
-        this.$store.dispatch('fetchUserMeetups')
+        // this.$store.dispatch('autoLoginExistingUser', user)
+        this.$store.dispatch('fetchUserData')
       }
     })
     this.$store.dispatch('loadMeetupsFromFirebase')
