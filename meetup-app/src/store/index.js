@@ -65,6 +65,7 @@ const mutations = {
     state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
   },
   'UNREGISTER_USER_FOR_MEETUP' (state, payload) {
+    console.log(payload)
     const meetups = state.users.meetups
     meetups.splice(meetups.findIndex(el => el === payload), 1)
     Reflect.deleteProperty(state.users.meetupKEYS, payload) // => not work
