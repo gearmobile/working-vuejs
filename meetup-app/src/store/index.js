@@ -221,8 +221,32 @@ const actions = {
     commit('SET_USER', {
       id: payload.uid,
       meetupKEYS: {},
-      meetups: []
+      meetups: [] // !
     })
+  },
+  fetchUserMeetups ({ commit, getters }) {
+    commit('SET_LOADING', true)
+    firebase.database().ref('/users/' + getters.getExistingUser.id + '/registrations/').once('value')
+      .then(data => {
+        commit('SET_LOADING', false)
+        const meetupsFetched = data.val()
+        const meetupsKEYs = {}
+        const meetupsIDs = []
+        for (let key in meetupsFetched) {
+          meetupsIDs.push(meetupsFetched[key])
+          meetupsKEYs[meetupsFetched[key]] = key
+        }
+        const userUpdated = {
+          id: getters.getExistingUser.id,
+          meetups: meetupsIDs,
+          meetupKEYS: meetupsKEYs
+        }
+        commit('SET_USER', userUpdated)
+      })
+      .catch(error => {
+        console.log(error)
+        commit('SET_LOADING', false)
+      })
   },
   onLogoutUser ({ commit }) {
     firebase.auth().signOut()
