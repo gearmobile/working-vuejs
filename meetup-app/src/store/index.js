@@ -57,7 +57,6 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
-    console.log(payload)
     if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
       return
     }

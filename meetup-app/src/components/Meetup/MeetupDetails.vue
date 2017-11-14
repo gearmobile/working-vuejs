@@ -1,6 +1,13 @@
 <template lang="pug">
+  
   v-container
-    v-layout( row )
+
+    // SPIN SECTION
+    v-layout.my-2( v-if="loading", justify-center )
+      v-progress-circular( indeterminate, color="purple lighten-3", :width="7", :size="70" )
+    
+    // MAIN CONTENT
+    v-layout( v-else )
       v-flex( xs12 )
         v-card
 
@@ -61,6 +68,9 @@
         } else {
           return this.meetup.creator === this.$store.getters.getExistingUser.id
         }
+      },
+      loading () {
+        return this.$store.getters.getLoading
       }
     },
     components: {
