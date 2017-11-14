@@ -217,16 +217,17 @@ const actions = {
         commit('SET_ERROR', error)
       })
   },
-  // autoLoginExistingUser ({ commit }, payload) {
-  //   commit('SET_USER', {
-  //     id: payload.uid,
-  //     meetupKEYS: {},
-  //     meetups: [] // !
-  //   })
-  // },
+  autoLoginExistingUser ({ commit }, payload) {
+    commit('SET_USER', {
+      id: payload.uid,
+      meetupKEYS: {},
+      meetups: [] // !
+    })
+  },
   fetchUserData ({ commit, getters }) {
     commit('SET_LOADING', true)
-    firebase.database().ref('/users/' + getters.getExistingUser.id + '/registrations/').once('value')
+    firebase.database().ref('/users/' + getters.getExistingUser.id + '/registrations/')
+      .once('value')
       .then(data => {
         commit('SET_LOADING', false)
         const meetupsFetched = data.val()

@@ -1,7 +1,7 @@
 <template lang="pug">
 
   v-dialog( persistent, v-model="meetupEdit.dialog", max-width="600px" )
-    v-btn( color="info", fab, small, dark, slot="activator" )
+    v-btn( color="info", fab, dark, slot="activator" )
       v-icon
         | edit
     v-card
