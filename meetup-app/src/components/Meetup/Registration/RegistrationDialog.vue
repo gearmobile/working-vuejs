@@ -3,7 +3,7 @@
   v-dialog( persistent, v-model="dialog.show" )
 
     // TRIGGER DIALOG
-    v-btn( color="primary darken-1", dark, slot="activator" )
+    v-btn( :color="registerColor", dark, slot="activator" )
       | {{ registerLabel }}
 
     // CONTENT SECTION
@@ -55,6 +55,9 @@
       },
       registerLabel () {
         return this.userIsRegistered ? 'Unregister' : 'Register'
+      },
+      registerColor () {
+        return !this.userIsRegistered ? 'primary darken-1' : 'pink lighten-1'
       }
     },
     methods: {
