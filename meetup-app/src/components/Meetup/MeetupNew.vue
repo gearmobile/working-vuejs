@@ -13,23 +13,63 @@
 
           // TITLE SECTION
           v-layout.mb-4
-            v-text-field( name="title", id="title", label="Title", color="pink", v-model="meetup.title", required, hide-details )
+            v-text-field(
+              name="title",
+              id="title",
+              label="Title",
+              color="pink",
+              v-model="meetup.title",
+              required,
+              hide-details
+            )
 
           // LOCATION SECTION
           v-layout.mb-4
-            v-text-field( name="location", id="location", label="Location", color="pink", v-model="meetup.location", required, hide-details )
+            v-text-field(
+              name="location",
+              id="location",
+              label="Location",
+              color="pink",
+              v-model="meetup.location",
+              required,
+              hide-details
+            )
 
           // UPLOAD SECTION
           v-layout.mb-4( justify-center )
-            v-btn( color="primary", @click="onTriggerHandler()", large )
+            v-btn(
+              color="primary",
+              @click="onTriggerHandler()",
+              large
+            )
               | upload image
-            input( type="file", style="display: none", ref="fileInput", accept="image/*", @change="onFilePickHandler($event)" )
+            input(
+              type="file",
+              style="display: none",
+              ref="fileInput",
+              accept="image/*",
+              @change="onFilePickHandler($event)"
+            )
           v-layout.mb-4
-            img( :src="meetup.src", :alt="meetup.title", style="width: 100%; height: auto" )
+            img(
+              :src="meetup.src",
+              :alt="meetup.title",
+              style="width: 100%; height: auto"
+            )
 
           // DESCRIPTION SECTION
           v-layout.mb-4
-            v-text-field( name="description", id="description", label="Description", color="pink", v-model="meetup.description", textarea, rows="6", required, hide-details )
+            v-text-field(
+              name="description",
+              id="description",
+              label="Description",
+              color="pink",
+              v-model="meetup.description",
+              textarea,
+              rows="6",
+              required,
+              hide-details
+            )
 
           // DATE SECTION
           v-layout.mb-4( justify-center )
