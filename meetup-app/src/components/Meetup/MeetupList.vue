@@ -16,8 +16,8 @@
                       | {{ meetup.title }}
                     article.pl-2
                       | {{ meetup.date }} {{ meetup.time }}
-                v-card-actions
-                  v-btn.white--text( flat, :to="'/meetupdetails/' + meetup.id" )
+                v-card-actions( v-if="userAuthenticated" )
+                  v-btn( flat, color="white", :to="'/meetupdetails/' + meetup.id" )
                     v-icon.white--text( left, light )
                       | arrow_forward
                     | view meetup
@@ -32,11 +32,10 @@
       },
       loading () {
         return this.$store.getters.getLoading
+      },
+      userAuthenticated () {
+        return this.$store.getters.getExistingUser !== null || this.$store.getters.getExistingUser !== undefined
       }
     }
   }
 </script>
-
-<style lang="scss" scoped>
-  //
-</style>
