@@ -165,6 +165,21 @@ const getters = {
     return (meetupID) => {
       return state.meetups.find(el => el.id === meetupID)
     }
+  },
+  getRegisteredMeetups (state, getters) {
+    const meetupIDs = getters.getUserMeetups
+    const meetups = state.meetups
+    let result = []
+    for (const ID in meetupIDs) {
+      for (const meetup in meetups) {
+        if (meetupIDs[ID] === meetups[meetup].id) {
+          result.push(meetups[meetup])
+        }
+        // result.push(meetups[meetup].id)
+      }
+      // result.push(meetupIDs[ID])
+    }
+    return result
   }
 }
 

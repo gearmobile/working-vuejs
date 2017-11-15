@@ -1,9 +1,11 @@
 <template lang="pug">
-  v-container
+  
+  v-container( grid-list-md )
     v-layout( row )
       v-flex( xs12 )
         p
           | Profile section
+
 </template>
 
 <script>

@@ -17,9 +17,6 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
-    // if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
-    //   return
-    // }
     state.users.meetups.push(payload.meetupID)
     state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
   },
@@ -131,6 +128,9 @@ const actions = {
 const getters = {
   getExistingUser (state) {
     return state.users
+  },
+  getUserMeetups (state) {
+    return state.users.meetups
   }
 }
 

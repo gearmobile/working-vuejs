@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-container
+  v-container( grid-list-md )
 
     // ALERT SECTION
     v-layout.my-4( row, v-if="!showAlert", transition="slide-y-transition" )
