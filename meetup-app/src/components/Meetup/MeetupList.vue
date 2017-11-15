@@ -5,8 +5,8 @@
         v-card.info
           v-container( fluid )
             v-layout( row )
-              v-flex( xs5, sm4, md3, v-if="loading", justify-center )
-                v-progress-circular( indeterminate, color="pink lighten-2", :width="5", :size="50" )
+              v-flex( xs5, sm4, md3, v-if="loading", justify-center, style="position: relative;" )
+                v-progress-circular( indeterminate, color="pink lighten-2", :width="5", :size="50", style="position: absolute; top: 50%; left: 50%; transform: translate( -50%, -50% );" )
               v-flex( xs5, sm4, md3, v-else )
                 v-card-media( :src="meetup.src", height="125px" )
               v-flex( xs7, sm8, md9 )

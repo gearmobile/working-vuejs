@@ -17,6 +17,9 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
+    if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
+      return
+    }
     state.users.meetups.push(payload.meetupID)
     state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
   },
@@ -29,7 +32,7 @@ const mutations = {
 
 const actions = {
   registerUserMeetup ({ commit, getters }, payload) {
-    if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
+    if (state.users.meetups.findIndex(el => el === payload) >= 0) {
       return
     }
     commit('SET_LOADING', true)
