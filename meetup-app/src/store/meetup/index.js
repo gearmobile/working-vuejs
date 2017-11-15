@@ -175,9 +175,7 @@ const getters = {
         if (meetupIDs[ID] === meetups[meetup].id) {
           result.push(meetups[meetup])
         }
-        // result.push(meetups[meetup].id)
       }
-      // result.push(meetupIDs[ID])
     }
     return result
   }
