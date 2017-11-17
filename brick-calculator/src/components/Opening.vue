@@ -33,8 +33,8 @@
             :counter="maskCounter"
           )
       
-        v-flex.text-xs-right( xs12, sm4, tag="article" )
-          v-btn( color="teal lighten-2", dark, @click="onClick()" )
+        v-flex.text-xs-right( xs12, sm4, tag="article", style="align-items: center; justify-content: flex-end; display: flex;" )
+          v-btn.ma-0( color="teal lighten-2", dark, @click="onClick()" )
             | удалить
 
 </template>
