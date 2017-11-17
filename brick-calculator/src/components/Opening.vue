@@ -33,7 +33,7 @@
             :counter="maskCounter"
           )
       
-        v-flex.text-xs-right( xs12, sm4, tag="article", style="align-items: center; justify-content: flex-end; display: flex;" )
+        v-flex.text-xs-right.opening-control( xs12, sm4, tag="article" )
           v-btn.ma-0( color="teal lighten-2", dark, @click="onClick()" )
             | удалить
 
@@ -73,3 +73,13 @@
     }
   }
 </script>
+
+<style lang="stylus" scoped>
+  
+  .opening-control
+    display: flex
+    justify-content: flex-end
+    align-items: center
+
+</style>
+
