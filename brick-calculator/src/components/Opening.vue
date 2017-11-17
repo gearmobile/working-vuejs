@@ -3,41 +3,39 @@
   
   v-card.mb-4( tag="section", color="teal lighten-4" )
     
-    v-card-text
+    v-card-text.pa-3
       
-      v-container( grid-list-xl, fluid, text-xs-center )
+      v-layout( row, wrap )
+    
+        v-flex( xs12, sm4, tag="article" )
+          v-text-field(
+            name="width",
+            v-model="width",
+            id="width",
+            label="Ширина, м",
+            :mask="mask",
+            :hint="hintText",
+            persistent-hint,
+            color="teal darken-2",
+            :counter="maskCounter"
+          )
       
-        v-layout( row, wrap )
+        v-flex( xs12, sm4, tag="article" )
+          v-text-field(
+            name="height",
+            v-model="height",
+            id="height",
+            label="Длина, м",
+            :mask="mask",
+            :hint="hintText",
+            persistent-hint,
+            color="teal darken-2",
+            :counter="maskCounter"
+          )
       
-          v-flex( xs12, sm5, tag="article" )
-            v-text-field(
-              name="width",
-              v-model="width",
-              id="width",
-              label="Ширина, м",
-              :mask="mask",
-              :hint="hintText",
-              persistent-hint,
-              color="teal darken-2",
-              :counter="maskCounter"
-            )
-        
-          v-flex( xs12, sm5, tag="article" )
-            v-text-field(
-              name="height",
-              v-model="height",
-              id="height",
-              label="Длина, м",
-              :mask="mask",
-              :hint="hintText",
-              persistent-hint,
-              color="teal darken-2",
-              :counter="maskCounter"
-            )
-        
-          v-flex.text-xs-right( xs12, sm2, tag="article" )
-            v-btn( color="teal lighten-2", dark, @click="onClick()" )
-              | удалить
+        v-flex.text-xs-right( xs12, sm4, tag="article" )
+          v-btn( color="teal lighten-2", dark, @click="onClick()" )
+            | удалить
 
 </template>
 
