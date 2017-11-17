@@ -37,7 +37,7 @@ const state = {
   opening: [
     { width: null, height: null }
   ],
-  openingValueMax: 3,
+  openingValueMax: 5,
   openingValueMin: 1,
   openingValueMaxStatus: false,
   openingText: '',

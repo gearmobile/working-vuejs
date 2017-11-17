@@ -4,7 +4,7 @@
   v-card( color="teal lighten-3" )
     v-card-text
 
-      h4.title.white--text.mb-4
+      h4.text-xs-center.text-md-left.title.white--text.mb-4
         | Вывод:
 
       v-layout( row, wrap, tag="section" )

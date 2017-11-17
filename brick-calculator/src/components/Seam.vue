@@ -2,8 +2,10 @@
 
   v-card.mb-4( tag="section", color="teal lighten-3" )
     v-card-text
-      h4.title.white--text.mb-2
+      
+      h4.text-xs-center.text-md-left.title.white--text.mb-2
         | Выберите тип шва кирпичной кладки:
+      
       v-select(
         single-line,
         label="Тип шва кирпичной кладки",
