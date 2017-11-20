@@ -1,7 +1,11 @@
 <template lang="pug">
   v-app( light )
-    component-navigation
-    router-view
+    v-container( grid-list-md )
+      v-layout( row, wrap )
+        v-flex.mb-4( xs12 )
+          component-navigation
+        v-flex( xs12 )
+          router-view
 </template>
 
 <script>
@@ -9,7 +13,7 @@
 
   export default {
     components: {
-      componentNavigation: NavBar
+      ComponentNavigation: NavBar
     }
   }
 </script>

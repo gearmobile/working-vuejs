@@ -16,6 +16,15 @@ import {
 import App from './App.vue'
 
 Vue.use(Vuetify, {
+  theme: {
+    primary: '#f44336',
+    secondary: '#e91e63',
+    accent: '#9c27b0',
+    error: '#673ab7',
+    info: '#3f51b5',
+    success: '#2196f3',
+    warning: '#03a9f4'
+  },
   components: {
     VApp,
     VBtn,

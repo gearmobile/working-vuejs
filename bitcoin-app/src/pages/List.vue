@@ -1,10 +1,10 @@
 <template lang="pug">
 
-  v-container
+  v-container( grid-list-md )
 
-    v-layout.mb-2( row, wrap )
+    v-layout.mb-4( row, wrap )
       v-flex( xs12 )
-        h4.text-xs-center
+        h4.text-xs-center.display-1
           | List of Crypto Currency
 
     v-layout( row, wrap )
@@ -51,5 +51,8 @@
 </script>
 
 <style lang="scss" scoped>
-  //
+  .table-title {
+    font-weight: 700;
+    font-size: 2rem;
+  }
 </style>

@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-container
+  v-container( grid-list-md )
 
     v-layout.mb-4( row, wrap )
       v-flex( xs12 )
@@ -22,7 +22,7 @@
     
     v-layout( row, wrap )
       v-flex.text-xs-center( xs12, md6, offset-md3 )
-        v-btn.secondary( dark, large, @click="onBack()" )
+        v-btn( dark, color="primary", large, @click="onBack()" )
           | back to list
 
 </template>
