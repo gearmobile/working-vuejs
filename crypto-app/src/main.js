@@ -1,8 +1,11 @@
 require('../node_modules/vuetify/src/stylus/app.styl')
 
 import Vue from 'vue'
-import router from './router'
-import store from './store'
+import router from '@/router'
+import store from '@/store'
+
+import '@/plugins/vuex-router-sync'
+
 import {
   Vuetify,
   VApp,

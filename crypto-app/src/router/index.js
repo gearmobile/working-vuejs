@@ -10,18 +10,18 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/home',
-    component: () => import('@/pages/HomePage'),
     name: 'Home',
+    component: () => import('@/pages/HomePage')
   },
   {
     path: '/list',
-    component: () => import('@/pages/ListPage'),
     name: 'List',
+    component: () => import('@/pages/ListPage')
   },
   {
     path: '/list/:id',
-    component: () => import('@/pages/CoinPage'),
     name: 'Coin',
+    component: () => import('@/pages/CoinPage'),
     props: true
   },
   {
