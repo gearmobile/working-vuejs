@@ -1,21 +1,23 @@
 <template lang="pug">
-  
 
-  v-card( color="teal lighten-3" )
+  v-card.mb-4( color="teal lighten-3" )
     v-card-text
-
+      
+      // BRICK QUANTITTY
       v-layout( row, wrap, tag="section" )
         v-flex( xs12, md6 )
           | Количество кирпича, шт
         v-flex( xs12, md6 )
           | {{ quantity }}
       
+      // COMMON AREA
       v-layout( row, wrap )
         v-flex( xs12, md6 )
           | Общая площадь, кв. м.
         v-flex( xs12, md6 )
           | {{ area }}
       
+      // COMMON COST
       v-layout( row, wrap, tag="section" )
         v-flex( xs12, md6 )
           | Общая стоимость, руб.

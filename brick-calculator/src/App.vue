@@ -14,6 +14,7 @@
       // STEPPER SECTION
       v-stepper( v-model="stage", vertical )
         
+        // MASONRY SECTION
         v-stepper-step( step="1", :complete="stage > 1" )
           h4.headline
             | Выберите тип кирпичной кладки
@@ -24,6 +25,7 @@
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
 
+        // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
           h4.headline
             | Выберите тип шва кирпичной кладки
@@ -33,9 +35,10 @@
           component-seam
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBack()" )
             | go back
 
+        // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
           h4.headline
             | Выберите тип кирпича
@@ -45,9 +48,10 @@
           component-brick
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBack()" )
             | go back
 
+        // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
           h4.headline
             | Добавить размеры строения
@@ -57,9 +61,10 @@
           component-building
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBack()" )
             | go back
 
+        // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
           h4.headline
             | Добавить оконные и дверные проемы
@@ -69,9 +74,10 @@
           component-opening
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBack()" )
             | go back
 
+        // RESULT SECTION
         v-stepper-step( step="6" )
           h4.headline
             | Результат расчетов
