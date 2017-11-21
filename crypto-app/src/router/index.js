@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Home from '../pages/HomePage.vue'
-import List from '../pages/ListPage.vue'
-import Coin from '../pages/CoinPage.vue'
+import Home from '@/pages/HomePage.vue'
+import List from '@/pages/ListPage.vue'
+import Coin from '@/pages/CoinPage.vue'
 
 Vue.use(VueRouter)
 
