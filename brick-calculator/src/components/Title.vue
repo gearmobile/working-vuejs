@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  h4.text-xs-center.text-md-left.headline.teal--text
+  h4.text-xs-center.display-2.teal--text.mb-4
     | {{ title }}
 
 </template>
