@@ -10,7 +10,10 @@
 
 <script>
   export default {
-    name: 'HomePage'
+    name: 'HomePage',
+    created () {
+      this.$store.dispatch('getData')
+    }
   }
 </script>
 

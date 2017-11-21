@@ -44,8 +44,5 @@ Vue.use(Vuetify, {
 new Vue({
   router,
   store,
-  created () {
-    store.dispatch('getData')
-  },
   render: h => h(App)
 }).$mount('#app')
