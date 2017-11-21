@@ -2,24 +2,24 @@
 
   v-card.mb-4( color="teal lighten-3" )
     v-card-text
+      v-container( grid-list-md )
+        v-layout( row, wrap, tag="section" )
+          
+          v-flex( xs12, md4 )
+            v-text-field(
+              type="text",
+              :counter="maskCounter",
+              :hint="hintText",
+              persistent-hint,
+              name="length",
+              id="length",
+              label="Длина строения, м",
+              v-model.trim="length",
+              color="teal darken-2",
+              :mask="mask"
+            )
 
-      v-layout( row, tag="section" )
-        v-flex( xs12 )
-          v-text-field(
-            type="text",
-            :counter="maskCounter",
-            :hint="hintText",
-            persistent-hint,
-            name="length",
-            id="length",
-            label="Длина строения, м",
-            v-model.trim="length",
-            color="teal darken-2",
-            :mask="mask"
-          )
-
-      v-layout( row tag="section" )
-        v-flex( xs12 )
+        v-flex( xs12, md4 )
           v-text-field(
             type="text",
             :counter="maskCounter",
@@ -33,8 +33,7 @@
             :mask="mask"
           )
 
-      v-layout( row tag="section" )
-        v-flex( xs12 )
+        v-flex( xs12, md4 )
           v-text-field(
             type="text",
             :counter="maskCounter",
