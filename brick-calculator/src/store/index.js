@@ -7,8 +7,8 @@ Vue.use(Vuex)
 
 const state = {
   mask: '###',
-  maskOpening: '##',
-  hintText: 'Целые числа',
+  maskOpening: '#',
+  hintText: 'Целое число',
   masonry: [
     { name: 'Кладка в 0,5 кирпича', value: '0.5' },
     { name: 'Кладка в 1 кирпич', value: '1' },
@@ -180,9 +180,9 @@ const getters = {
   getMaskOpening (state) {
     return state.maskOpening
   },
-  getMaskOpeningCounter (state) {
-    return state.maskOpening.length
-  },
+  // getMaskOpeningCounter (state) {
+  //   return state.maskOpening.length
+  // },
   getHintText (state) {
     return state.hintText
   },

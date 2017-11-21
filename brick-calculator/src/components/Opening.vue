@@ -16,8 +16,7 @@
             :mask="mask",
             :hint="hintText",
             persistent-hint,
-            color="teal darken-2",
-            :counter="maskCounter"
+            color="teal darken-2"
           )
       
         v-flex( xs12, sm4, tag="article" )
@@ -29,8 +28,7 @@
             :mask="mask",
             :hint="hintText",
             persistent-hint,
-            color="teal darken-2",
-            :counter="maskCounter"
+            color="teal darken-2"
           )
       
         v-flex.text-xs-right.opening-control( xs12, sm4, tag="article" )
@@ -54,7 +52,7 @@
     computed: {
       ...mapGetters({
         mask: 'getMaskOpening',
-        maskCounter: 'getMaskOpeningCounter',
+        // maskCounter: 'getMaskOpeningCounter',
         hintText: 'getHintText'
       }),
       width: {
