@@ -9,20 +9,28 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    component: Home,
+    path: '/home',
+    component: () => import('@/pages/HomePage'),
     name: 'Home',
   },
   {
     path: '/list',
-    component: List,
+    component: () => import('@/pages/ListPage'),
     name: 'List',
   },
   {
     path: '/list/:id',
-    component: Coin,
+    component: () => import('@/pages/CoinPage'),
     name: 'Coin',
     props: true
+  },
+  {
+    path: '/',
+    redirect: '/home'
+  },
+  {
+    path: '/*',
+    redirect: '/home'
   }
 ]
 
