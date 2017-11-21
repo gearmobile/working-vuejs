@@ -3,9 +3,6 @@
   v-card.mb-4( color="teal lighten-3" )
     v-card-text
 
-      h4.text-xs-center.text-md-left.title.white--text
-        | Добавить размеры строения
-
       v-layout( row, tag="section" )
         v-flex( xs12 )
           v-text-field(

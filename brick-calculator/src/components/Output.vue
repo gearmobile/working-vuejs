@@ -4,9 +4,6 @@
   v-card( color="teal lighten-3" )
     v-card-text
 
-      h4.text-xs-center.text-md-left.title.white--text.mb-4
-        | Вывод:
-
       v-layout( row, wrap, tag="section" )
         v-flex( xs12, md6 )
           | Количество кирпича, шт

@@ -3,9 +3,6 @@
   v-card.mb-4( color="teal lighten-3" )
     v-card-text
       
-      h4.text-xs-center.text-md-left.title.white--text.mb-4
-        | Добавить оконные и дверные проемы
-      
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section" )
