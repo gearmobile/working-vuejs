@@ -1,5 +1,7 @@
 <template lang="pug">
   v-app( light )
+    
+    // DRAWER
     v-navigation-drawer( v-model="sideNav", temporary )
       v-list
         v-list-tile( v-for="(item, index) in menuItems", :key="index", :to="item.path" )
@@ -15,6 +17,8 @@
               | exit_to_app
           v-list-tile-content
             | logout
+    
+    // TOOLBAR
     v-toolbar( dark, color="primary" )
       v-toolbar-side-icon.hidden-sm-and-up( @click.stop="onShowSideNav()" )
       v-toolbar-title
@@ -27,10 +31,12 @@
             | {{ item.icon }}
           | {{ item.title }}
         // LOGOUT BUTTON
-        v-btn( flat, v-if="userExisting", @click="onLogoutExistingUser()" )
+        v-btn( flat, v-if="userAuthorized", @click="onLogoutExistingUser()" )
           v-icon( left )
             | exit_to_app
           | logout
+    
+    // MAIN SECTION
     section.main
       router-view
 </template>
@@ -52,12 +58,12 @@
       }
     },
     computed: {
-      userExisting () {
-        return this.$store.getters.getExistingUser
+      userAuthorized () {
+        return this.$store.getters.getExistingUser.length !== 0
       },
       menuItems () {
         let items = []
-        if (!this.userExisting) {
+        if (!this.userAuthorized) {
           items = [
             { icon: 'face', title: 'sign up', path: '/signup' },
             { icon: 'lock_open', title: 'sign in', path: '/signin' }
