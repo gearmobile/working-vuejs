@@ -11,7 +11,7 @@
           v-list-tile-content
             | {{ item.title }}
         // LOGOUT BUTTON
-        v-list-tile( v-if="userExisting" )
+        v-list-tile( v-if="userAuthorized" )
           v-list-tile-action
             v-icon
               | exit_to_app
