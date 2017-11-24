@@ -16,7 +16,7 @@
                       | {{ meetup.title }}
                     article.pl-2
                       | {{ meetup.date }} {{ meetup.time }}
-                v-card-actions( v-if="userAuthenticated" )
+                v-card-actions( v-if="userAutherized" )
                   v-btn( flat, color="white", :to="'/meetupdetails/' + meetup.id" )
                     v-icon.white--text( left, light )
                       | arrow_forward
@@ -33,8 +33,8 @@
       loading () {
         return this.$store.getters.getLoading
       },
-      userAuthenticated () {
-        return this.$store.getters.getExistingUser !== null || this.$store.getters.getExistingUser !== undefined
+      userAutherized () {
+        return this.$store.getters.userIsAuthorized
       }
     }
   }
