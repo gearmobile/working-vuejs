@@ -17,11 +17,10 @@ const mutations = {
     state.users = payload
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
-    if (state.users.meetups.findIndex(el => el === payload.meetupID) >= 0) {
-      return
+    if (state.users.meetups.findIndex(el => el === payload) < 0) {
+      state.users.meetups.push(payload.meetupID)
+      state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
     }
-    state.users.meetups.push(payload.meetupID)
-    state.users.meetupKEYS[payload.meetupID] = payload.meetupKEY
   },
   'UNREGISTER_USER_FOR_MEETUP' (state, payload) {
     const meetups = state.users.meetups
@@ -31,39 +30,6 @@ const mutations = {
 }
 
 const actions = {
-  registerUserMeetup ({ commit, getters }, payload) {
-    if (state.users.meetups.findIndex(el => el === payload) >= 0) {
-      return
-    }
-    commit('SET_LOADING', true)
-    firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registrations/').push(payload)
-      .then((data) => {
-        commit('SET_LOADING', false)
-        commit('REGISTER_USER_FOR_MEETUP', { meetupID: payload, meetupKEY: data.key })
-      })
-      .catch(error => {
-        console.log(error)
-        commit('SET_LOADING', false)
-      })
-  },
-  unregisterUserMeetup ({ commit, getters }, payload) {
-    commit('SET_LOADING', true)
-    const userCurrent = getters.getExistingUser
-    if (!userCurrent.meetupKEYS) {
-      return
-    }
-    const userCurrentMeetupKEY = userCurrent.meetupKEYS[payload]
-    firebase.database().ref('/users/' + userCurrent.id + '/registrations/').child(userCurrentMeetupKEY)
-      .remove()
-      .then(() => {
-        commit('SET_LOADING', false)
-        commit('UNREGISTER_USER_FOR_MEETUP', payload)
-      })
-      .catch(error => {
-        commit('SET_LOADING', false)
-        console.log(error)
-      })
-  },
   createNewUser ({ commit }, payload) {
     commit('SET_LOADING', true)
     commit('CLEAR_ERROR')

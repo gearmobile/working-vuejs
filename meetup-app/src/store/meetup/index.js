@@ -34,8 +34,9 @@ const mutations = {
 const actions = {
   registerUserMeetup ({ commit, getters }, payload) {
     commit('SET_LOADING', true)
-    firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registrations/').push(payload)
-      .then((data) => {
+    if (getters.getUserMeetups.findIndex(el => el === payload) < 0) {
+      firebase.database().ref('/users/' + getters.getExistingUser.id).child('/registrations/').push(payload)
+      .then(data => {
         commit('SET_LOADING', false)
         commit('REGISTER_USER_FOR_MEETUP', { meetupID: payload, meetupKEY: data.key })
       })
@@ -43,6 +44,7 @@ const actions = {
         console.log(error)
         commit('SET_LOADING', false)
       })
+    }
   },
   unregisterUserMeetup ({ commit, getters }, payload) {
     commit('SET_LOADING', true)

@@ -59,7 +59,7 @@
     },
     computed: {
       userAuthorized () {
-        return this.$store.getters.getExistingUser.length !== 0
+        return this.$store.getters.userIsAuthorized
       },
       menuItems () {
         let items = []

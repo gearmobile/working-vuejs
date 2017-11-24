@@ -63,6 +63,7 @@
     methods: {
       onSaveHandler () {
         const IDMeetup = this.meetupID
+        // console.log(IDMeetup)
         if (this.userIsRegistered) {
           this.$store.dispatch('unregisterUserMeetup', IDMeetup)
         } else {
