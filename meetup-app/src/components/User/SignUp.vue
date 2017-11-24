@@ -11,7 +11,7 @@
     v-layout.my-4( row )
       v-flex( xs12, md6, offset-md3 )
         h4
-          | Signup New User
+          | SignUp New User
     
     v-layout( row )
       v-flex( xs12, md6, offset-md3 )
@@ -27,7 +27,7 @@
               v-text-field( name="repeatedPassword", id="repeatedPassword", label="Repeat Password", type="password", v-model="user.repeatedPassword", :rules="[comparePasswords]", hide-details, required )
           v-layout( row )
             v-flex( xs12 )
-              v-btn.primary( type="submit", :disabled="loading", :loading="loading" )
+              v-btn.primary( type="submit", :disabled="loading", :loading="loading", block )
                 | signup
                 span.custom-loader( slot="loader" )
                   v-icon( light )

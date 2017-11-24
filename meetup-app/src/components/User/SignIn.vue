@@ -11,7 +11,7 @@
     v-layout.my-4( row )
       v-flex( xs12, md6, offset-md3 )
         h4
-          | Signin User
+          | SignIn User
     
     v-layout( row )
       v-flex( xs12, md6, offset-md3 )
@@ -27,7 +27,7 @@
     
           v-layout( row )
             v-flex( xs12 )
-              v-btn.primary( type="submit", :disabled="loading", :loading="loading" )
+              v-btn.primary( type="submit", :disabled="loading", :loading="loading", block )
                 | signin
                 span.custom-loader( slot="loader" )
                   v-icon( light )
