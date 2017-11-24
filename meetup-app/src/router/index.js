@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from '@/components/Start.vue'
-import MeetupList from '@/components/Meetup/MeetupList.vue'
-import MeetupNew from '@/components/Meetup/MeetupNew.vue'
-import MeetupDetails from '@/components/Meetup/MeetupDetails.vue'
-import SignUp from '@/components/User/SignUp.vue'
-import SignIn from '@/components/User/SignIn.vue'
-import Profile from '@/components/User/Profile.vue'
+const Home = () => import('@/components/Start.vue')
+const MeetupList = () => import('@/components/Meetup/MeetupList.vue')
+const MeetupNew = () => import('@/components/Meetup/MeetupNew.vue')
+const MeetupDetails = () => import('@/components/Meetup/MeetupDetails.vue')
+const SignUp = () => import('@/components/User/SignUp.vue')
+const SignIn = () => import('@/components/User/SignIn.vue')
+const Profile = () => import('@/components/User/Profile.vue')
 import AuthGuard from './auth-guard'
 
 Vue.use(Router)
