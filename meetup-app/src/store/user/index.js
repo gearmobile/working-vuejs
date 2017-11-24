@@ -1,7 +1,7 @@
 import * as firebase from 'firebase'
 
 const state = {
-  users: []
+  users: {}
 }
 
 const mutations = {
@@ -15,6 +15,10 @@ const mutations = {
   },
   'SET_USER' (state, payload) {
     state.users = payload
+  },
+  'DELETE_USER' (state) {
+    let user = state.users
+    Object.keys(user).forEach(el => delete user[el])
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
     if (state.users.meetups.findIndex(el => el === payload) < 0) {
@@ -90,7 +94,7 @@ const actions = {
   },
   onLogoutUser ({ commit }) {
     firebase.auth().signOut()
-    commit('SET_USER', null)
+    commit('DELETE_USER')
   }
 }
 
@@ -99,7 +103,7 @@ const getters = {
     return state.users
   },
   userIsAuthorized (state) {
-    return state.users.length !== 0
+    return Object.keys(state.users).length !== 0
   },
   getUserMeetups (state) {
     return state.users.meetups

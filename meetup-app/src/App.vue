@@ -31,7 +31,7 @@
             | {{ item.icon }}
           | {{ item.title }}
         // LOGOUT BUTTON
-        v-btn( flat, v-if="userAuthorized", @click="onLogoutExistingUser()" )
+        v-btn( flat, v-if="userAuthorized", @click.native="onLogoutExistingUser()" )
           v-icon( left )
             | exit_to_app
           | logout
