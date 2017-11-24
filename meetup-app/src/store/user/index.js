@@ -132,6 +132,9 @@ const getters = {
   getExistingUser (state) {
     return state.users
   },
+  userIsAuthorized (state) {
+    return state.users.length !== 0
+  },
   getUserMeetups (state) {
     return state.users.meetups
   }
