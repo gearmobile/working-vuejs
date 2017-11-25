@@ -16,12 +16,14 @@
                 v-card-media( :src="meetup.src", height="125px" )
               
               v-flex( xs12, sm8, md9 )
+                
                 v-card-title( primary-title )
                   section
                     h5.white--text.mb-1
                       | {{ meetup.title }}
                     article.pl-2
                       | {{ meetup.date }} {{ meetup.time }}
+                
                 v-card-actions( v-if="userAuthenticated" )
                   v-btn( flat, color="white", :to="'/meetupdetails/' + meetup.id" )
                     v-icon.white--text( left, light )

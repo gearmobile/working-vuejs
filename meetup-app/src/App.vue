@@ -4,19 +4,21 @@
     // DRAWER
     v-navigation-drawer( v-model="sideNav", temporary )
       v-list
+        
         v-list-tile( v-for="(item, index) in menuItems", :key="index", :to="item.path" )
           v-list-tile-action
             v-icon
               | {{ item.icon }}
-          v-list-tile-content( style="text-transform: capitalize" )
+          v-list-tile-content( style="text-transform: capitalize;" )
             | {{ item.title }}
+        
         // LOGOUT BUTTON
-        v-list-tile( v-if="userAuthorized" )
+        v-list-tile.logout( v-if="userAuthorized" )
           v-list-tile-action
-            v-icon
+            v-icon.logout__icon
               | exit_to_app
-          v-list-tile-content
-            | logout
+          v-list-tile-content.logout__title
+            | log out
     
     // TOOLBAR
     v-toolbar( dark, color="primary" )
@@ -84,4 +86,21 @@
 
 <style lang="stylus">
   @import './stylus/main'
+
+  .logout
+    background-color: #4db6ac
+    transition: background-color .2s
+
+    &:hover
+      background-color: #009688
+
+    &__icon
+      color: white !important
+
+    &__title
+      cursor: pointer
+      color: white
+      text-transform: capitalize
+      font-weight 700
+
 </style>

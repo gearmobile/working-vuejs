@@ -73,11 +73,18 @@
 
           // DATE SECTION
           v-layout.mb-4( justify-center )
-            v-date-picker( v-model="meetup.date", :landscape="$vuetify.breakpoint.mdAndUp" )
+            v-date-picker(
+              v-model="meetup.date",
+              :landscape="$vuetify.breakpoint.mdAndUp"
+            )
 
           // TIME SECTION
           v-layout.mb-4( justify-center )
-            v-time-picker( v-model="meetup.time", format="24hr", :landscape="$vuetify.breakpoint.mdAndUp" )
+            v-time-picker(
+              v-model="meetup.time",
+              format="24hr",
+              :landscape="$vuetify.breakpoint.mdAndUp"
+            )
 
           // CONTROL SECTION
           v-layout.mb-4( justify-center )
