@@ -2,10 +2,11 @@
 
   v-card.mb-4( color="teal lighten-3" )
     v-card-text
+      
       v-container( grid-list-md )
         v-layout( row, wrap, tag="section" )
           
-          v-flex( xs12, md4 )
+          v-flex( xs12, md4, tag="section" )
             v-text-field(
               type="text",
               :counter="maskCounter",
@@ -19,33 +20,33 @@
               :mask="mask"
             )
 
-        v-flex( xs12, md4 )
-          v-text-field(
-            type="text",
-            :counter="maskCounter",
-            :hint="hintText",
-            persistent-hint,
-            name="width",
-            id="width",
-            label="Ширина строения, м",
-            v-model.trim="width",
-            color="teal darken-2",
-            :mask="mask"
-          )
+          v-flex( xs12, md4, tag="section" )
+            v-text-field(
+              type="text",
+              :counter="maskCounter",
+              :hint="hintText",
+              persistent-hint,
+              name="width",
+              id="width",
+              label="Ширина строения, м",
+              v-model.trim="width",
+              color="teal darken-2",
+              :mask="mask"
+            )
 
-        v-flex( xs12, md4 )
-          v-text-field(
-            type="text",
-            :counter="maskCounter",
-            :hint="hintText",
-            persistent-hint,
-            name="height",
-            id="height",
-            label="Высота строения, м",
-            v-model.trim="height",
-            color="teal darken-2",
-            :mask="mask"
-          )
+          v-flex( xs12, md4, tag="section" )
+            v-text-field(
+              type="text",
+              :counter="maskCounter",
+              :hint="hintText",
+              persistent-hint,
+              name="height",
+              id="height",
+              label="Высота строения, м",
+              v-model.trim="height",
+              color="teal darken-2",
+              :mask="mask"
+            )
 
 </template>
 
