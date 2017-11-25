@@ -1,14 +1,14 @@
 <template lang="pug">
   
-  v-container.mt-4
+  v-container.mt-4( grid-list-md )
     
     v-layout.mb-4( row )
-      v-flex( xs12, md6, offset-md3, sm-8, offset-sm2 )
+      v-flex( xs12, md6, offset-md3, sm8, offset-sm2 )
         h4
           | Create a New Meetup
     
     v-layout( row )
-      v-flex( xs12, md6, offset-md3, sm-8, offset-sm2 )
+      v-flex( xs12, md6, offset-md3, sm8, offset-sm2 )
         form( @submit.prevent="onSubmitHandler()" )
 
           // TITLE SECTION
@@ -73,11 +73,11 @@
 
           // DATE SECTION
           v-layout.mb-4( justify-center )
-            v-date-picker( v-model="meetup.date", landscape )
+            v-date-picker( v-model="meetup.date", :landscape="$vuetify.breakpoint.mdAndUp" )
 
           // TIME SECTION
           v-layout.mb-4( justify-center )
-            v-time-picker( v-model="meetup.time", format="24hr", landscape )
+            v-time-picker( v-model="meetup.time", format="24hr", :landscape="$vuetify.breakpoint.mdAndUp" )
 
           // CONTROL SECTION
           v-layout.mb-4( justify-center )

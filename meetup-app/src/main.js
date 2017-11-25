@@ -20,6 +20,9 @@ const app = new Vue({
   store,
   template: '<App/>',
   components: { App },
+  // mounted () {
+  //   console.log(JSON.stringify(this.$vuetify.breakpoint))
+  // },
   created () {
     firebase.initializeApp({
       apiKey: 'AIzaSyAadNrm5igszUCg5d6zv-dC03hS387dfUs',

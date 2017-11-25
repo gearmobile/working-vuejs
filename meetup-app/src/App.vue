@@ -8,7 +8,7 @@
           v-list-tile-action
             v-icon
               | {{ item.icon }}
-          v-list-tile-content
+          v-list-tile-content( style="text-transform: capitalize" )
             | {{ item.title }}
         // LOGOUT BUTTON
         v-list-tile( v-if="userAuthorized" )
