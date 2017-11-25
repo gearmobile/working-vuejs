@@ -17,8 +17,7 @@ const mutations = {
     state.users = payload
   },
   'DELETE_USER' (state) {
-    let user = state.users
-    Object.keys(user).forEach(el => delete user[el])
+    state.users = {}
   },
   'REGISTER_USER_FOR_MEETUP' (state, payload) {
     if (state.users.meetups.findIndex(el => el === payload) < 0) {
@@ -94,7 +93,14 @@ const actions = {
   },
   onLogoutUser ({ commit }) {
     firebase.auth().signOut()
-    commit('DELETE_USER')
+      .then(() => {
+        commit('DELETE_USER')
+      })
+      .catch(error => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.log(errorCode, errorMessage)
+      })
   }
 }
 
