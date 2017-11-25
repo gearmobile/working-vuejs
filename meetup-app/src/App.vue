@@ -12,8 +12,8 @@
           v-list-tile-content( style="text-transform: capitalize;" )
             | {{ item.title }}
         
-        // LOGOUT BUTTON
-        v-list-tile.logout( v-if="userAuthorized" )
+        // LOGOUT LIST ITEM
+        v-list-tile.logout( v-if="userAuthorized", @click.native="onLogoutExistingUser()" )
           v-list-tile-action
             v-icon.logout__icon
               | exit_to_app
