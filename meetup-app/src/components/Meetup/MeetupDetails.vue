@@ -39,7 +39,7 @@
 
           v-card-actions
             v-spacer
-            component-register( :meetupID="id", v-if="userAuthenticated && !userCreator" )
+            component-register( :meetupID="id", v-if="userAuthenticated" )
 
 </template>
 
