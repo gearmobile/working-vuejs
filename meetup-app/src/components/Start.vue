@@ -55,4 +55,10 @@
     padding: 20px 30px;
   }
 
+    @media only screen and (max-width: 400px) {
+      .carousel-caption {
+        font-size: 1.4rem;
+      }
+    }
+
 </style>
