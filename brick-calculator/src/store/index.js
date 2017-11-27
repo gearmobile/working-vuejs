@@ -30,9 +30,9 @@ const state = {
     { name: 'ЕВРО (250×85×65 мм)', value: 'ЕВРО', length: 250, width: 85, height: 65, price: 28 }
   ],
   building: {
-    length: '',
-    width: '',
-    height: ''
+    length: null,
+    width: null,
+    height: null
   },
   opening: [
     {
@@ -71,18 +71,25 @@ const mutations = {
   },
   // BUILDING SECTION
   'SET_LENGTH' (state, payload) {
-    state.building.length = payload
+    if (payload === '') {
+      state.building.length = null
+    } else {
+      state.building.length = payload
+    }
   },
   'SET_WIDTH' (state, payload) {
-    state.building.width = payload
+    if (payload === '') {
+      state.building.width = null
+    } else {
+      state.building.width = payload
+    }
   },
   'SET_HEIGHT' (state, payload) {
-    state.building.height = payload
-  },
-  'RESET_BUILDING_FIELDS' (state) {
-    state.building.width = ''
-    state.building.height = ''
-    state.building.length = ''
+    if (payload === '') {
+      state.building.height = null
+    } else {
+      state.building.height = payload
+    }
   },
   // OPENING SECTION
   'ADD_COMPONENT' (state) {
@@ -156,8 +163,10 @@ const actions = {
   setHeight ({ commit }, payload) {
     commit('SET_HEIGHT', payload)
   },
-  clearBuildingFields ({ commit }) {
-    commit('RESET_BUILDING_FIELDS')
+  clearBuildingFields ({ commit, dispatch }) {
+    dispatch('setLength', null)
+    dispatch('setWidth', null)
+    dispatch('setHeight', null)
   },
   // OPENING SECTION
   addComponent ({ commit }) {
@@ -210,7 +219,7 @@ const getters = {
     return state.building.height
   },
   checkFieldsBuilding (state) {
-    return state.building.width !== '' && state.building.height !== '' && state.building.length !== ''
+    return state.building.width !== null && state.building.height !== null && state.building.length !== null
   },
   // MASK SECTION
   getMask (state) {
