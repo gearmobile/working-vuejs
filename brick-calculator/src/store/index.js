@@ -30,9 +30,9 @@ const state = {
     { name: 'ЕВРО (250×85×65 мм)', value: 'ЕВРО', length: 250, width: 85, height: 65, price: 28 }
   ],
   building: {
-    length: null,
-    width: null,
-    height: null
+    length: '',
+    width: '',
+    height: ''
   },
   opening: [
     { width: null, height: null }
@@ -69,9 +69,9 @@ const mutations = {
     state.building.height = payload
   },
   'CLEAR_BUILDING_FIELDS' (state) {
-    state.building.width = null
-    state.building.height = null
-    state.building.length = null
+    state.building.width = ''
+    state.building.height = ''
+    state.building.length = ''
   },
   // OPENING SECTION
   'ADD_COMPONENT' (state) {
@@ -185,7 +185,7 @@ const getters = {
     return state.building.height
   },
   checkFieldsBuilding (state) {
-    return state.building.width !== null && state.building.height !== null && state.building.length !== null
+    return state.building.width !== '' && state.building.height !== '' && state.building.length !== ''
   },
   // MASK SECTION
   getMask (state) {

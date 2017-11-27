@@ -61,7 +61,7 @@
           component-building
           v-btn( color="primary", @click.native="stepForward()", :disabled="!buildingFields" )
             | next step
-          v-btn( flat, color="error", @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBackBuilding()" )
             | go back
 
         // SECTION OPENING
@@ -74,7 +74,7 @@
           component-opening
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, color="error", @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBackOpening()" )
             | go back
 
         // RESULT SECTION
@@ -116,6 +116,13 @@
       },
       stepReset () {
         this.stage = 1
+      },
+      stepBackBuilding () {
+        this.$store.dispatch('clearBuildingFields')
+        this.stepBack()
+      },
+      stepBackOpening () {
+        this.stepBack()
       }
     },
     components: {
