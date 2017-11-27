@@ -133,7 +133,11 @@ const mutations = {
     state.openingValueMaxStatus = false
   },
   'RESET_OPENING_FIELDS' (state) {
-    state.opening.forEach(el => {
+    const arr = state.opening
+    for (let i = arr.length; i > 1; i -= 1) {
+      arr.pop()
+    }
+    arr.forEach(el => {
       el.width = null
       el.height = null
     })
