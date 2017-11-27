@@ -35,7 +35,7 @@
           component-seam
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, color="error", @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBackSeam()" )
             | go back
 
         // BRICK SECTION
@@ -119,6 +119,10 @@
       },
       stepBackBuilding () {
         this.$store.dispatch('clearBuildingFields')
+        this.stepBack()
+      },
+      stepBackSeam () {
+        this.$store.dispatch('resetSeamValue')
         this.stepBack()
       },
       stepBackBrick () {

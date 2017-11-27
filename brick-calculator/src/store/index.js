@@ -52,8 +52,12 @@ const mutations = {
   'SET_MASONRY' (state, payload) {
     state.order.masonry = payload
   },
+  // SEAM SECTION
   'SET_SEAM' (state, payload) {
     state.order.seam = payload
+  },
+  'RESET_SEAM_VALUE' (state) {
+    state.order.seam = 0
   },
   // BRICK SECTION
   'SET_BRICK' (state, payload) {
@@ -119,8 +123,12 @@ const actions = {
   setMasonry ({ commit }, payload) {
     commit('SET_MASONRY', payload)
   },
+  // SEAM SECTION
   setSeam ({ commit }, payload) {
     commit('SET_SEAM', payload)
+  },
+  resetSeamValue ({ commit }) {
+    commit('RESET_SEAM_VALUE')
   },
   // BRICK SECTION
   setBrick ({ commit }, payload) {
