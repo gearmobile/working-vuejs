@@ -35,7 +35,10 @@ const state = {
     height: ''
   },
   opening: [
-    { width: null, height: null }
+    {
+      width: null,
+      height: null
+    }
   ],
   openingValueMax: 5,
   openingValueMin: 1,
@@ -113,6 +116,12 @@ const mutations = {
   },
   'CLOSE_ALERT' (state) {
     state.openingValueMaxStatus = false
+  },
+  'RESET_OPENING_FIELDS' (state) {
+    state.opening.forEach(el => {
+      el.width = null
+      el.height = null
+    })
   }
 }
 
@@ -162,22 +171,21 @@ const actions = {
   },
   setOpeningHeight ({ commit }, payload) {
     commit('SET_OPENING_HEIGHT', payload)
+  },
+  resetFieldsOpening ({ commit }) {
+    commit('RESET_OPENING_FIELDS')
   }
 }
 
 const getters = {
-  getOpeningText (state) {
-    return state.openingText
-  },
-  getOpeningStatus (state) {
-    return state.openingValueMaxStatus
-  },
+  // MASONRY SECTION
   getMasonry (state) {
     return state.masonry
   },
   getMasonryCurrent (state) {
     return state.order.masonry
   },
+  // SEAM SECTION
   getSeam (state) {
     return state.seam
   },
@@ -217,6 +225,13 @@ const getters = {
   getHintText (state) {
     return state.hintText
   },
+  // OPENING SECTION
+  getOpeningText (state) {
+    return state.openingText
+  },
+  getOpeningStatus (state) {
+    return state.openingValueMaxStatus
+  },
   getOpening (state) {
     return state.opening
   },
@@ -229,6 +244,11 @@ const getters = {
     return (id) => {
       return state.opening[id].height
     }
+  },
+  checkFieldsOpening (state) {
+    return state.opening.every(el => {
+      return el.height !== null && el.width !== null
+    })
   },
   // CALCULATIONS SECTION
   getSelectedBrick (state) {

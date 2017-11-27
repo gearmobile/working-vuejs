@@ -72,7 +72,7 @@
             | Здесь добавляются оконные и дверные проемы строения - ширина и высота, в метрах
         v-stepper-content( step="5" )
           component-opening
-          v-btn( color="primary", @click.native="stepForward()" )
+          v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields" )
             | next step
           v-btn( flat, color="error", @click.native="stepBackOpening()" )
             | go back
@@ -130,6 +130,7 @@
         this.stepBack()
       },
       stepBackOpening () {
+        this.$store.dispatch('resetFieldsOpening')
         this.stepBack()
       }
     },
@@ -147,7 +148,8 @@
       ...mapGetters({
         mask: 'getMask',
         maskCounter: 'getMaskCounter',
-        buildingFields: 'checkFieldsBuilding'
+        buildingFields: 'checkFieldsBuilding',
+        openingFields: 'checkFieldsOpening'
       })
     }
   }
