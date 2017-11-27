@@ -116,10 +116,18 @@ const mutations = {
     }
   },
   'SET_OPENING_WIDTH' (state, payload) {
-    state.opening[payload.index].width = payload.value
+    if (payload.value === '') {
+      state.opening[payload.index].width = null
+    } else {
+      state.opening[payload.index].width = payload.value
+    }
   },
   'SET_OPENING_HEIGHT' (state, payload) {
-    state.opening[payload.index].height = payload.value
+    if (payload.value === '') {
+      state.opening[payload.index].height = null
+    } else {
+      state.opening[payload.index].height = payload.value
+    }
   },
   'CLOSE_ALERT' (state) {
     state.openingValueMaxStatus = false
