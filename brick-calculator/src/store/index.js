@@ -58,6 +58,7 @@ const mutations = {
   'SET_BRICK' (state, payload) {
     state.order.brick = payload
   },
+  // BUILDING SECTION
   'SET_LENGTH' (state, payload) {
     state.building.length = payload
   },
@@ -67,6 +68,12 @@ const mutations = {
   'SET_HEIGHT' (state, payload) {
     state.building.height = payload
   },
+  'CLEAR_BUILDING_FIELDS' (state) {
+    state.building.width = null
+    state.building.height = null
+    state.building.length = null
+  },
+  // OPENING SECTION
   'ADD_COMPONENT' (state) {
     if (state.opening.length < state.openingValueMax) {
       state.openingValueMaxStatus = false
@@ -114,6 +121,7 @@ const actions = {
   setBrick ({ commit }, payload) {
     commit('SET_BRICK', payload)
   },
+  // BUILDING SECTION
   setLength ({ commit }, payload) {
     commit('SET_LENGTH', payload)
   },
@@ -123,6 +131,10 @@ const actions = {
   setHeight ({ commit }, payload) {
     commit('SET_HEIGHT', payload)
   },
+  clearBuildingFields ({ commit }) {
+    commit('CLEAR_BUILDING_FIELDS')
+  },
+  // OPENING SECTION
   addComponent ({ commit }) {
     commit('ADD_COMPONENT')
   },
@@ -172,7 +184,7 @@ const getters = {
   getBuildingHeight (state) {
     return state.building.height
   },
-  fieldsBuilding (state) {
+  checkFieldsBuilding (state) {
     return state.building.width !== null && state.building.height !== null && state.building.length !== null
   },
   // MASK SECTION

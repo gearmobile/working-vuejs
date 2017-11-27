@@ -132,7 +132,7 @@
       ...mapGetters({
         mask: 'getMask',
         maskCounter: 'getMaskCounter',
-        buildingFields: 'fieldsBuilding'
+        buildingFields: 'checkFieldsBuilding'
       })
     }
   }
