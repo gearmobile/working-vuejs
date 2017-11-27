@@ -48,7 +48,7 @@
           component-brick
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
-          v-btn( flat, color="error", @click.native="stepBack()" )
+          v-btn( flat, color="error", @click.native="stepBackBrick()" )
             | go back
 
         // BUILDING SECTION
@@ -119,6 +119,10 @@
       },
       stepBackBuilding () {
         this.$store.dispatch('clearBuildingFields')
+        this.stepBack()
+      },
+      stepBackBrick () {
+        this.$store.dispatch('resetBrickValue')
         this.stepBack()
       },
       stepBackOpening () {

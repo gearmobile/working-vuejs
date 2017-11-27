@@ -55,8 +55,12 @@ const mutations = {
   'SET_SEAM' (state, payload) {
     state.order.seam = payload
   },
+  // BRICK SECTION
   'SET_BRICK' (state, payload) {
     state.order.brick = payload
+  },
+  'RESET_BRICK_VALUE' (state) {
+    state.order.brick = 'одинарный'
   },
   // BUILDING SECTION
   'SET_LENGTH' (state, payload) {
@@ -68,7 +72,7 @@ const mutations = {
   'SET_HEIGHT' (state, payload) {
     state.building.height = payload
   },
-  'CLEAR_BUILDING_FIELDS' (state) {
+  'RESET_BUILDING_FIELDS' (state) {
     state.building.width = ''
     state.building.height = ''
     state.building.length = ''
@@ -118,8 +122,12 @@ const actions = {
   setSeam ({ commit }, payload) {
     commit('SET_SEAM', payload)
   },
+  // BRICK SECTION
   setBrick ({ commit }, payload) {
     commit('SET_BRICK', payload)
+  },
+  resetBrickValue ({ commit }) {
+    commit('RESET_BRICK_VALUE')
   },
   // BUILDING SECTION
   setLength ({ commit }, payload) {
@@ -132,7 +140,7 @@ const actions = {
     commit('SET_HEIGHT', payload)
   },
   clearBuildingFields ({ commit }) {
-    commit('CLEAR_BUILDING_FIELDS')
+    commit('RESET_BUILDING_FIELDS')
   },
   // OPENING SECTION
   addComponent ({ commit }) {
@@ -168,6 +176,7 @@ const getters = {
   getSeamCurrent (state) {
     return state.order.seam
   },
+  // BRICK SECTION
   getBrick (state) {
     return state.bricks
   },
