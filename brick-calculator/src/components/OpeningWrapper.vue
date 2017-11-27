@@ -6,7 +6,7 @@
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section" )
-        v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields" )
+        v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields || checkArea" )
           | добавить проем
 
 </template>
@@ -30,6 +30,9 @@
       },
       openingFields () {
         return this.$store.getters.checkFieldsOpening
+      },
+      checkArea () {
+        return this.$store.getters.checkAreaCommonAndAreaOpening
       }
     }
   }
