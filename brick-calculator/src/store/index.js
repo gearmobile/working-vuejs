@@ -162,6 +162,7 @@ const getters = {
   getBrickCurrent (state) {
     return state.order.brick
   },
+  // BUILDING SECTION
   getBuildingLength (state) {
     return state.building.length
   },
@@ -171,6 +172,10 @@ const getters = {
   getBuildingHeight (state) {
     return state.building.height
   },
+  fieldsBuilding (state) {
+    return state.building.width !== null && state.building.height !== null && state.building.length !== null
+  },
+  // MASK SECTION
   getMask (state) {
     return state.mask
   },

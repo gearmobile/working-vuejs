@@ -59,7 +59,7 @@
             | Здесь добавляются размеры строения - ширина, длина и высота, в метрах
         v-stepper-content( step="4" )
           component-building
-          v-btn( color="primary", @click.native="stepForward()" )
+          v-btn( color="primary", @click.native="stepForward()", :disabled="!buildingFields" )
             | next step
           v-btn( flat, color="error", @click.native="stepBack()" )
             | go back
@@ -131,7 +131,8 @@
     computed: {
       ...mapGetters({
         mask: 'getMask',
-        maskCounter: 'getMaskCounter'
+        maskCounter: 'getMaskCounter',
+        buildingFields: 'fieldsBuilding'
       })
     }
   }
