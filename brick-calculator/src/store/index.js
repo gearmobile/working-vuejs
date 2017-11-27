@@ -289,11 +289,6 @@ const getters = {
     const result = (getters.getSelectedBrick.width / 1000 + getters.getSeamWidth) * (getters.getSelectedBrick.height / 1000 + getters.getSeamWidth)
     return result
   },
-  getAreaOpening (state) {
-    return state.opening.reduce((total, currentIndex) => {
-      return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
-    }, 0)
-  },
   // OUTPUT SECTION
   getBricksQuantity (state, getters) {
     let result = null
@@ -317,12 +312,20 @@ const getters = {
     result = (getters.getAreaCommon - getters.getAreaOpening) * result
     return result
   },
-  getAreaCommon (state, getters) {
-    if (_.isNil(state.building.length) || _.isNil(state.building.width) || _.isNil(state.building.height)) {
+  getAreaCommon (state, getters) { // общая площадь фасада строения
+    if (_.isNil(state.building.length) && _.isNil(state.building.width) && _.isNil(state.building.height)) {
       return null
     }
     const result = ((_.toNumber(state.building.length) + _.toNumber(state.building.width)) * 2) * _.toNumber(state.building.height)
     return result
+  },
+  getAreaOpening (state) {
+    return state.opening.reduce((total, currentIndex) => {
+      return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
+    }, 0)
+  },
+  checkAreaCommonAndAreaOpening (state, getters) {
+    return getters.getAreaCommon / 2 <= getters.getAreaOpening
   },
   getBricksCost (state, getters) {
     const result = getters.getBricksQuantity * getters.getSelectedBrick.price
