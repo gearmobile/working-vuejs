@@ -6,7 +6,7 @@
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section" )
-        v-btn( color="teal lighten-2", dark, @click.native="onClick()" )
+        v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields" )
           | добавить проем
 
 </template>
@@ -27,6 +27,9 @@
     computed: {
       components () {
         return this.$store.getters.getOpening
+      },
+      openingFields () {
+        return this.$store.getters.checkFieldsOpening
       }
     }
   }
