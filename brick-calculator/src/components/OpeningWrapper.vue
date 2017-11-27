@@ -13,6 +13,7 @@
 
 <script>
   import Opening from './Opening.vue'
+  import { mapGetters } from 'vuex'
 
   export default {
     name: 'OpeningWrapper',
@@ -25,15 +26,11 @@
       }
     },
     computed: {
-      components () {
-        return this.$store.getters.getOpening
-      },
-      openingFields () {
-        return this.$store.getters.checkFieldsOpening
-      },
-      checkArea () {
-        return this.$store.getters.checkAreaCommonAndAreaOpening
-      }
+      ...mapGetters({
+        components: 'getOpening',
+        openingFields: 'checkFieldsOpening',
+        checkArea: 'checkAreaCommonAndAreaOpening'
+      })
     }
   }
 </script>

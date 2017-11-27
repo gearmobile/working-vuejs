@@ -312,7 +312,7 @@ const getters = {
     result = (getters.getAreaCommon - getters.getAreaOpening) * result
     return result
   },
-  getAreaCommon (state, getters) { // общая площадь фасада строения
+  getAreaCommon (state, getters) {
     if (_.isNil(state.building.length) && _.isNil(state.building.width) && _.isNil(state.building.height)) {
       return null
     }
@@ -328,8 +328,7 @@ const getters = {
     return getters.getAreaCommon / 2 <= getters.getAreaOpening
   },
   getBricksCost (state, getters) {
-    const result = getters.getBricksQuantity * getters.getSelectedBrick.price
-    return result
+    return getters.getBricksQuantity * getters.getSelectedBrick.price
   }
 }
 

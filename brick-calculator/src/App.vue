@@ -85,7 +85,7 @@
             | Здесь показаны результаты вычислений - кол-во кирпича, общая стоимость кирпича, общая площадь строения
         v-stepper-content( step="6" )
           component-output
-          v-btn( color="success", @click.native="stepReset()" )
+          v-btn( color="success", @click.native="stepResetAllAndGoStart()" )
             | finish - go start
 
 </template>
@@ -114,13 +114,6 @@
       stepBack () {
         this.stage -= 1
       },
-      stepReset () {
-        this.stage = 1
-      },
-      stepBackBuilding () {
-        this.$store.dispatch('clearBuildingFields')
-        this.stepBack()
-      },
       stepBackSeam () {
         this.$store.dispatch('resetSeamValue')
         this.stepBack()
@@ -129,9 +122,20 @@
         this.$store.dispatch('resetBrickValue')
         this.stepBack()
       },
+      stepBackBuilding () {
+        this.$store.dispatch('clearBuildingFields')
+        this.stepBack()
+      },
       stepBackOpening () {
         this.$store.dispatch('resetFieldsOpening')
         this.stepBack()
+      },
+      stepResetAllAndGoStart () {
+        this.$store.dispatch('resetSeamValue')
+        this.$store.dispatch('resetBrickValue')
+        this.$store.dispatch('clearBuildingFields')
+        this.$store.dispatch('resetFieldsOpening')
+        this.stage = 1
       }
     },
     components: {
