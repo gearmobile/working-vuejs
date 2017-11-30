@@ -70,9 +70,9 @@
         // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
           h4.headline
-            | Добавить оконные и дверные проемы
+            | {{ $t('opening.title') }}
           small
-            | Здесь добавляются оконные и дверные проемы строения - ширина и высота, в метрах
+            | {{ $t('opening.subtitle') }}
         v-stepper-content( step="5" )
           component-opening
           v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields || areaCommonAndAreaOpening || checkCommon" )
