@@ -83,9 +83,9 @@
         // RESULT SECTION
         v-stepper-step( step="6" )
           h4.headline
-            | Результат расчетов
+            | {{ $t('output.title') }}
           small
-            | Здесь показаны результаты вычислений - кол-во кирпича, общая стоимость кирпича, общая площадь строения
+            | {{ $t('output.subtitle') }}
         v-stepper-content( step="6" )
           component-output
           v-btn( color="success", @click.native="stepResetAllAndGoStart()" )

@@ -11,6 +11,7 @@ import * as seam from './seam.json'
 import * as brick from './brick.json'
 import * as building from './building.json'
 import * as opening from './opening.json'
+import * as output from './result.json'
 
 export default {
   switcher,
@@ -20,5 +21,6 @@ export default {
   seam,
   brick,
   building,
-  opening
+  opening,
+  output
 }
