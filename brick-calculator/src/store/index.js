@@ -8,7 +8,6 @@ Vue.use(Vuex)
 const state = {
   mask: '###',
   maskOpening: '#',
-  hintText: 'Целое число',
   masonry: [
     { name: 'Кладка в 0,5 кирпича', value: '0.5' },
     { name: 'Кладка в 1 кирпич', value: '1' },
@@ -244,9 +243,6 @@ const getters = {
   },
   getMaskOpening (state) {
     return state.maskOpening
-  },
-  getHintText (state) {
-    return state.hintText
   },
   // OPENING SECTION
   getOpeningText (state) {

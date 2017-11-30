@@ -14,7 +14,7 @@
             id="width",
             :label="$t('opening.width')",
             :mask="mask",
-            :hint="hintText",
+            :hint="$t('opening.hint')",
             persistent-hint,
             color="teal darken-2"
           )
@@ -26,7 +26,7 @@
             id="height",
             :label="$t('opening.height')",
             :mask="mask",
-            :hint="hintText",
+            :hint="$t('opening.hint')",
             persistent-hint,
             color="teal darken-2"
           )
@@ -51,8 +51,7 @@
     },
     computed: {
       ...mapGetters({
-        mask: 'getMaskOpening',
-        hintText: 'getHintText'
+        mask: 'getMaskOpening'
       }),
       width: {
         get () { return this.$store.getters.getOpeningWidth(this.id) },

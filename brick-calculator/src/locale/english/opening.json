@@ -4,5 +4,6 @@
   "add-opening": "Add opening",
   "remove-opening": "Remove",
   "width": "Width, m",
-  "height": "Height, m"
+  "height": "Height, m",
+  "hint": "Integer"
 }

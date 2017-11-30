@@ -10,7 +10,7 @@
             v-text-field(
               type="text",
               :counter="maskCounter",
-              :hint="hintText",
+              :hint="$t('building.hint')",
               persistent-hint,
               name="length",
               id="length",
@@ -24,7 +24,7 @@
             v-text-field(
               type="text",
               :counter="maskCounter",
-              :hint="hintText",
+              :hint="$t('building.hint')",
               persistent-hint,
               name="width",
               id="width",
@@ -38,7 +38,7 @@
             v-text-field(
               type="text",
               :counter="maskCounter",
-              :hint="hintText",
+              :hint="$t('building.hint')",
               persistent-hint,
               name="height",
               id="height",
@@ -58,8 +58,7 @@
     computed: {
       ...mapGetters({
         mask: 'getMask',
-        maskCounter: 'getMaskCounter',
-        hintText: 'getHintText'
+        maskCounter: 'getMaskCounter'
       }),
       length: {
         get () { return this.$store.getters.getBuildingLength },
