@@ -23,7 +23,7 @@
         v-stepper-content( step="1" )
           component-masonry
           v-btn( color="primary", @click.native="stepForward()" )
-            | next step
+            | {{ step.next }}
 
         // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
@@ -36,7 +36,7 @@
           v-btn( color="primary", @click.native="stepForward()" )
             | next step
           v-btn( flat, color="error", @click.native="stepBackSeam()" )
-            | go back
+            | {{ step.back }}
 
         // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
@@ -47,9 +47,9 @@
         v-stepper-content( step="3" )
           component-brick
           v-btn( color="primary", @click.native="stepForward()" )
-            | next step
+            | {{ step.next }}
           v-btn( flat, color="error", @click.native="stepBackBrick()" )
-            | go back
+            | {{ step.back }}
 
         // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
@@ -60,9 +60,9 @@
         v-stepper-content( step="4" )
           component-building
           v-btn( color="primary", @click.native="stepForward()", :disabled="!buildingFields" )
-            | next step
+            | {{ step.next }}
           v-btn( flat, color="error", @click.native="stepBackBuilding()" )
-            | go back
+            | {{ step.back }}
 
         // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
@@ -73,9 +73,9 @@
         v-stepper-content( step="5" )
           component-opening
           v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields || areaCommonAndAreaOpening || checkCommon" )
-            | next step
+            | {{ step.next }}
           v-btn( flat, color="error", @click.native="stepBackOpening()" )
-            | go back
+            | {{ step.back }}
 
         // RESULT SECTION
         v-stepper-step( step="6" )
@@ -86,7 +86,7 @@
         v-stepper-content( step="6" )
           component-output
           v-btn( color="success", @click.native="stepResetAllAndGoStart()" )
-            | finish - go start
+            | {{ step.forward }}
 
 </template>
 
@@ -104,7 +104,13 @@
   export default {
     data () {
       return {
-        stage: 1
+        stage: 1,
+        step: {
+          next: 'Вперед',
+          back: 'Назад',
+          forward: 'В начало'
+
+        }
       }
     },
     methods: {
