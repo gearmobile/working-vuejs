@@ -252,8 +252,8 @@ const getters = {
   getOpeningText (state) {
     return state.openingText
   },
-  getOpeningStatus (state) {
-    return state.openingValueMaxStatus
+  getOpeningStatus (state, getters) {
+    return state.openingValueMaxStatus || getters.checkCommonLess
   },
   getOpening (state) {
     return state.opening
@@ -326,7 +326,12 @@ const getters = {
   },
   checkCommonLess (state, getters) {
     const common = getters.getAreaCommon === null ? 0 : getters.getAreaCommon
-    return common !== 0 && common / 2 < getters.getAreaOpening
+    if (common !== 0 && common / 2 <= getters.getAreaOpening) {
+      state.openingText = 'Площадь проемов не должна превышать общую площадь строения'
+      return true
+    } else {
+      return false
+    }
   },
   getBricksCost (state, getters) {
     return getters.getBricksQuantity * getters.getSelectedBrick.price
