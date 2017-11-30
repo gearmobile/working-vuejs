@@ -7,7 +7,7 @@
       
       v-flex.text-xs-right( xs12, tag="section" )
         v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields || checkArea || checkCommon" )
-          | добавить проем
+          | {{ $t('opening.add-opening') }}
 
 </template>
 
