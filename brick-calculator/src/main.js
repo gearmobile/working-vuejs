@@ -5,6 +5,7 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App'
 import store from './store'
+import { i18n } from './pluigns/vue-i18n'
 
 Vue.use(Vuetify, {
   theme: {
@@ -24,6 +25,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   store,
+  i18n,
   template: '<App/>',
   components: { App }
 }).$mount('#app')

@@ -1,7 +1,7 @@
 <template lang="pug">
 
   h4.text-xs-center.display-2.teal--text.mb-4
-    | {{ title }}
+    | {{ $t('title.caption') }}
 
 </template>
 

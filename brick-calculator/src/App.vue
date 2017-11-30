@@ -8,6 +8,9 @@
     // CONTAINER
     v-container( tag="section", grid-list-lg )
 
+      // SWITCH LANGUAGE SECTION
+      component-switcher
+
       // TITLE SECTION
       component-title
 
@@ -92,6 +95,7 @@
 
 <script>
   import { mapGetters } from 'vuex'
+  import SwitcherLanguage from './components/LanguageSwitcher.vue'
   import Title from './components/Title.vue'
   import Masonry from './components/Masonry.vue'
   import Seam from './components/Seam.vue'
@@ -145,6 +149,7 @@
       }
     },
     components: {
+      ComponentSwitcher: SwitcherLanguage,
       ComponentMasonry: Masonry,
       ComponentSeam: Seam,
       ComponentBrick: Brick,
