@@ -33,7 +33,7 @@
       
         v-flex.text-xs-center.opening-control( xs12, sm4, tag="article", v-if="id !== 0" )
           v-btn.ma-0( color="teal lighten-2", dark, @click="onClick()" )
-            | удалить
+            | {{ $t('opening.remove-opening') }}
 
 </template>
 
