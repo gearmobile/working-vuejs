@@ -14,7 +14,7 @@
               persistent-hint,
               name="length",
               id="length",
-              label="Длина строения, м",
+              :label="$t('building.length')",
               v-model.trim="length",
               color="teal darken-2",
               :mask="mask"
@@ -28,7 +28,7 @@
               persistent-hint,
               name="width",
               id="width",
-              label="Ширина строения, м",
+              :label="$t('building.width')",
               v-model.trim="width",
               color="teal darken-2",
               :mask="mask"
@@ -42,7 +42,7 @@
               persistent-hint,
               name="height",
               id="height",
-              label="Высота строения, м",
+              :label="$t('building.height')",
               v-model.trim="height",
               color="teal darken-2",
               :mask="mask"
