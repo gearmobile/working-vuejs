@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import _ from 'lodash'
 import isEmpty from '../utils/isEmpty'
-import { EventBus } from '../events/EventBus'
 
 Vue.use(Vuex)
 
