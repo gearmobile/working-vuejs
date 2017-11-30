@@ -20,26 +20,28 @@
         // MASONRY SECTION
         v-stepper-step( step="1", :complete="stage > 1" )
           h4.headline
-            | Выберите тип кирпичной кладки
+            | {{ $t('masonry.title') }}
           small
-            | Здесь выбирается толщина кирпичной стены
+            | {{ $t('masonry.subtitle') }}
         v-stepper-content( step="1" )
           component-masonry
           v-btn( color="primary", @click.native="stepForward()" )
-            | {{ step.next }}
+            | {{ $t('step.next') }}
 
         // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
           h4.headline
-            | Выберите тип шва кирпичной кладки
+            //- | Выберите тип шва кирпичной кладки
+            | {{ $t('seam.title') }}
           small
-            | Здесь выбирается толщина растворного шва между кирпичами
+            //- | Здесь выбирается толщина растворного шва между кирпичами
+            | {{ $t('seam.subtitle') }}
         v-stepper-content( step="2" )
           component-seam
           v-btn( color="primary", @click.native="stepForward()" )
-            | {{ step.next }}
+            | {{ $t('step.next') }}
           v-btn( flat, color="error", @click.native="stepBackSeam()" )
-            | {{ step.back }}
+            | {{ $t('step.back') }}
 
         // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
@@ -50,9 +52,9 @@
         v-stepper-content( step="3" )
           component-brick
           v-btn( color="primary", @click.native="stepForward()" )
-            | {{ step.next }}
+            | {{ $t('step.next') }}
           v-btn( flat, color="error", @click.native="stepBackBrick()" )
-            | {{ step.back }}
+            | {{ $t('step.back') }}
 
         // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
@@ -63,9 +65,9 @@
         v-stepper-content( step="4" )
           component-building
           v-btn( color="primary", @click.native="stepForward()", :disabled="!buildingFields" )
-            | {{ step.next }}
+            | {{ $t('step.next') }}
           v-btn( flat, color="error", @click.native="stepBackBuilding()" )
-            | {{ step.back }}
+            | {{ $t('step.back') }}
 
         // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
@@ -76,9 +78,9 @@
         v-stepper-content( step="5" )
           component-opening
           v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields || areaCommonAndAreaOpening || checkCommon" )
-            | {{ step.next }}
+            | {{ $t('step.next') }}
           v-btn( flat, color="error", @click.native="stepBackOpening()" )
-            | {{ step.back }}
+            | {{ $t('step.back') }}
 
         // RESULT SECTION
         v-stepper-step( step="6" )
@@ -89,7 +91,7 @@
         v-stepper-content( step="6" )
           component-output
           v-btn( color="success", @click.native="stepResetAllAndGoStart()" )
-            | {{ step.forward }}
+            | {{ $t('step.forward') }}
 
 </template>
 
@@ -108,13 +110,7 @@
   export default {
     data () {
       return {
-        stage: 1,
-        step: {
-          next: 'Вперед',
-          back: 'Назад',
-          forward: 'В начало'
-
-        }
+        stage: 1
       }
     },
     methods: {
