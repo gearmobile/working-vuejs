@@ -6,21 +6,21 @@
       // BRICK QUANTITTY
       v-layout( row, wrap, tag="section" )
         v-flex( xs12, md6 )
-          | Количество кирпича, шт
+          | {{ $t('output.totalBricks') }}
         v-flex( xs12, md6 )
           | {{ quantity }}
       
       // COMMON AREA
       v-layout( row, wrap )
         v-flex( xs12, md6 )
-          | Общая площадь, кв. м.
+          | {{ $t('output.totalArea') }}
         v-flex( xs12, md6 )
           | {{ area }}
       
       // COMMON COST
       v-layout( row, wrap, tag="section" )
         v-flex( xs12, md6 )
-          | Общая стоимость, руб.
+          | {{ $t('output.totalCost') }}
         v-flex( xs12, md6 )
           | {{ cost }}
 
