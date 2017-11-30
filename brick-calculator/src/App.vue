@@ -31,10 +31,8 @@
         // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
           h4.headline
-            //- | Выберите тип шва кирпичной кладки
             | {{ $t('seam.title') }}
           small
-            //- | Здесь выбирается толщина растворного шва между кирпичами
             | {{ $t('seam.subtitle') }}
         v-stepper-content( step="2" )
           component-seam
@@ -46,9 +44,9 @@
         // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
           h4.headline
-            | Выберите тип кирпича
+            | {{ $t('brick.title') }}
           small
-            | Здесь выбирается тип кирпича - одинарный, полуторный, двойной
+            | {{ $t('brick.subtitle') }}
         v-stepper-content( step="3" )
           component-brick
           v-btn( color="primary", @click.native="stepForward()" )

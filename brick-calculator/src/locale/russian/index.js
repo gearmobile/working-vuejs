@@ -8,11 +8,13 @@ import * as title from './title.json'
 import * as masonry from './masonry.json'
 import * as step from './step.json'
 import * as seam from './seam.json'
+import * as brick from './brick.json'
 
 export default {
   switcher,
   title,
   masonry,
   step,
-  seam
+  seam,
+  brick
 }
