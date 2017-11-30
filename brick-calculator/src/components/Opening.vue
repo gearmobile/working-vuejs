@@ -31,7 +31,7 @@
             color="teal darken-2"
           )
       
-        v-flex.text-xs-right.opening-control( xs12, sm4, tag="article", v-if="id !== 0" )
+        v-flex.text-xs-center.opening-control( xs12, sm4, tag="article", v-if="id !== 0" )
           v-btn.ma-0( color="teal lighten-2", dark, @click="onClick()" )
             | удалить
 

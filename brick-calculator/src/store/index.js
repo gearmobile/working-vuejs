@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import _ from 'lodash'
 import isEmpty from '../utils/isEmpty'
+import { EventBus } from '../events/EventBus'
 
 Vue.use(Vuex)
 
@@ -324,8 +325,9 @@ const getters = {
       return total + isEmpty(currentIndex.width) * isEmpty(currentIndex.height)
     }, 0)
   },
-  checkAreaCommonAndAreaOpening (state, getters) {
-    return getters.getAreaCommon / 2 <= getters.getAreaOpening
+  checkCommonLess (state, getters) {
+    const common = getters.getAreaCommon === null ? 0 : getters.getAreaCommon
+    return common !== 0 && common / 2 < getters.getAreaOpening
   },
   getBricksCost (state, getters) {
     return getters.getBricksQuantity * getters.getSelectedBrick.price
