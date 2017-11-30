@@ -330,6 +330,7 @@ const getters = {
       state.openingText = 'Площадь проемов не должна превышать общую площадь строения'
       return true
     } else {
+      state.openingText = ''
       return false
     }
   },

@@ -34,7 +34,7 @@
         v-stepper-content( step="2" )
           component-seam
           v-btn( color="primary", @click.native="stepForward()" )
-            | next step
+            | {{ step.next }}
           v-btn( flat, color="error", @click.native="stepBackSeam()" )
             | {{ step.back }}
 
