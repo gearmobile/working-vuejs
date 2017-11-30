@@ -57,9 +57,9 @@
         // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
           h4.headline
-            | Добавить размеры строения
+            | {{ $t('building.title') }}
           small
-            | Здесь добавляются размеры строения - ширина, длина и высота, в метрах
+            | {{ $t('building.subtitle') }}
         v-stepper-content( step="4" )
           component-building
           v-btn( color="primary", @click.native="stepForward()", :disabled="!buildingFields" )

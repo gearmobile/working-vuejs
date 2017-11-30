@@ -9,6 +9,7 @@ import * as masonry from './masonry.json'
 import * as step from './step.json'
 import * as seam from './seam.json'
 import * as brick from './brick.json'
+import * as building from './building.json'
 
 export default {
   switcher,
@@ -16,5 +17,6 @@ export default {
   masonry,
   step,
   seam,
-  brick
+  brick,
+  building
 }
