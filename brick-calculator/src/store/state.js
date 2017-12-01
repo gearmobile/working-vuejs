@@ -1,4 +1,7 @@
 const state = {
+  language: {
+    status: false
+  },
   mask: '###',
   maskOpening: '#',
   masonry: [

@@ -1,4 +1,7 @@
 const actions = {
+  setLanguage ({ commit }, payload) {
+    commit('SET_LANGUAGE', payload)
+  },
   closeAlert ({ commit }) {
     commit('CLOSE_ALERT')
   },

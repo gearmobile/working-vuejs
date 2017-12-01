@@ -3,6 +3,9 @@ import isEmpty from '../utils/isEmpty'
 import { i18n } from '../pluigns/vue-i18n'
 
 const getters = {
+  getLanguage (state) {
+    return state.language.status
+  },
   // GET CURRENT LOCALE
   getLocale (state) {
     return i18n.locale

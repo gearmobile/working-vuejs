@@ -1,4 +1,10 @@
+import { i18n } from '../pluigns/vue-i18n'
+
 const mutations = {
+  'SET_LANGUAGE' (state, payload) {
+    i18n.locale = !payload ? 'russian' : 'english'
+    state.language.status = payload
+  },
   'SET_MASONRY' (state, payload) {
     state.order.masonry = payload
   },

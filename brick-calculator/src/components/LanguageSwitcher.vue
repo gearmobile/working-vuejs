@@ -15,14 +15,10 @@
 <script>
   export default {
     name: 'LanguageSwitcher',
-    data () {
-      return {
-        language: false
-      }
-    },
-    watch: {
-      language () {
-        this.$i18n.locale = !this.language ? 'russian' : 'english'
+    computed: {
+      language: {
+        get () { return this.$store.getters.getLanguage },
+        set (value) { this.$store.dispatch('setLanguage', value) }
       }
     }
   }
