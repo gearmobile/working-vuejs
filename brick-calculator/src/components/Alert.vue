@@ -1,8 +1,10 @@
 <template lang="pug">
+
   v-snackbar( v-model="show", :top="true", :timeout="alert.timeout", :multi-line="true" )
     | {{ message }}
     v-btn( flat, color="pink", @click.native="onClose()" )
-      | закрыть
+      | {{ $t('alert.message') }}
+
 </template>
 
 <script>

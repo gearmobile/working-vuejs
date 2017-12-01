@@ -12,6 +12,7 @@ import * as brick from './brick.json'
 import * as building from './building.json'
 import * as opening from './opening.json'
 import * as output from './result.json'
+import * as alert from './alert.json'
 
 export default {
   switcher,
@@ -22,5 +23,6 @@ export default {
   brick,
   building,
   opening,
-  output
+  output,
+  alert
 }
