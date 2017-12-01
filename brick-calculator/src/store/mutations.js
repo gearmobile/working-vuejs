@@ -1,7 +1,6 @@
 import { i18n } from '../pluigns/vue-i18n'
-import masonryTypesRussian from '../locale/russian/index'
-import masonryTypesEnglish from '../locale/english/index'
-// console.log(masonryTypesRussian.masonry.types)
+import typesRussian from '../locale/russian/index'
+import typesEnglish from '../locale/english/index'
 
 const mutations = {
   'SET_LANGUAGE' (state, payload) {
@@ -9,12 +8,18 @@ const mutations = {
     if (!payload) {
       i18n.locale = state.language.primary
       for (let i = 0; i < state.masonry.length; i += 1) {
-        state.masonry[i].name = masonryTypesRussian.masonry.types[i]
+        state.masonry[i].name = typesRussian.masonry.types[i]
+      }
+      for (let i = 0; i < state.seam.length; i += 1) {
+        state.seam[i].name = typesRussian.seam.types[i]
       }
     } else {
       i18n.locale = state.language.secondary
       for (let i = 0; i < state.masonry.length; i += 1) {
-        state.masonry[i].name = masonryTypesEnglish.masonry.types[i]
+        state.masonry[i].name = typesEnglish.masonry.types[i]
+      }
+      for (let i = 0; i < state.seam.length; i += 1) {
+        state.seam[i].name = typesEnglish.seam.types[i]
       }
     }
   },
