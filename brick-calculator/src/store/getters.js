@@ -1,4 +1,6 @@
-import _ from 'lodash'
+import find from 'lodash.find'
+import isNil from 'lodash.isnil'
+import toNumber from 'lodash.tonumber'
 import isEmpty from '../utils/isEmpty'
 
 const getters = {
@@ -76,7 +78,7 @@ const getters = {
   },
   // CALCULATIONS SECTION
   getSelectedBrick (state) {
-    const result = _.find(state.bricks, { 'value': state.order.brick })
+    const result = find(state.bricks, { 'value': state.order.brick })
     return result
   },
   getSeamWidth (state) {
@@ -114,10 +116,10 @@ const getters = {
     return result
   },
   getAreaCommon (state, getters) {
-    if (_.isNil(state.building.length) && _.isNil(state.building.width) && _.isNil(state.building.height)) {
+    if (isNil(state.building.length) && isNil(state.building.width) && isNil(state.building.height)) {
       return null
     }
-    const result = ((_.toNumber(state.building.length) + _.toNumber(state.building.width)) * 2) * _.toNumber(state.building.height)
+    const result = ((toNumber(state.building.length) + toNumber(state.building.width)) * 2) * toNumber(state.building.height)
     return result
   },
   getAreaOpening (state) {

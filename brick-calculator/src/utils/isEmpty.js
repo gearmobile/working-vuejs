@@ -1,4 +1,6 @@
-import _ from 'lodash'
+import toNumber from 'lodash.tonumber'
+import isNull from 'lodash.isnull'
+
 export default (value) => {
-  return _.isNull(value) ? 0 : _.toNumber(value)
+  return isNull(value) ? 0 : toNumber(value)
 }
