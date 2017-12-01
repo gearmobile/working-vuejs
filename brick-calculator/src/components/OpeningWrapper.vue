@@ -6,7 +6,7 @@
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section" )
-        v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields || checkArea || checkCommon" )
+        v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields || checkCommon" )
           | {{ $t('opening.add-opening') }}
 
 </template>
@@ -29,7 +29,6 @@
       ...mapGetters({
         components: 'getOpening',
         openingFields: 'checkFieldsOpening',
-        checkArea: 'checkAreaCommonAndAreaOpening',
         checkCommon: 'checkCommonLess'
       })
     }

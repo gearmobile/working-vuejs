@@ -75,7 +75,7 @@
             | {{ $t('opening.subtitle') }}
         v-stepper-content( step="5" )
           component-opening
-          v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields || areaCommonAndAreaOpening || checkCommon" )
+          v-btn( color="primary", @click.native="stepForward()", :disabled="!openingFields || checkCommon" )
             | {{ $t('step.next') }}
           v-btn( flat, color="error", @click.native="stepBackOpening()" )
             | {{ $t('step.back') }}
@@ -159,7 +159,6 @@
         maskCounter: 'getMaskCounter',
         buildingFields: 'checkFieldsBuilding',
         openingFields: 'checkFieldsOpening',
-        areaCommonAndAreaOpening: 'checkAreaCommonAndAreaOpening',
         checkCommon: 'checkCommonLess'
       })
     }
