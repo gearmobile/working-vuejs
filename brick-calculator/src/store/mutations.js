@@ -1,12 +1,21 @@
 import { i18n } from '../pluigns/vue-i18n'
+import masonryTypesRussian from '../locale/russian/index'
+import masonryTypesEnglish from '../locale/english/index'
+// console.log(masonryTypesRussian.masonry.types)
 
 const mutations = {
   'SET_LANGUAGE' (state, payload) {
     state.language.status = payload
     if (!payload) {
       i18n.locale = state.language.primary
+      for (let i = 0; i < state.masonry.length; i += 1) {
+        state.masonry[i].name = masonryTypesRussian.masonry.types[i]
+      }
     } else {
       i18n.locale = state.language.secondary
+      for (let i = 0; i < state.masonry.length; i += 1) {
+        state.masonry[i].name = masonryTypesEnglish.masonry.types[i]
+      }
     }
   },
   'SET_MASONRY' (state, payload) {
