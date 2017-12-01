@@ -79,7 +79,11 @@ const mutations = {
       })
     } else {
       state.openingValueMaxStatus = true
-      state.openingText = 'Вы добавили максимальное количество проемов'
+      if (i18n.locale === state.language.primary) {
+        state.openingText = 'Вы добавили максимальное количество проемов'
+      } else {
+        state.openingText = 'You have added the maximum number of openings'
+      }
     }
   },
   'REMOVE_COMPONENT' (state, payload) {
@@ -89,7 +93,11 @@ const mutations = {
       state.opening.splice(payload, 1)
     } else {
       state.openingValueMaxStatus = true
-      state.openingText = 'Последний проем удалить нельзя'
+      if (i18n.locale === state.language.primary) {
+        state.openingText = 'Последний проем удалить нельзя'
+      } else {
+        state.openingText = 'The last opening you cannot remove'
+      }
     }
   },
   'SET_OPENING_WIDTH' (state, payload) {

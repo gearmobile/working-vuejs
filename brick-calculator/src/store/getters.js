@@ -1,3 +1,4 @@
+import { i18n } from '../pluigns/vue-i18n'
 import find from 'lodash.find'
 import isNil from 'lodash.isnil'
 import toNumber from 'lodash.tonumber'
@@ -130,7 +131,11 @@ const getters = {
   checkCommonLess (state, getters) {
     const common = getters.getAreaCommon === null ? 0 : getters.getAreaCommon
     if (common !== 0 && common / 2 <= getters.getAreaOpening) {
-      state.openingText = 'Площадь проемов не должна превышать общую площадь строения'
+      if (i18n.locale === state.language.primary) {
+        state.openingText = 'Площадь проемов не должна превышать общую площадь строения'
+      } else if (i18n.locale === state.language.secondary) {
+        state.openingText = 'The area of openings should not exceed the total area of the building'
+      }
       return true
     } else {
       state.openingText = ''
