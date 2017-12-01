@@ -1,6 +1,8 @@
 const state = {
   language: {
-    status: false
+    status: false,
+    primary: 'russian',
+    secondary: 'english'
   },
   mask: '###',
   maskOpening: '#',

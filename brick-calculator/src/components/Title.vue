@@ -7,12 +7,7 @@
 
 <script>
   export default {
-    name: 'Title',
-    data () {
-      return {
-        title: 'Калькулятор кирпичной кладки'
-      }
-    }
+    name: 'Title'
   }
 </script>
 
