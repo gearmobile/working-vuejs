@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import _ from 'lodash'
 import isEmpty from '../utils/isEmpty'
+import { i18n } from '../pluigns/vue-i18n'
 
 Vue.use(Vuex)
 
@@ -200,6 +201,10 @@ const actions = {
 }
 
 const getters = {
+  // GET CURRENT LOCALE
+  getLocale (state) {
+    return i18n.locale
+  },
   // MASONRY SECTION
   getMasonry (state) {
     return state.masonry
