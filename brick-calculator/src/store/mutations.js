@@ -82,14 +82,14 @@ const mutations = {
   'RESET_OPENING_FIELDS' (state) {
     const arr = state.opening
     if (arr.length > 1) {
-      for (let i = arr.length; i > 1; i -= 1) {
-        arr.pop()
+      for (let el of arr) {
+        arr.splice(arr.findIndex(el), 1)
       }
     }
-    arr.forEach(el => {
+    for (let el of arr) {
       el.width = null
       el.height = null
-    })
+    }
   }
 }
 
