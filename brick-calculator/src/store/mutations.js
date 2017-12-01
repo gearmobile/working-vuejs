@@ -13,6 +13,9 @@ const mutations = {
       for (let i = 0; i < state.seam.length; i += 1) {
         state.seam[i].name = typesRussian.seam.types[i]
       }
+      for (let i = 0; i < state.bricks.length; i += 1) {
+        state.bricks[i].name = typesRussian.brick.types[i]
+      }
     } else {
       i18n.locale = state.language.secondary
       for (let i = 0; i < state.masonry.length; i += 1) {
@@ -20,6 +23,9 @@ const mutations = {
       }
       for (let i = 0; i < state.seam.length; i += 1) {
         state.seam[i].name = typesEnglish.seam.types[i]
+      }
+      for (let i = 0; i < state.bricks.length; i += 1) {
+        state.bricks[i].name = typesEnglish.brick.types[i]
       }
     }
   },
