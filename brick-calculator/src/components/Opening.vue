@@ -1,13 +1,13 @@
 <template lang="pug">
   
   
-  v-card.mb-4( tag="section", color="teal lighten-4" )
+  v-card.mb-4( tag="section", color="primary" )
     
     v-card-text.pa-3
       
       v-layout( row, wrap )
     
-        v-flex( xs12, sm4, tag="article" )
+        v-flex( xs12, sm4, tag="section" )
           v-text-field(
             name="width",
             v-model="width",
@@ -16,10 +16,10 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="teal darken-2"
+            color="info"
           )
       
-        v-flex( xs12, sm4, tag="article" )
+        v-flex( xs12, sm4, tag="section" )
           v-text-field(
             name="height",
             v-model="height",
@@ -28,11 +28,11 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="teal darken-2"
+            color="info"
           )
       
-        v-flex.opening-control( xs12, sm4, tag="article", v-if="id !== 0" )
-          v-btn.ma-0( color="teal lighten-2", dark, @click="onClick()" )
+        v-flex.opening-control( xs12, sm4, tag="section", v-if="id !== 0" )
+          v-btn.ma-0( color="primary", dark, @click="onClick()" )
             | {{ $t('opening.remove-opening') }}
 
 </template>
