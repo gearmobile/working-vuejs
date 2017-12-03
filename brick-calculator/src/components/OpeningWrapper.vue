@@ -5,7 +5,7 @@
       
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
-      v-flex.text-xs-right( xs12, tag="section" )
+      v-flex.text-xs-right( xs12, tag="section", v-if="!componentsLimit" )
         v-btn( color="teal lighten-2", dark, @click.native="onClick()", :disabled="!openingFields || checkCommon" )
           | {{ $t('opening.add-opening') }}
 
@@ -28,6 +28,7 @@
     computed: {
       ...mapGetters({
         components: 'getOpening',
+        componentsLimit: 'getOpeningLimit',
         openingFields: 'checkFieldsOpening',
         checkCommon: 'checkCommonLess'
       })

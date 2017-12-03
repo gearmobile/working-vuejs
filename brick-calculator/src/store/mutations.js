@@ -71,19 +71,11 @@ const mutations = {
   // OPENING SECTION
   'ADD_COMPONENT' (state) {
     if (state.opening.length < state.openingValueMax) {
-      state.openingValueMaxStatus = false
       state.openingText = ''
       state.opening.push({
         width: null,
         height: null
       })
-    } else {
-      state.openingValueMaxStatus = true
-      if (i18n.locale === state.language.primary) {
-        state.openingText = 'Вы добавили максимальное количество проемов'
-      } else {
-        state.openingText = 'You have added the maximum number of openings'
-      }
     }
   },
   'REMOVE_COMPONENT' (state, payload) {

@@ -59,6 +59,9 @@ const getters = {
   getOpeningStatus (state, getters) {
     return state.openingValueMaxStatus || getters.checkCommonLess
   },
+  getOpeningLimit (state) {
+    return state.opening.length >= state.openingValueMax
+  },
   getOpening (state) {
     return state.opening
   },
