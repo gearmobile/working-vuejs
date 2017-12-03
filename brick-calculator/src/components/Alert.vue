@@ -2,7 +2,7 @@
 
   v-snackbar( v-model="show", :top="true", :timeout="alert.timeout", :multi-line="true" )
     | {{ message }}
-    v-btn( flat, color="pink", @click.native="onClose()" )
+    v-btn( flat, color="error", @click.native="onClose()" )
       | {{ $t('alert.message') }}
 
 </template>
