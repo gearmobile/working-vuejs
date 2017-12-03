@@ -83,13 +83,6 @@ const mutations = {
       state.openingValueMaxStatus = false
       state.openingText = ''
       state.opening.splice(payload, 1)
-    } else {
-      state.openingValueMaxStatus = true
-      if (i18n.locale === state.language.primary) {
-        state.openingText = 'Последний проем удалить нельзя'
-      } else {
-        state.openingText = 'The last opening you cannot remove'
-      }
     }
   },
   'SET_OPENING_WIDTH' (state, payload) {
