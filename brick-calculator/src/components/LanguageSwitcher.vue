@@ -2,7 +2,7 @@
 
   v-container.mb-4( grid-list-md )
     v-layout( row )
-      v-flex( xs4, offset-xs8 )
+      v-flex( xs3, offset-xs9 )
         v-switch(
           :label="$t('switcher.label')",
           hide-details,
