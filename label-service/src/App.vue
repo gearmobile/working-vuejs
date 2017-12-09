@@ -161,6 +161,7 @@
 </template>
 
 <script>
+  // https://professorweb.ru/my/javascript/jquery/level4/4_12.php // => jQuery UI Drag'n'Drop Tutorial
   import { TheMask } from 'vue-the-mask'
   import Sortable from 'sortablejs'
   export default {
