@@ -1,5 +1,5 @@
 # Working Vue.js
 
-Репозиторий с текущими проектами на Vue.js.
+Repository with current projects Vue.js.
 
-Репозиторий с готовыми проектами на Vue.js расположен здесь - [Ready Vue.js Examples](https://github.com/gearmobile/ready-vuejs)
+A repository with ready-made projects Vue.js located here - [Ready Vue.js Examples](https://github.com/gearmobile/ready-vuejs)
