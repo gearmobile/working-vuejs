@@ -145,8 +145,14 @@ const getters = {
       return false
     }
   },
-  getBricksCost (state, getters) {
+  getBricksCostRUB (state, getters) {
     return getters.getBricksQuantity * getters.getSelectedBrick.price
+  },
+  getBricksCostUSD (state, getters) {
+    return getters.getBricksCostRUB / state.RUBRate
+  },
+  getCost (state, getters) {
+    return i18n.locale === 'english' ? getters.getBricksCostUSD : getters.getBricksCostRUB
   }
 }
 

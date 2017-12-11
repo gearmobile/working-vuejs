@@ -28,5 +28,8 @@ new Vue({
   store,
   i18n,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  created () {
+    this.$store.dispatch('getRUBRate')
+  }
 }).$mount('#app')

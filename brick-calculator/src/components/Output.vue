@@ -39,7 +39,7 @@
         return result === 0 ? null : result
       },
       cost () {
-        const result = this.$store.getters.getBricksCost
+        const result = this.$store.getters.getCost
         return result === 0 ? null : result
       }
     }

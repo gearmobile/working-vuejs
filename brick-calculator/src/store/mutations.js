@@ -1,8 +1,21 @@
 import { i18n } from '../pluigns/vue-i18n'
+import axios from 'axios'
 import typesRussian from '../locale/russian/index'
 import typesEnglish from '../locale/english/index'
 
 const mutations = {
+  'GET_RUB_RATE' (state) {
+    // https://openexchangerates.org/
+    const apiKEY = '8b05a5fd9b5a46008f98fe8bc8861621'
+    const url = `https://openexchangerates.org/api/latest.json?app_id=${apiKEY}`
+    axios.get(url)
+      .then(data => {
+        state.RUBRate = data.data.rates.RUB
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  },
   'SET_LANGUAGE' (state, payload) {
     state.language.status = payload
     if (!payload) {

@@ -41,6 +41,7 @@ const state = {
   openingValueMin: 1,
   openingValueMaxStatus: false,
   openingText: '',
+  RUBRate: null,
   order: {
     masonry: '0.5',
     brick: 'одинарный',

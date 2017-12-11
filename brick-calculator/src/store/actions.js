@@ -52,6 +52,9 @@ const actions = {
   },
   resetFieldsOpening ({ commit }) {
     commit('RESET_OPENING_FIELDS')
+  },
+  getRUBRate ({ commit }) {
+    commit('GET_RUB_RATE')
   }
 }
 
