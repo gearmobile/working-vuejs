@@ -16,7 +16,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="info"
+            color=""
           )
       
         v-flex( xs12, sm4, tag="section" )
@@ -28,7 +28,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="info"
+            color=""
           )
       
         v-flex.opening-control( xs12, sm4, tag="section", v-if="id !== 0" )
