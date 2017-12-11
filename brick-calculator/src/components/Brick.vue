@@ -6,7 +6,7 @@
         :items="bricks",
         item-text="name",
         item-value="value",
-        color="quattro",
+        color="",
         v-model="type"
       )
 

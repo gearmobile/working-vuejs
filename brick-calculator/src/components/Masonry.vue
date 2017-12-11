@@ -1,13 +1,13 @@
 <template lang="pug">
 
-  v-card.mb-4( tag="section", color="tre" )
+  v-card.mb-4( tag="section", color="" )
     v-card-text
       v-select(
         single-line,
         :items="items",
         item-text="name",
         item-value="value",
-        color="quattro",
+        color="",
         v-model="item"
       )
 

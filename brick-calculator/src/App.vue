@@ -19,7 +19,7 @@
         
         // MASONRY SECTION
         v-stepper-step( step="1", :complete="stage > 1" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('masonry.title') }}
           small.italic
             | {{ $t('masonry.subtitle') }}
@@ -30,7 +30,7 @@
 
         // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('seam.title') }}
           small.italic
             | {{ $t('seam.subtitle') }}
@@ -43,7 +43,7 @@
 
         // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('brick.title') }}
           small.italic
             | {{ $t('brick.subtitle') }}
@@ -56,7 +56,7 @@
 
         // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('building.title') }}
           small.italic
             | {{ $t('building.subtitle') }}
@@ -69,7 +69,7 @@
 
         // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('opening.title') }}
           small.italic
             | {{ $t('opening.subtitle') }}
@@ -82,7 +82,7 @@
 
         // RESULT SECTION
         v-stepper-step( step="6" )
-          h4.headline.primary--text
+          h4.headline
             | {{ $t('output.title') }}
           small.italic
             | {{ $t('output.subtitle') }}

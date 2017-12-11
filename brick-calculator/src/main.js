@@ -10,21 +10,13 @@ import { i18n } from './pluigns/vue-i18n'
 
 Vue.use(Vuetify, {
   theme: {
-    // primary: colors.primary,
-    primary: colors.color05,
-    // secondary: colors.secondary,
-    secondary: colors.color06,
+    primary: colors.primary,
+    secondary: colors.secondary,
     accent: colors.accent,
     error: colors.error,
     info: colors.info,
     success: colors.success,
-    warning: colors.warning,
-    uno: colors.color01,
-    duo: colors.color02,
-    tre: colors.color03,
-    quattro: colors.color04
-    // cinque: colors.color05,
-    // sei: colors.color06
+    warning: colors.warning
   }
 }
 )

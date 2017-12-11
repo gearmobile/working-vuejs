@@ -1,7 +1,7 @@
 <template lang="pug">
   
   
-  v-card.mb-4( tag="section", color="duo" )
+  v-card.mb-4( tag="section", color="" )
     
     v-card-text.pa-3
       
@@ -16,7 +16,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="quattro"
+            color=""
           )
       
         v-flex( xs12, sm4, tag="section" )
@@ -28,7 +28,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color="quattro"
+            color=""
           )
       
         v-flex.opening-control( xs12, sm4, tag="section", v-if="id !== 0" )
