@@ -23,7 +23,7 @@
             | {{ $t('masonry.title') }}
           small.italic
             | {{ $t('masonry.subtitle') }}
-        v-stepper-content( step="1", color="uno" )
+        v-stepper-content( step="1" )
           component-masonry
           v-btn( color="primary", @click.native="stepForward()" )
             | {{ $t('step.next') }}
