@@ -1,12 +1,12 @@
 <template lang="pug">
 
-  v-app( light)
+  v-app( light, style="background-color: #fef4d2" )
     
     // COMPONENT ALERT
     component-alert
 
     // CONTAINER
-    v-container( tag="section", grid-list-lg, style="background-color: #ede6e4" )
+    v-container( tag="section", grid-list-lg, style="background-color: #f6e9c8" )
 
       // SWITCH LANGUAGE SECTION
       component-switcher
@@ -15,7 +15,7 @@
       component-title
 
       // STEPPER SECTION
-      v-stepper( v-model="stage", vertical, style="background-color: #f0d4d1")
+      v-stepper( v-model="stage", vertical, style="background-color: #e6d2b4")
         
         // MASONRY SECTION
         v-stepper-step( step="1", :complete="stage > 1" )

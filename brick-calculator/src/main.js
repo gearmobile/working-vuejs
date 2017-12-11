@@ -16,7 +16,8 @@ Vue.use(Vuetify, {
     error: colors.error,
     info: colors.info,
     success: colors.success,
-    warning: colors.warning
+    warning: colors.warning,
+    additional: colors.additional
   }
 }
 )

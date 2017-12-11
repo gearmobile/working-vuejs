@@ -1,12 +1,12 @@
 <template lang="pug">
 
-  v-card.mb-4( tag="section", color="tre" )
+  v-card.mb-4( tag="section", style="background-color: #e7e5c9" )
     v-card-text
       v-select( single-line,
         :items="bricks",
         item-text="name",
         item-value="value",
-        color="",
+        color="#9a8e7c",
         v-model="type"
       )
 

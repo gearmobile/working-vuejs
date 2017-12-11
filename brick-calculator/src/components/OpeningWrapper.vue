@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card.mb-4( color="" )
+  v-card.mb-4( style="background-color: #e7e5c9" )
     v-card-text
       
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
