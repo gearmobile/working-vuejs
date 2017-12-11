@@ -1,12 +1,12 @@
 <template lang="pug">
 
-  v-card.mb-4()
+  v-card.mb-4( color="tre" )
     v-card-text
       
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section", v-if="!componentsLimit" )
-        v-btn( dark, @click.native="onClick()", :disabled="!openingFields || checkCommon" )
+        v-btn( color="quattro", dark, @click.native="onClick()", :disabled="!openingFields || checkCommon" )
           | {{ $t('opening.add-opening') }}
 
 </template>

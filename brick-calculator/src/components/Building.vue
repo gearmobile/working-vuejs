@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card.mb-4()
+  v-card.mb-4( color="tre" )
     v-card-text
       
       v-container( grid-list-md )
@@ -16,7 +16,7 @@
               id="length",
               :label="$t('building.length')",
               v-model.trim="length",
-              color="teal",
+              color="quattro",
               :mask="mask"
             )
 
@@ -30,7 +30,7 @@
               id="width",
               :label="$t('building.width')",
               v-model.trim="width",
-              color="teal",
+              color="quattro",
               :mask="mask"
             )
 
@@ -44,7 +44,7 @@
               id="height",
               :label="$t('building.height')",
               v-model.trim="height",
-              color="teal",
+              color="quattro",
               :mask="mask"
             )
 

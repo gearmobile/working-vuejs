@@ -6,7 +6,7 @@
     component-alert
 
     // CONTAINER
-    v-container( tag="section", grid-list-lg )
+    v-container( tag="section", grid-list-lg, style="background-color: #ede6e4" )
 
       // SWITCH LANGUAGE SECTION
       component-switcher
@@ -15,24 +15,24 @@
       component-title
 
       // STEPPER SECTION
-      v-stepper( v-model="stage", vertical )
+      v-stepper( v-model="stage", vertical, style="background-color: #f0d4d1")
         
         // MASONRY SECTION
         v-stepper-step( step="1", :complete="stage > 1" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('masonry.title') }}
-          small
+          small.italic
             | {{ $t('masonry.subtitle') }}
-        v-stepper-content( step="1" )
+        v-stepper-content( step="1", color="uno" )
           component-masonry
           v-btn( color="primary", @click.native="stepForward()" )
             | {{ $t('step.next') }}
 
         // SEAM SECTION
         v-stepper-step( step="2", :complete="stage > 2" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('seam.title') }}
-          small
+          small.italic
             | {{ $t('seam.subtitle') }}
         v-stepper-content( step="2" )
           component-seam
@@ -43,9 +43,9 @@
 
         // BRICK SECTION
         v-stepper-step( step="3", :complete="stage > 3" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('brick.title') }}
-          small
+          small.italic
             | {{ $t('brick.subtitle') }}
         v-stepper-content( step="3" )
           component-brick
@@ -56,9 +56,9 @@
 
         // BUILDING SECTION
         v-stepper-step( step="4", :complete="stage > 4" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('building.title') }}
-          small
+          small.italic
             | {{ $t('building.subtitle') }}
         v-stepper-content( step="4" )
           component-building
@@ -69,26 +69,26 @@
 
         // SECTION OPENING
         v-stepper-step( step="5", :complete="stage > 5" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('opening.title') }}
-          small
+          small.italic
             | {{ $t('opening.subtitle') }}
         v-stepper-content( step="5" )
           component-opening
           v-btn( color="secondary", @click.native="stepForward()", :disabled="!openingFields || checkCommon" )
             | {{ $t('step.next') }}
-          v-btn( flat, color="warning", @click.native="stepBackOpening()" )
+          v-btn( flat, color="error", @click.native="stepBackOpening()" )
             | {{ $t('step.back') }}
 
         // RESULT SECTION
         v-stepper-step( step="6" )
-          h4.headline
+          h4.headline.primary--text
             | {{ $t('output.title') }}
-          small
+          small.italic
             | {{ $t('output.subtitle') }}
         v-stepper-content( step="6" )
           component-output
-          v-btn( color="success", @click.native="stepResetAllAndGoStart()" )
+          v-btn( color="success", dark, :block="true", @click.native="stepResetAllAndGoStart()" )
             | {{ $t('step.forward') }}
 
 </template>
@@ -168,4 +168,7 @@
 
 <style lang="stylus">
   @import './stylus/main'
+  .italic {
+    font-style italic
+  }
 </style>

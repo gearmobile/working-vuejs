@@ -5,5 +5,11 @@
   "error": "#ff5252",
   "info": "#2196f3",
   "success": "#4caf50",
-  "warning": "#ffc107"
+  "warning": "#ffc107",
+  "color01": "#ede6e4",
+  "color02": "#f0d4d1",
+  "color03": "#e6b4ac",
+  "color04": "#756f74",
+  "color05": "#a7ad9d",
+  "color06": "#d4cdc1"
 }

@@ -1,7 +1,7 @@
 <template lang="pug">
   
   
-  v-card.mb-4( tag="section", color="primary" )
+  v-card.mb-4( tag="section", color="duo" )
     
     v-card-text.pa-3
       
@@ -16,7 +16,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color=""
+            color="quattro"
           )
       
         v-flex( xs12, sm4, tag="section" )
@@ -28,11 +28,11 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color=""
+            color="quattro"
           )
       
         v-flex.opening-control( xs12, sm4, tag="section", v-if="id !== 0" )
-          v-btn.ma-0( color="primary", dark, @click="onClick()" )
+          v-btn.ma-0( color="error", dark, @click="onClick()" )
             | {{ $t('opening.remove-opening') }}
 
 </template>

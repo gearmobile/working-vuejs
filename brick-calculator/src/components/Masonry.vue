@@ -1,14 +1,13 @@
 <template lang="pug">
 
-  v-card.mb-4( tag="section" )
+  v-card.mb-4( tag="section", color="tre" )
     v-card-text
       v-select(
         single-line,
-        label="Тип кирпичной кладки",
         :items="items",
         item-text="name",
         item-value="value",
-        color="teal darken-2",
+        color="quattro",
         v-model="item"
       )
 

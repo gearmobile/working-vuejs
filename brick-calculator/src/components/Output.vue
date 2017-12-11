@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-card.mb-4()
+  v-card.mb-4( color="tre" )
     v-card-text
       
       // BRICK QUANTITTY
