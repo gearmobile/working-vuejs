@@ -1,4 +1,5 @@
 {
   "style": "currency",
-  "currency": "RUB"
+  "currency": "RUB",
+  "currencyDisplay": "code"
 }

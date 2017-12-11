@@ -1,4 +1,5 @@
 {
   "style": "currency",
-  "currency": "USD"
+  "currency": "USD",
+  "currencyDisplay": "code"
 }
