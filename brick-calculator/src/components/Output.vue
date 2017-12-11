@@ -11,7 +11,7 @@
           | {{ quantity }}
       
       // COMMON AREA
-      v-layout( row, wrap )
+      v-layout( row, wrap tag="section" )
         v-flex( xs12, md6 )
           | {{ $t('output.totalArea') }}
         v-flex( xs12, md6 )
@@ -22,7 +22,7 @@
         v-flex( xs12, md6 )
           | {{ $t('output.totalCost') }}
         v-flex( xs12, md6 )
-          | {{ cost }}
+          | {{ $n(cost, 'currency') }}
 
 </template>
 

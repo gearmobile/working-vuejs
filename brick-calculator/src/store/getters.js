@@ -152,7 +152,7 @@ const getters = {
     return getters.getBricksCostRUB / state.RUBRate
   },
   getCost (state, getters) {
-    return i18n.locale === 'english' ? getters.getBricksCostUSD : getters.getBricksCostRUB
+    return i18n.locale === state.language.primary ? getters.getBricksCostRUB : getters.getBricksCostUSD
   }
 }
 

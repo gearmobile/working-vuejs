@@ -12,7 +12,8 @@ Vue.use(Vue18n)
 export const i18n = new Vue18n({
   locale: state.language.primary,
   fallbackLocale: state.language.primary,
-  messages: locales
+  messages: locales,
+  numberFormats: locales
 })
 
 export default { i18n }
