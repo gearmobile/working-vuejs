@@ -4,24 +4,24 @@
     v-card-text
       
       // BRICK QUANTITTY
-      v-layout( row, wrap, tag="section" )
-        v-flex( xs12, md6 )
+      v-layout.output( row, wrap, tag="section" )
+        v-flex.output__label.text-xs-center.text-sm-left( xs12, sm6 )
           | {{ $t('output.totalBricks') }}
-        v-flex( xs12, md6 )
+        v-flex.output__number.text-xs-center.text-sm-right( xs12, sm6, tag="p" )
           | {{ quantity }}
       
       // COMMON AREA
-      v-layout( row, wrap tag="section" )
-        v-flex( xs12, md6 )
+      v-layout.output( row, wrap tag="section" )
+        v-flex.output__label.text-xs-center.text-sm-left( xs12, sm6 )
           | {{ $t('output.totalArea') }}
-        v-flex( xs12, md6 )
+        v-flex.output__number.text-xs-center.text-sm-right( xs12, sm6, tag="p" )
           | {{ area }}
       
       // COMMON COST
-      v-layout( row, wrap, tag="section" )
-        v-flex( xs12, md6 )
+      v-layout.output( row, wrap, tag="section" )
+        v-flex.output__label.text-xs-center.text-sm-left( xs12, sm6 )
           | {{ $t('output.totalCost') }}
-        v-flex( xs12, md6 )
+        v-flex.output__number.text-xs-center.text-sm-right( xs12, sm6, tag="p" )
           | {{ $n(cost, 'currency') }}
 
 </template>
@@ -46,7 +46,19 @@
   }
 </script>
 
-<style scoped>
-  /**/
+<style lang="stylus" scoped>
+
+  .output {
+    
+    &__label {
+      font-size 1.1rem
+    }
+
+    &__number {
+      font-size 1.5rem
+      margin-bottom 0
+    }
+  }
+
 </style>
 
