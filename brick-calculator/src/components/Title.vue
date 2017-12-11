@@ -1,7 +1,12 @@
 <template lang="pug">
 
-  h4.text-xs-center.display-1.quattro--text.mb-4
-    | {{ $t('title.caption') }}
+  v-card
+    v-card-media( height="400px", src="/static/logo-01.jpg" )
+      v-container( fill-height, fluid )
+        v-layout( fill-height )
+          v-flex( xs12, align-end, flexbox )
+            span.display-1
+              | {{ $t('title.caption') }}
 
 </template>
 
