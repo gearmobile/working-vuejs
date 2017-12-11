@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  v-app( light, style="background-color: #fef4d2" )
+  v-app.py-4( light, style="background-color: #fef4d2" )
     
     // COMPONENT ALERT
     component-alert
@@ -88,7 +88,7 @@
             | {{ $t('output.subtitle') }}
         v-stepper-content( step="6" )
           component-output
-          v-btn( color="success", dark, :block="true", @click.native="stepResetAllAndGoStart()" )
+          v-btn( color="success", dark, :block="$vuetify.breakpoint.xsOnly", @click.native="stepResetAllAndGoStart()" )
             | {{ $t('step.forward') }}
 
 </template>

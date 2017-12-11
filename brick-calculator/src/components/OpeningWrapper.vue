@@ -6,7 +6,7 @@
       component-opening( v-for="(component, index) in components", :key="index", :id="index" )
       
       v-flex.text-xs-right( xs12, tag="section", v-if="!componentsLimit" )
-        v-btn( color="primary", dark, @click.native="onClick()", :disabled="!openingFields || checkCommon" )
+        v-btn( color="primary", dark, :block="$vuetify.breakpoint.xsOnly" @click.native="onClick()", :disabled="!openingFields || checkCommon" )
           | {{ $t('opening.add-opening') }}
 
 </template>

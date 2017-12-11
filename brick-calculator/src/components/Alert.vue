@@ -13,7 +13,7 @@
     data () {
       return {
         alert: {
-          timeout: 8000
+          timeout: 5000
         }
       }
     },

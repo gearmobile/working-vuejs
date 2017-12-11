@@ -14,7 +14,6 @@ import * as opening from './opening.json'
 import * as output from './result.json'
 import * as alert from './alert.json'
 import * as currency from './currency.json'
-import * as number from './number.json'
 
 export default {
   switcher,
@@ -27,6 +26,5 @@ export default {
   opening,
   output,
   alert,
-  currency,
-  number
+  currency
 }

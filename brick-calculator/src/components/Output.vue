@@ -8,14 +8,14 @@
         v-flex.output__label.text-xs-center.text-sm-left( xs12, sm6 )
           | {{ $t('output.totalBricks') }}
         v-flex.output__number.text-xs-center.text-sm-right( xs12, sm6, tag="p" )
-          | {{ $n(quantity, 'number') }}
+          | {{ $n(quantity) }}
       
       // COMMON AREA
       v-layout.output( row, wrap tag="section" )
         v-flex.output__label.text-xs-center.text-sm-left( xs12, sm6 )
           | {{ $t('output.totalArea') }}
         v-flex.output__number.text-xs-center.text-sm-right( xs12, sm6, tag="p" )
-          | {{ $n(area, 'number') }}
+          | {{ $n(area) }}
       
       // COMMON COST
       v-layout.output( row, wrap, tag="section" )

@@ -16,7 +16,7 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color=""
+            color="#9a8e7c"
           )
       
         v-flex( xs12, sm4, tag="section" )
@@ -28,11 +28,11 @@
             :mask="mask",
             :hint="$t('opening.hint')",
             persistent-hint,
-            color=""
+            color="#9a8e7c"
           )
       
         v-flex.opening-control( xs12, sm4, tag="section", v-if="id !== 0" )
-          v-btn.ma-0( color="error", dark, @click="onClick()" )
+          v-btn.ma-0( color="error", dark, :block="$vuetify.breakpoint.xsOnly" @click="onClick()" )
             | {{ $t('opening.remove-opening') }}
 
 </template>
