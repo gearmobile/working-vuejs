@@ -17,11 +17,6 @@
 </script>
 
 <style lang="stylus" scoped>
-  .header {
-    padding .8rem 1.4rem
-    background-color rgba(#c6b198, 60%)
-    border-radius .3rem
-    color white
-  }
+  //
 </style>
 
