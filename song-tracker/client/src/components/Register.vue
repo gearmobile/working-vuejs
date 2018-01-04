@@ -20,8 +20,8 @@
       }
     },
     methods: {
-      onRegister () {
-        const response = AuthenticationService.register({
+      async onRegister () {
+        const response = await AuthenticationService.register({
           email: this.email,
           password: this.password
         })
