@@ -1,8 +1,10 @@
 <template>
   <div class="container my-4">
-    <div class="row" v-show="!show">
+    <div class="row">
       <div class="col">
-        <form @submit.prevent="onSend">
+
+        <!-- input form -->
+        <form @submit.prevent="onSend" v-if="!show">
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" v-model.trim.lazy="user.email">
@@ -21,39 +23,39 @@
           </div>
           <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
           <hr>
-          <div class="form-group" v-for="(guest, index) in guests" :key="index">
+          <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
             <label for="guest" @click="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
-            <input type="text" class="form-control" id="guest" placeholder="Guest">
+            <input type="text" class="form-control" id="guest" placeholder="Guest" v-model="guest.name">
           </div>
           <button type="submit" class="btn btn-success">Send Data</button>
         </form>
+
         <!-- display data -->
-        <div class="row" v-show="show">
-          <div class="col">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Email</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Phone</th>
-                  <th scope="col">Guests</th>
+        <table class="table" v-show="show">
+          <tbody>
+            <tr>
+              <td>Email</td>
+              <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{{ `${user.firstName} ${user.lastName}` }}</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>{{ user.phone }}</td>
+            </tr>
+            <tr>
+              <td>Guests</td>
+              <td>
+                <tr v-for="guest in guests" :key="guest.name">
+                  <td>{{ guest.name }}</td>
                 </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>{{ user.email }}</td>
-                  <td>{{ `${user.firstName} ${user.lastName}` }}</td>
-                  <td>{{ user.phone }}</td>
-                  <td>
-                    <tr v-for="(guest, index) in guests" :key="index">
-                      <td>{{ guest }}</td>
-                    </tr>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
@@ -76,9 +78,7 @@
     },
     methods: {
       onAddGuest () {
-        const value = this.guests[this.guests.length - 1] === undefined ? 0 : this.guests[this.guests.length - 1]
-        console.log(value)
-        this.guests.push(value + 1)
+        this.guests.push({ name: '' })
       },
       onRemove (index) {
         this.guests.splice(index, 1)
