@@ -23,15 +23,16 @@
           </div>
           <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
           <hr>
-          <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
+          <div class="form-group" v-for="(guest, index) in guests" :key="index">
             <label for="guest" @click="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
-            <input type="text" class="form-control" id="guest" placeholder="Guest" v-model="guest.name">
+            <input type="text" class="form-control" id="guest" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
           <button type="submit" class="btn btn-success">Send Data</button>
         </form>
 
         <!-- display data -->
         <table class="table" v-show="show">
+          <h2>Our user and guests</h2>
           <tbody>
             <tr>
               <td>Email</td>
