@@ -23,10 +23,12 @@
           </div>
           <button type="button" class="btn btn-primary btn-block" @click="onAddGuest">Add Guests</button>
           <hr>
+          <!-- guest list -->
           <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
             <label :for="'guest-' + (index + 1)" @dblclick="onRemove(index)">Guest {{ index + 1 }}</label>
             <input :id="'guest-' + (index + 1)" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
+          <!-- submit data -->
           <button type="submit" class="btn btn-success btn-block">Send Data</button>
         </form>
 
@@ -40,7 +42,7 @@
             </tr>
             <tr>
               <td>Name</td>
-              <td>{{ `${user.firstName} ${user.lastName}` }}</td>
+              <td>{{ fullUserName }}</td>
             </tr>
             <tr>
               <td>Phone</td>
@@ -56,8 +58,11 @@
                 </ul>
               </td>
             </tr>
+            <!-- go back -->
             <tr>
-              <button type="button" class="btn btn-info btn-block" @click="onBack">Back to Home</button>
+              <td>
+                <button type="button" class="btn btn-info btn-lg" @click="onBack">Back to Home</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -80,6 +85,11 @@
         },
         guests: [],
         show: false
+      }
+    },
+    computed: {
+      fullUserName () {
+        return `${this.user.firstName} ${this.user.lastName}`
       }
     },
     methods: {
