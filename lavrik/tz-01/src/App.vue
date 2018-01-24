@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
 
-        <!-- input form -->
+        <!-- INPUT FORM -->
         <form @submit.prevent="onSend" v-if="!show">
           <div class="form-group">
             <label for="email">Email</label>
@@ -24,13 +24,13 @@
           <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
           <hr>
           <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
-            <label @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
-            <input id="{ 'guest' + index }" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
+            <label :for="'guest' + (index + 1)" @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
+            <input :id="'guest' + (index + 1)" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
           <button type="submit" class="btn btn-success">Send Data</button>
         </form>
 
-        <!-- display data -->
+        <!-- DISPLAY DATA -->
         <table class="table" v-show="show">
           <h2>Our user and guests</h2>
           <tbody>
@@ -92,6 +92,8 @@
       onSend () {
         if (this.user.email !== null && this.user.firstName !== null && this.user.lastName !== null && this.user.phone !== null) {
           this.show = !this.show
+        } else {
+          alert('From fields are empty!')
         }
       },
       onBack () {
