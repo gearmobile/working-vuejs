@@ -24,8 +24,8 @@
           <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
           <hr>
           <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
-            <label :for="'guest' + (index + 1)" @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
-            <input :id="'guest' + (index + 1)" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
+            <label :for="'guest-' + (index + 1)" @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
+            <input :id="'guest-' + (index + 1)" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
           <button type="submit" class="btn btn-success">Send Data</button>
         </form>
