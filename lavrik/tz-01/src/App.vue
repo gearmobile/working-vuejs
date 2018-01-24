@@ -23,9 +23,9 @@
           </div>
           <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
           <hr>
-          <div class="form-group" v-for="(guest, index) in guests" :key="index">
-            <label for="guest" @click="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
-            <input type="text" class="form-control" id="guest" placeholder="Guest" v-model.trim.lazy="guest.name">
+          <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
+            <label @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
+            <input id="{ 'guest' + index }" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
           <button type="submit" class="btn btn-success">Send Data</button>
         </form>
@@ -49,10 +49,15 @@
             <tr>
               <td>Guests</td>
               <td>
-                <tr v-for="guest in guests" :key="guest.name">
-                  <td>{{ guest.name }}</td>
-                </tr>
+                <ul class="list-group">
+                  <li class="list-group-item" v-for="guest in guests" :key="guest.name">
+                    {{ guest.name }}
+                  </li>
+                </ul>
               </td>
+            </tr>
+            <tr>
+              <button class="btn btn-info" @click="onBack">Back to Home</button>
             </tr>
           </tbody>
         </table>
@@ -68,10 +73,10 @@
     data () {
       return {
         user: {
-          email: '',
-          firstName: '',
-          lastName: '',
-          phone: ''
+          email: null,
+          firstName: null,
+          lastName: null,
+          phone: null
         },
         guests: [],
         show: false
@@ -85,9 +90,19 @@
         this.guests.splice(index, 1)
       },
       onSend () {
-        if (this.user.email !== '' && this.user.firstName !== '' && this.user.lastName !== '' && this.user.phone !== '') {
+        if (this.user.email !== null && this.user.firstName !== null && this.user.lastName !== null && this.user.phone !== null) {
           this.show = !this.show
         }
+      },
+      onBack () {
+        for (const key in this.user) {
+          if (this.user.hasOwnProperty(key)) {
+            this.user[key] = null
+
+          }
+        }
+        this.guests = null
+        this.show = !this.show
       }
     }
   }
@@ -98,8 +113,5 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
   }
 </style>
