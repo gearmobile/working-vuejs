@@ -43,7 +43,9 @@
     },
     beforeUpdate () {
       console.log(`before update`)
-      if (/^[0-9]*$/.test(this.phone))
+      if (/^[0-9]*$/.test(this.phone)) {
+        //
+      }
     },
     updated () {
       console.log(`updated`)
