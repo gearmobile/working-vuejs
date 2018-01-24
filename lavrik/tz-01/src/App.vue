@@ -21,13 +21,13 @@
             <label for="phone">Phone</label>
             <input type="text" class="form-control" id="phone" placeholder="Phone" v-model.trim.lazy="user.phone">
           </div>
-          <button type="button" class="btn btn-primary" @click="onAddGuest">Add Guests</button>
+          <button type="button" class="btn btn-primary btn-block" @click="onAddGuest">Add Guests</button>
           <hr>
           <div class="form-group" v-for="(guest, index) in guests" :key="guest.name">
-            <label :for="'guest-' + (index + 1)" @dblclick="onRemove(index)" style="cursor: pointer">Guest {{ index + 1 }}</label>
+            <label :for="'guest-' + (index + 1)" @dblclick="onRemove(index)">Guest {{ index + 1 }}</label>
             <input :id="'guest-' + (index + 1)" type="text" class="form-control" placeholder="Guest" v-model.trim.lazy="guest.name">
           </div>
-          <button type="submit" class="btn btn-success">Send Data</button>
+          <button type="submit" class="btn btn-success btn-block">Send Data</button>
         </form>
 
         <!-- DISPLAY DATA -->
@@ -57,7 +57,7 @@
               </td>
             </tr>
             <tr>
-              <button class="btn btn-info" @click="onBack">Back to Home</button>
+              <button type="button" class="btn btn-info btn-block" @click="onBack">Back to Home</button>
             </tr>
           </tbody>
         </table>
@@ -115,5 +115,12 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+  label {
+    cursor: pointer;
+    font-weight: 700;
+  }
+  label:hover {
+    color: firebrick;
   }
 </style>
