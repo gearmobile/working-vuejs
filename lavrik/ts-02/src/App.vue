@@ -8,7 +8,7 @@
         </div>
         <div class="form-group">
           <label for="phone">phone</label>
-          <input class="form-control" type="text" name="phone" id="phone" v-model="name">
+          <input class="form-control" type="text" name="phone" id="phone" v-model="phone">
         </div>
       </div>
     </div>
@@ -20,7 +20,8 @@
     name: 'app',
     data () {
       return {
-        name: ''
+        name: '',
+        phone: ''
       }
     },
     beforeCreate () {
@@ -34,7 +35,7 @@
     beforeMount () {
       console.log(`before mount hook`)
       console.log(this.$el)
-      console.log(this.$el.innerHTML)
+      // console.log(this.$el.innerHTML)
     },
     mounted () {
       console.log(`mounted hook`)
@@ -43,8 +44,11 @@
     },
     beforeUpdate () {
       console.log(`before update`)
-      if (/^[0-9]*$/.test(this.phone)) {
-        //
+      const pattern = /^[0-9]*$/
+      const sample = /[^0-9]/g
+      if (!pattern.test(this.phone)) {
+        this.phone = this.phone.replace(sample, '')
+        console.log(this.phone)
       }
     },
     updated () {
